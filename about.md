@@ -1,18 +1,30 @@
 ---
 layout: page
-title: About
+title: Over OSA
 permalink: /about/
+description: Over OSA (ON4OSA), de Antwerpse sectie van de UBA voor radioamateurs.
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+OSA is de Antwerpse sectie van de [UBA](https://www.uba.be/), de Koninklijke
+Unie van de Belgische Zendamateurs. Onder de sectieroepnaam **ON4OSA** brengen
+we radioamateurs uit de regio Antwerpen samen: van gebrevetteerde zendamateurs
+en luisteramateurs tot iedereen die geboeid is door radiocommunicatie en
+techniek.
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+## Wat we doen
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+- **Maandelijkse bijeenkomsten** met lezingen, techniek en ervaringsuitwisseling.
+- **On-air activiteit** — contesten, velddagen en 'special event stations'.
+- **Zelfbouw & experimenteren** rond antennes, ontvangers en digitale modes.
+- **Begeleiding naar je vergunning** voor wie het HAREC-examen wil afleggen en
+  een eigen roepnaam wil behalen.
+- **QSL-kaarten** — UBA-leden die bij hun inschrijving sectie OSA opgaven,
+  ontvangen hun QSL-kaarten via onze sectie. Ophalen kan op onze maandelijkse
+  vergadering, elke eerste donderdag van de maand.
 
+## Kom eens langs
 
-[jekyll-organization]: https://github.com/jekyll
+Onze bijeenkomsten zijn vrij toegankelijk. Je vindt de plaatsen en tijdstippen
+terug op de [startpagina]({{ '/' | relative_url }}#vergaderen). Vragen? Neem
+gerust [contact op](mailto:{{ site.email }}) — we helpen je graag op weg,
+of je nu al een roepnaam hebt of gewoon nieuwsgierig bent.

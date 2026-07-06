@@ -1,0 +1,35 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-md-5">
+        <div class="footer-brand">
+          <svg class="brand-mark" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/>
+            <path d="M8.5 8.5a5 5 0 0 0 0 7M15.5 8.5a5 5 0 0 1 0 7"/>
+            <path d="M5.7 5.7a9 9 0 0 0 0 12.6M18.3 5.7a9 9 0 0 1 0 12.6"/>
+          </svg> {{ site.title }}
+        </div>
+        <p class="footer-tagline">{{ site.tagline }}</p>
+      </div>
+      <div class="col-md-3">
+        <h6 class="footer-heading">Navigatie</h6>
+        <ul class="footer-links">
+          {%- for link in site.nav_links -%}
+          <li><a href="{{ link.url | relative_url }}">{{ link.title }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h6 class="footer-heading">Contact</h6>
+        <ul class="footer-links">
+          {%- if site.email and site.email != "your-email@example.com" -%}
+          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+          {%- endif -%}
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© {{ site.time | date: '%Y' }} {{ site.title }}. Alle rechten voorbehouden.</span>
+    </div>
+  </div>
+</footer>

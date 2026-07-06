@@ -1,0 +1,14 @@
+# OSA Nieuws — clubnieuwsbrieven (PDF).
+# `file` staat in /assets/nieuwsbrieven/, thumbnail (eerste pagina) in
+# /assets/img/nieuwsbrieven/ met dezelfde bestandsnaam (.jpg).
+# Nieuwste bovenaan.
+- title: OSA Nieuws 2026 · nr. 2
+  file: OSA_nieuws_2026_2
+- title: OSA Nieuws 2026 · nr. 1
+  file: OSA_nieuws_2026_1
+- title: OSA Nieuws 2025 · nr. 3
+  file: OSA_nieuws_2025_3
+- title: OSA Nieuws 2025 · nr. 2
+  file: OSA_nieuws_2025_2
+- title: OSA Nieuws 2025 · nr. 1
+  file: OSA_nieuws_2025_1

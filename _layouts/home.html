@@ -1,0 +1,175 @@
+---
+layout: default
+---
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-9">
+        <p class="hero-eyebrow">Radioamateurs in Antwerpen · ON4OSA</p>
+        <h1 class="hero-title">Welkom bij OSA,<br>de Antwerpse UBA sectie</h1>
+        <p class="hero-lead">
+          De Antwerpse sectie van de UBA, de Koninklijke Unie van de Belgische
+          Zendamateurs. Van je eerste QSO tot contesten, homebrew en de weg naar
+          je zendvergunning — bij ons kom je verder op de band.
+        </p>
+        <div class="hero-actions">
+          <a href="#vergaderen" class="btn btn-osa btn-lg">Wanneer vergaderen we?</a>
+          <a href="/about/" class="btn btn-osa-outline btn-lg">Over OSA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Meetings -->
+<section id="vergaderen" class="section">
+  <div class="container">
+    <div class="section-head text-center">
+      <span class="section-kicker">Bijeenkomsten</span>
+      <h2 class="section-title">Wij vergaderen</h2>
+      <p class="section-sub">Iedereen is welkom — radioamateurs, luisteramateurs en geïnteresseerden.</p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      {%- for meeting in site.data.meetings -%}
+      <div class="col-md-6 col-lg-5">
+        <div class="meeting-card h-100">
+          <div class="meeting-when">{{ meeting.when }}</div>
+          <h3 class="meeting-venue">{{ meeting.venue }}</h3>
+          <address class="meeting-address">
+            {{ meeting.address | newline_to_br }}
+          </address>
+          <div class="meeting-time">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+              <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
+            </svg>
+            <span>{{ meeting.time }}</span>
+          </div>
+          {%- if meeting.map -%}
+          <a class="meeting-link" href="{{ meeting.map }}" target="_blank" rel="noopener">
+            Bekijk op de kaart →
+          </a>
+          {%- endif -%}
+        </div>
+      </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if site.data.voordrachten and site.data.voordrachten.size > 0 -%}
+    <div class="section-head text-center lezingen-head">
+      <span class="section-kicker">Programma</span>
+      <h3 class="section-title">Voordrachten</h3>
+      <p class="section-sub">Lezingen op onze clubavonden in Volkssterrenwacht Urania.</p>
+    </div>
+
+    {%- comment -%} Split automatically on the build date (site.time). {%- endcomment -%}
+    {%- assign today = site.time | date: "%Y-%m-%d" -%}
+    {%- assign vd_asc = site.data.voordrachten | sort: "date" -%}
+    {%- assign upcoming_count = 0 -%}
+    {%- for l in vd_asc -%}
+      {%- assign d = l.date | date: "%Y-%m-%d" -%}
+      {%- if d >= today -%}{%- assign upcoming_count = upcoming_count | plus: 1 -%}{%- endif -%}
+    {%- endfor -%}
+    {%- assign past_count = site.data.voordrachten.size | minus: upcoming_count -%}
+
+    <h4 class="vd-subhead">Komende voordrachten</h4>
+    {%- if upcoming_count > 0 -%}
+    <div class="table-responsive results-table">
+      <table class="table align-middle">
+        <thead>
+          <tr>
+            <th scope="col" class="text-nowrap">Datum</th>
+            <th scope="col">Tijd</th>
+            <th scope="col">Locatie</th>
+            <th scope="col">Spreker</th>
+            <th scope="col">Onderwerp</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for l in vd_asc -%}
+          {%- assign d = l.date | date: "%Y-%m-%d" -%}
+          {%- if d >= today -%}
+          <tr>
+            <td class="text-nowrap">{{ l.date_label }}</td>
+            <td class="text-nowrap">{{ l.time }}</td>
+            <td>{{ l.location }}</td>
+            <td class="text-nowrap"><span class="callsign">{{ l.speaker }}</span></td>
+            <td>{{ l.topic }}</td>
+          </tr>
+          {%- endif -%}
+          {%- endfor -%}
+        </tbody>
+      </table>
+    </div>
+    {%- else -%}
+    <p class="results-note">Momenteel geen geplande voordrachten — hou deze pagina in de gaten.</p>
+    {%- endif -%}
+
+    {%- if past_count > 0 -%}
+    <h4 class="vd-subhead">Voorbije voordrachten</h4>
+    <div class="table-responsive results-table">
+      <table class="table align-middle">
+        <thead>
+          <tr>
+            <th scope="col" class="text-nowrap">Datum</th>
+            <th scope="col">Tijd</th>
+            <th scope="col">Locatie</th>
+            <th scope="col">Spreker</th>
+            <th scope="col">Onderwerp</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- assign vd_desc = site.data.voordrachten | sort: "date" | reverse -%}
+          {%- for l in vd_desc -%}
+          {%- assign d = l.date | date: "%Y-%m-%d" -%}
+          {%- if d < today -%}
+          <tr>
+            <td class="text-nowrap">{{ l.date_label }}</td>
+            <td class="text-nowrap">{{ l.time }}</td>
+            <td>{{ l.location }}</td>
+            <td class="text-nowrap"><span class="callsign">{{ l.speaker }}</span></td>
+            <td>{{ l.topic }}</td>
+          </tr>
+          {%- endif -%}
+          {%- endfor -%}
+        </tbody>
+      </table>
+    </div>
+    {%- endif -%}
+    {%- endif -%}
+  </div>
+</section>
+
+<!-- OSA Nieuws (newsletters) -->
+{%- if site.data.nieuwsbrieven and site.data.nieuwsbrieven.size > 0 -%}
+<section id="osa-nieuws" class="section section-alt">
+  <div class="container">
+    <div class="section-head text-center">
+      <span class="section-kicker">Nieuwsbrief</span>
+      <h2 class="section-title">OSA Nieuws</h2>
+      <p class="section-sub">Onze clubnieuwsbrieven — klik een editie om de PDF te openen.</p>
+    </div>
+
+    <div class="newsletter-grid">
+      {%- for n in site.data.nieuwsbrieven -%}
+      <a class="newsletter-card"
+         href="{{ '/assets/nieuwsbrieven/' | append: n.file | append: '.pdf' | relative_url }}"
+         target="_blank" rel="noopener">
+        <div class="newsletter-cover">
+          <img src="{{ '/assets/img/nieuwsbrieven/' | append: n.file | append: '.jpg' | relative_url }}"
+               alt="Cover {{ n.title }}" loading="lazy">
+          <span class="newsletter-badge">PDF</span>
+        </div>
+        <div class="newsletter-meta">
+          <span class="newsletter-title">{{ n.title }}</span>
+        </div>
+      </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{%- endif -%}

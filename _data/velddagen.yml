@@ -1,0 +1,63 @@
+# ON4OSA deelnames aan UBA velddagen.
+# Bron: UBA velddag-uitslagen (zie `url`). Datums volgen de vaste UBA-kalender
+# (CW = eerste weekend van juni, SSB = eerste weekend van september).
+# `date` (ISO) wordt gebruikt om chronologisch te sorteren.
+- date: 2021-09-04
+  date_label: 4–5 sep 2021
+  event: UBA Velddag SSB
+  callsign: ON4OSA/P
+  category: Open All Band
+  placement: 5e plaats
+  score: "119.146"
+  qso: 1453
+  url: https://www.uba.be/nl/hf/velddagnieuws/velddag-ssb-2021-uitslag
+
+- date: 2022-09-03
+  date_label: 3–4 sep 2022
+  event: UBA Velddag SSB
+  callsign: ON4OSA/P
+  category: Open All Band
+  placement: 10e plaats
+  score: "53.631"
+  qso: 909
+  url: https://www.uba.be/nl/hf/velddagnieuws/velddag-ssb-2022-uitslag
+
+- date: 2023-09-02
+  date_label: 2–3 sep 2023
+  event: UBA Velddag SSB
+  callsign: ON4OSA/P
+  category: Open All Band Low Power
+  placement: 6e plaats
+  score: "100.863"
+  qso: 382
+  url: https://www.uba.be/nl/hf/velddagnieuws/velddag-ssb-2023-uitslag
+
+- date: 2024-09-07
+  date_label: 7–8 sep 2024
+  event: UBA Velddag SSB
+  callsign: ON4OSA/P
+  category: Open All Band Low Power
+  placement: 5e plaats
+  score: "87.912"
+  qso: 330
+  url: https://www.uba.be/nl/hf/velddagnieuws/velddag-ssb-2024-uitslag
+
+- date: 2025-09-06
+  date_label: 6–7 sep 2025
+  event: UBA Velddag SSB
+  callsign: ON4OSA/P
+  category: Open All Band Low Power
+  placement: 11e plaats
+  score: "45.100"
+  qso: 255
+  url: https://www.uba.be/nl/hf/velddagnieuws/velddag-ssb-2025-uitslag
+
+- date: 2026-06-06
+  date_label: 6–7 jun 2026
+  event: UBA Velddag CW
+  callsign: ON4OSA/P
+  category: Open All Band Low Power
+  placement: 1e plaats
+  score: "199.020"
+  qso: 656
+  url: https://www.uba.be/nl/hf/velddagnieuws/velddag-cw-2026-uitslag

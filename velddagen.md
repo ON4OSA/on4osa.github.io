@@ -31,18 +31,18 @@ description: Overzicht van de deelnames van ON4OSA aan de UBA velddagen.
           {%- assign events = site.data.velddagen | sort: "date" | reverse -%}
           {%- for e in events -%}
           <tr>
-            <td class="text-nowrap">{{ e.date_label }}</td>
-            <td>{{ e.event }}</td>
-            <td class="text-nowrap"><span class="callsign">{{ e.callsign }}</span></td>
-            <td>{{ e.category }}</td>
-            <td>
+            <td class="text-nowrap" data-label="Datum">{{ e.date_label }}</td>
+            <td data-label="Evenement">{{ e.event }}</td>
+            <td class="text-nowrap" data-label="Roepnaam"><span class="callsign">{{ e.callsign }}</span></td>
+            <td data-label="Categorie">{{ e.category }}</td>
+            <td data-label="Resultaat">
               {%- if e.placement == "1e plaats" -%}
                 <span class="badge-result badge-win">{{ e.placement }}</span>
               {%- else -%}
                 <span class="badge-result">{{ e.placement }}</span>
               {%- endif -%}
-              <span class="result-score">{{ e.score }} ptn</span>
-              {%- if e.qso -%}<span class="result-qso">{{ e.qso }} QSO</span>{%- endif -%}
+              <span class="result-score">{{ e.score }}&nbsp;ptn</span>&#8203;
+              {%- if e.qso -%}<span class="result-qso">{{ e.qso }}&nbsp;QSO</span>{%- endif -%}
               {%- if e.url -%}
               <a class="result-src" href="{{ e.url }}" target="_blank" rel="noopener" aria-label="Officiële uitslag">uitslag →</a>
               {%- endif -%}

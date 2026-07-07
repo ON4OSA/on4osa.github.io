@@ -274,7 +274,11 @@ section[id], [id].anchor { scroll-margin-top: 88px; }
   border: 1px solid var(--osa-line);
   border-radius: var(--osa-radius);
   box-shadow: var(--osa-shadow);
-  overflow: hidden;
+  /* overflow-x: auto lets wide tables scroll horizontally on mobile
+     instead of being clipped, while still clipping the rounded corners.
+     (Bootstrap's .table-responsive sets this too; keep them in sync.) */
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .results-table .table { margin-bottom: 0; }
 .results-table thead th {
@@ -320,6 +324,58 @@ section[id], [id].anchor { scroll-margin-top: 88px; }
 .result-qso { color: var(--osa-muted); font-size: .9rem; margin-left: .5rem; }
 .result-src { display: inline-block; margin-left: .6rem; font-size: .85rem; font-weight: 600; white-space: nowrap; }
 .results-note { color: var(--osa-muted); font-size: .88rem; margin-top: 1.25rem; text-align: center; }
+
+/* On phones, reflow the wide tables into stacked cards (label from
+   the column header via data-label) instead of a cut-off/scrolling table. */
+@media (max-width: 767.98px) {
+  .results-table {
+    border: 0;
+    box-shadow: none;
+    overflow: visible;
+    background: transparent;
+  }
+  .results-table .table,
+  .results-table tbody,
+  .results-table tr,
+  .results-table td { display: block; width: 100%; }
+  .results-table thead { display: none; }
+
+  .results-table tbody tr {
+    background: var(--osa-bg);
+    border: 1px solid var(--osa-line);
+    border-radius: var(--osa-radius);
+    box-shadow: var(--osa-shadow);
+    padding: .4rem .25rem .7rem;
+    margin-bottom: 1.1rem;
+  }
+  .results-table tbody tr:hover { background: var(--osa-bg); }
+
+  .results-table tbody td {
+    border: 0;
+    padding: .25rem 1.1rem;
+    text-align: left;
+    white-space: normal;
+  }
+  .results-table tbody td::before {
+    content: attr(data-label);
+    display: block;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: .66rem;
+    letter-spacing: .06em;
+    color: var(--osa-muted);
+    margin-top: .6rem;
+  }
+  /* First cell (Datum) becomes the card title — no label needed. */
+  .results-table tbody td:first-child {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--osa-ink);
+    padding-top: .6rem;
+    padding-bottom: .1rem;
+  }
+  .results-table tbody td:first-child::before { display: none; }
+}
 .lezingen-head { margin-top: 4.5rem; margin-bottom: 2rem; }
 .vd-subhead {
   font-size: 1.1rem;

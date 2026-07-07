@@ -154,8 +154,25 @@ layout: default
       <p class="section-sub">Onze clubnieuwsbrieven — klik een editie om de PDF te openen.</p>
     </div>
 
+    {%- assign latest = site.data.nieuwsbrieven | first -%}
+    <div class="newsletter-featured">
+      <a class="newsletter-card newsletter-card--featured"
+         href="{{ '/assets/nieuwsbrieven/' | append: latest.file | append: '.pdf' | relative_url }}"
+         target="_blank" rel="noopener">
+        <div class="newsletter-cover">
+          <img src="{{ '/assets/img/nieuwsbrieven/' | append: latest.file | append: '.jpg' | relative_url }}"
+               alt="Cover {{ latest.title }}" loading="lazy">
+          <span class="newsletter-badge">PDF</span>
+        </div>
+        <div class="newsletter-meta">
+          <span class="newsletter-kicker">Nieuwste editie</span>
+          <span class="newsletter-title">{{ latest.title }}</span>
+        </div>
+      </a>
+    </div>
+
     <div class="newsletter-grid">
-      {%- for n in site.data.nieuwsbrieven -%}
+      {%- for n in site.data.nieuwsbrieven offset: 1 -%}
       <a class="newsletter-card"
          href="{{ '/assets/nieuwsbrieven/' | append: n.file | append: '.pdf' | relative_url }}"
          target="_blank" rel="noopener">

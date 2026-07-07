@@ -398,9 +398,29 @@ section[id], [id].anchor { scroll-margin-top: 88px; }
 .newsletter-card {
   display: flex;
   flex-direction: column;
-  width: 220px;
+  width: 200px;
   color: inherit;
   transition: transform .2s ease;
+}
+/* Featured (most recent) edition — slightly larger, on top. */
+.newsletter-featured { display: flex; justify-content: center; margin-bottom: 2.5rem; }
+.newsletter-card--featured { width: 260px; }
+.newsletter-kicker {
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-size: .68rem;
+  font-weight: 700;
+  color: var(--osa-accent);
+  margin-bottom: .1rem;
+}
+
+/* On phones, show exactly two cards per row. */
+@media (max-width: 575.98px) {
+  .newsletter-grid { gap: 1rem; }
+  .newsletter-card { width: calc(50% - .5rem); }
+  .newsletter-card--featured { width: 62%; }
+  /* smaller caption so it fits the narrower thumbnail without wrapping */
+  .newsletter-grid .newsletter-title { font-size: .8rem; line-height: 1.25; }
 }
 .newsletter-card:hover { transform: translateY(-6px); color: inherit; }
 .newsletter-cover {

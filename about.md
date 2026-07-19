@@ -2,10 +2,10 @@
 layout: page
 title: Over OSA
 permalink: /about/
-description: Over OSA (ON4OSA), de Antwerpse sectie van de UBA voor radioamateurs.
+description: Over OSA (ON4OSA), een Antwerpse sectie van de UBA voor radioamateurs.
 ---
 
-OSA is de Antwerpse sectie van de [UBA](https://www.uba.be/), de Koninklijke
+OSA is een Antwerpse sectie van de [UBA](https://www.uba.be/), de Koninklijke
 Unie van de Belgische Zendamateurs. Onder de sectieroepnaam **ON4OSA** brengen
 we radioamateurs uit de regio Antwerpen samen: van gebrevetteerde zendamateurs
 en luisteramateurs tot iedereen die geboeid is door radiocommunicatie en

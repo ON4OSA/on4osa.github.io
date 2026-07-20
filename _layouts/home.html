@@ -68,10 +68,10 @@ layout: default
 
     {%- comment -%} Split automatically on the build date (site.time). {%- endcomment -%}
     {%- assign today = site.time | date: "%Y-%m-%d" -%}
-    {%- assign vd_asc = site.data.voordrachten | sort: "date" -%}
+    {%- assign vd_asc = site.data.voordrachten | sort: "start" -%}
     {%- assign upcoming_count = 0 -%}
     {%- for l in vd_asc -%}
-      {%- assign d = l.date | date: "%Y-%m-%d" -%}
+      {%- assign d = l.start | date: "%Y-%m-%d" -%}
       {%- if d >= today -%}{%- assign upcoming_count = upcoming_count | plus: 1 -%}{%- endif -%}
     {%- endfor -%}
     {%- assign past_count = site.data.voordrachten.size | minus: upcoming_count -%}
@@ -91,11 +91,11 @@ layout: default
         </thead>
         <tbody>
           {%- for l in vd_asc -%}
-          {%- assign d = l.date | date: "%Y-%m-%d" -%}
+          {%- assign d = l.start | date: "%Y-%m-%d" -%}
           {%- if d >= today -%}
           <tr>
             <td class="text-nowrap" data-label="Datum">{{ l.date_label }}</td>
-            <td class="text-nowrap" data-label="Tijd">{{ l.time }}</td>
+            <td class="text-nowrap" data-label="Tijd">{{ l.start | date: "%H:%M" }}</td>
             <td data-label="Locatie">{{ l.location }}</td>
             <td class="text-nowrap" data-label="Spreker"><span class="callsign">{{ l.speaker }}</span></td>
             <td data-label="Onderwerp">{{ l.topic }}</td>
@@ -123,13 +123,13 @@ layout: default
           </tr>
         </thead>
         <tbody>
-          {%- assign vd_desc = site.data.voordrachten | sort: "date" | reverse -%}
+          {%- assign vd_desc = site.data.voordrachten | sort: "start" | reverse -%}
           {%- for l in vd_desc -%}
-          {%- assign d = l.date | date: "%Y-%m-%d" -%}
+          {%- assign d = l.start | date: "%Y-%m-%d" -%}
           {%- if d < today -%}
           <tr>
             <td class="text-nowrap" data-label="Datum">{{ l.date_label }}</td>
-            <td class="text-nowrap" data-label="Tijd">{{ l.time }}</td>
+            <td class="text-nowrap" data-label="Tijd">{{ l.start | date: "%H:%M" }}</td>
             <td data-label="Locatie">{{ l.location }}</td>
             <td class="text-nowrap" data-label="Spreker"><span class="callsign">{{ l.speaker }}</span></td>
             <td data-label="Onderwerp">{{ l.topic }}</td>
@@ -156,7 +156,8 @@ layout: default
         "@type": "Event",
         "name": {{ l.topic | jsonify }},
         "description": {{ vd_desc | jsonify }},
-        "startDate": "{{ l.date | date: '%Y-%m-%d' }}T{{ l.time }}",
+        "startDate": {{ l.start | jsonify }},
+        "endDate": {{ l.end | jsonify }},
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "isAccessibleForFree": true,

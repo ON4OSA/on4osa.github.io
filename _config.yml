@@ -7,12 +7,38 @@ description: >-
   wereld van de radioamateur.
 email: info@on4osa.be
 baseurl: ""
-# Canonical site URL (matches CNAME) — used to build absolute URLs in sitemap.xml
+# Canonical site URL (matches CNAME) — used for absolute URLs in sitemap.xml
+# and the canonical/Open Graph tags from jekyll-seo-tag.
 url: "https://on4osa.be"
+# Locale used by jekyll-seo-tag (og:locale).
+lang: nl_BE
+author: ON4OSA
+
+# Default social share image (og:image / twitter:image) for every page.
+# Override per page with `image:` in its front matter.
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/img/westhinder.jpg
+
+# Optional jekyll-seo-tag fields — fill in if/when you have them:
+# logo: /assets/img/logo.png          # used as the organisation logo in JSON-LD
+# twitter:
+#   username: ON4OSA
+#   card: summary_large_image
+# facebook:
+#   publisher: https://www.facebook.com/...
+# social:
+#   name: ON4OSA
+#   links:
+#     - https://www.facebook.com/...
+# google_site_verification: ...
 
 # Build settings
 plugins:
   - jekyll-sitemap
+  - jekyll-seo-tag
 
 # Navigation shown in the navbar
 nav_links:

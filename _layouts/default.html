@@ -9,6 +9,8 @@
     matter: title, description, image, canonical_url.
   {%- endcomment -%}
   {%- seo -%}
+  {%- comment -%} Organisation identity — homepage only, per Google's guidance. {%- endcomment -%}
+  {%- if page.url == '/' -%}{%- include schema-organization.html -%}{%- endif -%}
 
   <link rel="stylesheet" href="{{ '/assets/css/bootstrap.min.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">

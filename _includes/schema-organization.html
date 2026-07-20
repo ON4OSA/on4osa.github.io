@@ -1,0 +1,38 @@
+{%- comment -%}
+  Site-wide organisation identity (schema.org/Organization).
+
+  Rendered on the homepage only, *alongside* the WebSite/WebPage JSON-LD that
+  jekyll-seo-tag emits — so the page keeps its own correct type and the club is
+  described as a separate node with a stable @id that other nodes can reference.
+
+  `logo` and `sameAs` appear automatically once `logo:` / `social.links:` are
+  filled in in _config.yml.
+{%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": {{ '/#organization' | absolute_url | jsonify }},
+  "name": {{ site.title | jsonify }},
+  "alternateName": "UBA sectie OSA",
+  {%- if site.logo %}
+  "logo": {{ site.logo | absolute_url | jsonify }},
+  {%- endif %}
+  {%- if site.social.links %}
+  "sameAs": {{ site.social.links | jsonify }},
+  {%- endif %}
+  "url": {{ '/' | absolute_url | jsonify }},
+  "description": {{ site.description | strip_newlines | strip | jsonify }},
+  "email": {{ site.email | jsonify }},
+  "image": {{ '/assets/img/westhinder.jpg' | absolute_url | jsonify }},
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Antwerpen, België"
+  },
+  "memberOf": {
+    "@type": "Organization",
+    "name": "UBA — Koninklijke Unie van de Belgische Zendamateurs",
+    "url": "https://www.uba.be/"
+  }
+}
+</script>

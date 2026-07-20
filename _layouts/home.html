@@ -140,6 +140,53 @@ layout: default
       </table>
     </div>
     {%- endif -%}
+
+    {%- comment -%}
+      schema.org Event data for every voordracht, generated from the same
+      _data/voordrachten.yml entries shown in the tables above.
+      NB: the postal address assumes the venue is Volkssterrenwacht Urania —
+      adjust here if a voordracht is ever held elsewhere.
+    {%- endcomment -%}
+    <script type="application/ld+json">
+    [
+      {%- for l in vd_asc -%}
+      {%- capture vd_desc -%}Voordracht door {{ l.speaker }}: {{ l.topic }}{%- endcapture -%}
+      {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": {{ l.topic | jsonify }},
+        "description": {{ vd_desc | jsonify }},
+        "startDate": "{{ l.date | date: '%Y-%m-%d' }}T{{ l.time }}",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "isAccessibleForFree": true,
+        "inLanguage": "nl-BE",
+        "location": {
+          "@type": "Place",
+          "name": {{ l.location | jsonify }},
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Jozef Mattheessensstraat 60",
+            "postalCode": "2540",
+            "addressLocality": "Hove",
+            "addressCountry": "BE"
+          }
+        },
+        "performer": {
+          "@type": "Person",
+          "name": {{ l.speaker | jsonify }}
+        },
+        "organizer": {
+          "@type": "Organization",
+          "name": {{ site.title | jsonify }},
+          "url": {{ '/' | absolute_url | jsonify }}
+        },
+        "image": {{ '/assets/img/westhinder.jpg' | absolute_url | jsonify }},
+        "url": {{ '/#vergaderen' | absolute_url | jsonify }}
+      }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
+    </script>
     {%- endif -%}
   </div>
 </section>

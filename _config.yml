@@ -1,10 +1,14 @@
 # Site settings
 title: ON4OSA
-tagline: UBA sectie OSA - Een Antwerpse UBA sectie
+# Full <title> of the homepage.
+tagline: ON4OSA – Radioamateurclub in Antwerpen | UBA-sectie OSA
+# Appended to subpage titles so every page states what the club is (SEO).
+title_suffix: ON4OSA – Radioamateurclub Antwerpen
+# Meta description (kept under ~160 characters, Google's truncation limit).
 description: >-
-  ON4OSA is een Antwerpse sectie (OSA) van de UBA, de Koninklijke Unie van
-  de Belgische Zendamateurs. Ontdek onze bijeenkomsten, activiteiten en de
-  wereld van de radioamateur.
+  ON4OSA is een radioamateurclub in Antwerpen en sectie OSA van de UBA.
+  Ontdek onze bijeenkomsten, voordrachten, velddagen en activiteiten voor
+  zendamateurs.
 email: info@on4osa.be
 baseurl: ""
 # Canonical site URL (matches CNAME) — used for absolute URLs in sitemap.xml

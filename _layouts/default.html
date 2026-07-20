@@ -4,11 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {%- comment -%}
-    jekyll-seo-tag renders <title>, meta description, <link rel="canonical">,
-    Open Graph / Twitter card tags and JSON-LD. Per-page overrides go in front
-    matter: title, description, image, canonical_url.
+    `title=false` keeps jekyll-seo-tag's meta description, canonical, Open Graph
+    / Twitter cards and JSON-LD, but lets us write the <title> ourselves — the
+    default would prefix site.title and yield "ON4OSA | ON4OSA – …".
+    Per-page overrides in front matter: title, description, image, canonical_url.
   {%- endcomment -%}
-  {%- seo -%}
+  <title>{% if page.url == '/' or page.title == nil %}{{ site.tagline }}{% else %}{{ page.title }} | {{ site.title_suffix }}{% endif %}</title>
+  {%- seo title=false -%}
   {%- comment -%} Organisation identity — homepage only, per Google's guidance. {%- endcomment -%}
   {%- if page.url == '/' -%}{%- include schema-organization.html -%}{%- endif -%}
 

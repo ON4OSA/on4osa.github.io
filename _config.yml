@@ -7,7 +7,12 @@ description: >-
   wereld van de radioamateur.
 email: info@on4osa.be
 baseurl: ""
-url: ""
+# Canonical site URL (matches CNAME) — used to build absolute URLs in sitemap.xml
+url: "https://on4osa.be"
+
+# Build settings
+plugins:
+  - jekyll-sitemap
 
 # Navigation shown in the navbar
 nav_links:

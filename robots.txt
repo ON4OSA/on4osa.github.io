@@ -1,0 +1,8 @@
+---
+# Empty front matter so Jekyll renders the Liquid below.
+---
+User-agent: *
+Allow: /
+Disallow:
+
+Sitemap: {{ '/sitemap.xml' | absolute_url }}

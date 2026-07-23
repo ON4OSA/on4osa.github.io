@@ -202,9 +202,18 @@ layout: default
 
     <div class="row align-items-center g-4 g-lg-5">
       <div class="col-12 col-md-6">
-        <img class="on9bd-img" src="{{ '/assets/img/westhinder.jpg' | relative_url }}"
-             alt="Lichtschip West-Hinder 3" width="1200" height="896"
-             loading="lazy" decoding="async">
+        {%- comment -%}
+          tiered format: AVIF → WebP → JPEG. Browser uses first supported
+          <source>, <img> is the fallback and carries alt +
+          width/height (preventing layout shift).
+        {%- endcomment -%}
+        <picture>
+          <source srcset="{{ '/assets/img/westhinder.avif' | relative_url }}" type="image/avif">
+          <source srcset="{{ '/assets/img/westhinder.webp' | relative_url }}" type="image/webp">
+          <img class="on9bd-img" src="{{ '/assets/img/westhinder.jpg' | relative_url }}"
+               alt="Lichtschip West-Hinder 3" width="1200" height="896"
+               loading="lazy" decoding="async">
+        </picture>
       </div>
       <div class="col-12 col-md-6 text-center">
         <p class="on9bd-text">
@@ -234,8 +243,14 @@ layout: default
          href="{{ '/assets/nieuwsbrieven/' | append: latest.file | append: '.pdf' | relative_url }}"
          target="_blank" rel="noopener">
         <div class="newsletter-cover">
-          <img src="{{ '/assets/img/nieuwsbrieven/' | append: latest.file | append: '.jpg' | relative_url }}"
-               alt="Cover {{ latest.title }}" loading="lazy">
+          {%- assign latest_img = '/assets/img/nieuwsbrieven/' | append: latest.file -%}
+          <picture>
+            <source srcset="{{ latest_img | append: '.avif' | relative_url }}" type="image/avif">
+            <source srcset="{{ latest_img | append: '.webp' | relative_url }}" type="image/webp">
+            <img src="{{ latest_img | append: '.jpg' | relative_url }}"
+                 alt="Cover {{ latest.title }}" width="640" height="905"
+                 loading="lazy" decoding="async">
+          </picture>
           <span class="newsletter-badge">PDF</span>
         </div>
         <div class="newsletter-meta">
@@ -251,8 +266,14 @@ layout: default
          href="{{ '/assets/nieuwsbrieven/' | append: n.file | append: '.pdf' | relative_url }}"
          target="_blank" rel="noopener">
         <div class="newsletter-cover">
-          <img src="{{ '/assets/img/nieuwsbrieven/' | append: n.file | append: '.jpg' | relative_url }}"
-               alt="Cover {{ n.title }}" loading="lazy">
+          {%- assign n_img = '/assets/img/nieuwsbrieven/' | append: n.file -%}
+          <picture>
+            <source srcset="{{ n_img | append: '.avif' | relative_url }}" type="image/avif">
+            <source srcset="{{ n_img | append: '.webp' | relative_url }}" type="image/webp">
+            <img src="{{ n_img | append: '.jpg' | relative_url }}"
+                 alt="Cover {{ n.title }}" width="640" height="905"
+                 loading="lazy" decoding="async">
+          </picture>
           <span class="newsletter-badge">PDF</span>
         </div>
         <div class="newsletter-meta">

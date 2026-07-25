@@ -490,11 +490,11 @@ section[id], [id].anchor { scroll-margin-top: 88px; }
   color: rgba(255, 255, 255, .72);
   padding: 3.5rem 0 2rem;
 }
-.site-footer h6, .footer-brand { color: #fff; }
+.site-footer .footer-heading, .footer-brand { color: #fff; }
 .footer-brand { display: flex; align-items: center; gap: .5rem; font-weight: 800; font-size: 1.15rem; letter-spacing: -.02em; margin-bottom: .6rem; }
 .footer-brand .brand-mark { vertical-align: 0; flex: none; }
 .footer-tagline { color: rgba(255, 255, 255, .6); font-size: .95rem; max-width: 22rem; }
-.footer-heading { text-transform: uppercase; letter-spacing: .1em; font-size: .78rem; margin-bottom: 1rem; }
+.footer-heading { text-transform: uppercase; letter-spacing: .1em; font-size: .78rem; font-weight: 700; line-height: 1.2; margin-top: 0; margin-bottom: 1rem; }
 .footer-links { list-style: none; padding: 0; margin: 0; }
 .footer-links li { margin-bottom: .5rem; }
 .footer-links a { color: rgba(255, 255, 255, .72); font-size: .95rem; }

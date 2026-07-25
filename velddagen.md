@@ -9,7 +9,7 @@ description: Overzicht van de deelnames van ON4OSA aan de UBA velddagen.
   <div class="container">
     <div class="section-head text-center">
       <span class="section-kicker">Palmares</span>
-      <h2 class="section-title">Deelnames aan UBA velddagen</h2>
+      <h1 class="section-title">Deelnames aan UBA velddagen</h1>
       <p class="section-sub">
         Een overzicht van onze velddagdeelnames onder ON4OSA/P, met categorie
         en uitslag. Klik op een rij voor de officiële UBA-uitslag.

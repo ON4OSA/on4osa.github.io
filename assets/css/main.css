@@ -36,8 +36,10 @@ h1, h2, h3, h4, h5, h6 { color: var(--osa-ink); font-weight: 700; letter-spacing
 a { color: var(--osa-accent); text-decoration: none; }
 a:hover { color: var(--osa-accent-dark); }
 
-/* Anchor offset so sticky navbar doesn't cover section tops */
-section[id], [id].anchor { scroll-margin-top: 88px; }
+/* Anchor offset so the sticky navbar doesn't cover the target when following
+   an in-page link — applies to sections and to any heading carrying an id. */
+section[id], [id].anchor,
+h1[id], h2[id], h3[id], h4[id] { scroll-margin-top: 88px; }
 
 /* ---------- Buttons ---------- */
 .btn-osa {
@@ -279,6 +281,10 @@ section[id], [id].anchor { scroll-margin-top: 88px; }
      (Bootstrap's .table-responsive sets this too; keep them in sync.) */
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  /* The inner .table has its margin stripped, so the wrapper carries the gap
+     to whatever follows. Collapses with a larger sibling margin (e.g. a
+     following .vd-subhead), so it only adds space where there was none. */
+  margin-bottom: 2rem;
 }
 .results-table .table { margin-bottom: 0; }
 .results-table thead th {
@@ -387,6 +393,43 @@ section[id], [id].anchor { scroll-margin-top: 88px; }
 }
 .vd-subhead:first-of-type { margin-top: 0; }
 .lezing-topic { font-weight: 600; }
+
+/* ---------- Radioamateur worden (licence page) ---------- */
+/* This page opens with intro prose, so its first subhead keeps its top margin. */
+.lic-page .vd-subhead { margin-top: 3.5rem; }
+.lic-class {
+  display: inline-block;
+  min-width: 1.9rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: .95rem;
+  color: var(--osa-ink);
+  background: var(--osa-bg-alt);
+  border: 1px solid var(--osa-line);
+  border-radius: 8px;
+  padding: .15rem .45rem;
+  margin-right: .35rem;
+}
+/* Per-class colours, white label text (chosen palette).
+   Contrast vs white: A 4.84:1, B 2.80:1, C 2.92:1 — B and C sit below the
+   4.5:1 WCAG AA minimum. Darkening them to #AA653F / #438452 would clear it
+   while keeping the same hues, if that ever needs revisiting. */
+.lic-class--a { color: #fff; background: #4C72B0; border-color: #406095; }
+.lic-class--b { color: #fff; background: #DD8452; border-color: #BB7045; }
+.lic-class--c { color: #fff; background: #55A868; border-color: #488E58; }
+.lic-yes { color: #1c7a4a; font-weight: 600; }
+.lic-no { color: var(--osa-muted); }
+.lic-hint { color: var(--osa-muted); font-size: .85em; }
+.bipt-address {
+  font-style: normal;          /* <address> defaults to italic */
+  margin-bottom: 1.2rem;
+  background: var(--osa-bg-alt);
+  border-left: 3px solid var(--osa-accent);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  line-height: 1.7;
+}
+.source-list li { margin-bottom: .6rem; }
 
 /* ---------- OSA Nieuws (newsletter cards) ---------- */
 .newsletter-grid {

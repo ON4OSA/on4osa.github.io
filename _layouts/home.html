@@ -62,7 +62,7 @@ layout: default
     {%- if site.data.voordrachten and site.data.voordrachten.size > 0 -%}
     <div class="section-head text-center lezingen-head">
       <span class="section-kicker">Programma</span>
-      <h3 class="section-title">Voordrachten</h3>
+      <h3 class="section-title" id="voordrachten">Voordrachten</h3>
       <p class="section-sub">Lezingen op onze clubavonden in Volkssterrenwacht Urania.</p>
     </div>
 
@@ -182,8 +182,15 @@ layout: default
           "name": {{ site.title | jsonify }},
           "url": {{ '/' | absolute_url | jsonify }}
         },
+        "offers": {
+          "@type": "Offer",
+          "price": 0,
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "url": {{ '/#voordrachten' | absolute_url | jsonify }}
+        },
         "image": {{ '/assets/img/westhinder.jpg' | absolute_url | jsonify }},
-        "url": {{ '/#vergaderen' | absolute_url | jsonify }}
+        "url": {{ '/#voordrachten' | absolute_url | jsonify }}
       }{% unless forloop.last %},{% endunless %}
       {%- endfor -%}
     ]

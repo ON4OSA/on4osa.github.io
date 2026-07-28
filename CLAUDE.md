@@ -12,7 +12,7 @@ image and let the browser pick the best one it supports, via `<picture>`:
 <picture>
   <source srcset="/assets/img/name.avif" type="image/avif">
   <source srcset="/assets/img/name.webp" type="image/webp">
-  <img src="/assets/img/name.jpg" alt="Describtion"
+  <img src="/assets/img/name.jpg" alt="Description"
        width="1200" height="896" loading="lazy" decoding="async">
 </picture>
 ```
@@ -162,3 +162,82 @@ done
 1. Drop `OSA_nieuws_YYYY_N.pdf` into `assets/nieuwsbrieven/` (`chmod 644`).
 2. Run the single-file command above for it.
 3. Add a two-line entry at the top of `_data/nieuwsbrieven.yml`.
+
+## Favicons and app icons
+
+All icons are derived from the OSA diamond emblem. **`favicon.svg` in the repo
+root is the master** — it is the club logo SVG with its `viewBox` widened to a
+square so the (roughly 1:2) diamond sits centred with ~5 % padding. Every raster
+below is generated from it, so replacing the artwork means replacing
+`favicon.svg` and re-running the commands.
+
+| File | Size | Transparency | Used by |
+| ---- | ---- | ------------ | ------- |
+| `favicon.svg` | vector | transparent | modern browsers; **master for all others** |
+| `favicon.ico` | 16 + 32 + 48 | transparent | older browsers, bookmarks |
+| `apple-touch-icon.png` | 180×180 | **opaque** (white) | iOS home screen |
+| `assets/img/icons/icon-192.png` | 192×192 | **opaque** (white) | Android / PWA |
+| `assets/img/icons/icon-512.png` | 512×512 | **opaque** (white) | Android / PWA, splash |
+| `assets/img/icons/icon-maskable-512.png` | 512×512 | **opaque** (white) | Android adaptive icons |
+| `site.webmanifest` | — | — | lists the three PWA icons |
+
+Rules that matter:
+
+- **iOS and Android icons must be opaque.** iOS renders transparency as solid
+  black, which swallows the emblem's black interior. Only `favicon.svg` and
+  `favicon.ico` stay transparent, so they adapt to light/dark browser tabs.
+- **The maskable icon needs a safe zone.** Its artwork is scaled to ~80 % of the
+  canvas so Android's circle/squircle crop does not clip the diamond's points.
+- **Do not stretch the emblem to a square.** It is about 1:2; squash it and the
+  diamond distorts. The square `viewBox` in `favicon.svg` handles this.
+- The `<link>` tags live in `_layouts/default.html`, alongside
+  `<meta name="theme-color">`. `favicon.ico`, `apple-touch-icon.png`,
+  `site.webmanifest` and `favicon.svg` must stay in the **repo root** — browsers
+  and iOS probe those paths directly.
+- Known limitation: at 16×16 the emblem blurs into an olive smudge (thin yellow
+  border + black interior + small letters average together). Rendering directly,
+  downsampling with Lanczos and sharpening all give the same result. A separate
+  simplified glyph — solid diamond, no letters or antenna — is the only real fix.
+
+### Regenerating (requires librsvg + ImageMagick)
+
+`rsvg-convert` is used rather than ImageMagick's SVG renderer because it handles
+the paths correctly. From the repo root:
+
+```sh
+# 1. multi-resolution favicon.ico (transparent)
+for s in 16 32 48; do rsvg-convert -w $s -h $s favicon.svg -o /tmp/ico-$s.png; done
+magick /tmp/ico-16.png /tmp/ico-32.png /tmp/ico-48.png favicon.ico
+
+# 2. apple-touch-icon: artwork on ~80 % of an opaque 180x180 canvas
+rsvg-convert -w 144 -h 144 favicon.svg -o /tmp/at.png
+magick /tmp/at.png -background white -gravity center -extent 180x180 \
+  -alpha remove -alpha off -strip apple-touch-icon.png
+
+# 3. PWA icons (opaque)
+for s in 192 512; do
+  rsvg-convert -w $s -h $s favicon.svg -o /tmp/m-$s.png
+  magick /tmp/m-$s.png -background white -alpha remove -alpha off -strip \
+    assets/img/icons/icon-$s.png
+done
+
+# 4. maskable icon: artwork at 80 % inside a 512x512 canvas
+rsvg-convert -w 410 -h 410 favicon.svg -o /tmp/mask.png
+magick /tmp/mask.png -background white -gravity center -extent 512x512 \
+  -alpha remove -alpha off -strip assets/img/icons/icon-maskable-512.png
+```
+
+Check the `.ico` really contains three sizes:
+
+```sh
+magick identify favicon.ico
+```
+
+### Replacing the logo
+
+1. Put the new square SVG at `favicon.svg` in the repo root. If the artwork is
+   not square, widen its `viewBox` (keep the same centre) instead of changing
+   `width`/`height` — see the note above.
+2. Re-run the four commands above.
+3. If the brand colour changes, update `theme_color` in `site.webmanifest` and
+   the `theme-color` meta tag in `_layouts/default.html` (currently `#4c63d2`).

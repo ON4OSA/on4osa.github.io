@@ -151,6 +151,19 @@ layout: default
     [
       {%- for l in vd_asc -%}
       {%- capture vd_desc -%}Voordracht door {{ l.speaker }}: {{ l.topic }}{%- endcapture -%}
+      {%- comment -%}
+        offers.validFrom = when the (free) admission becomes valid. These talks
+        are open to all with no registration, so it defaults to six months
+        (182 days) before the start. Set `valid_from` in
+        _data/voordrachten.yml to override it per talk.
+      {%- endcomment -%}
+      {%- comment -%}
+        Only the date comes from the subtraction; the time is copied from the
+        talk itself. Otherwise the hour shifts with daylight saving time.
+      {%- endcomment -%}
+      {%- assign vd_valid_date = l.start | date: '%s' | minus: 15724800 | date: '%Y-%m-%d' -%}
+      {%- capture vd_default_valid -%}{{ vd_valid_date }}T{{ l.start | date: '%H:%M' }}{%- endcapture -%}
+      {%- assign vd_valid = l.valid_from | default: vd_default_valid -%}
       {
         "@context": "https://schema.org",
         "@type": "Event",
@@ -187,6 +200,7 @@ layout: default
           "price": 0,
           "priceCurrency": "EUR",
           "availability": "https://schema.org/InStock",
+          "validFrom": {{ vd_valid | jsonify }},
           "url": {{ '/#voordrachten' | absolute_url | jsonify }}
         },
         "image": {{ '/assets/img/westhinder.jpg' | absolute_url | jsonify }},

@@ -19,6 +19,25 @@ description: Station ON9BD aan boord van het lichtschip West-Hinder 3.
           Dit station wordt door de leden van OSA bij verschillende gelegenheden geactiveerd en 
           is uitgerust met antennes voor zowel de HF- als de VHF-banden.
         </p>
+        <p class="on9bd-text">
+          ON9BD wordt jaarlijks geactiveerd tijdens het
+          <a href="https://illw.net/" target="_blank" rel="noopener">International
+          Lighthouse Lightship Weekend (ILLW)</a>, waarbij radioamateurs wereldwijd
+          vuurtorens en lichtschepen activeren. Dit event vindt jaarlijks plaats tijdens
+          het derde volle weekend van augustus.
+        </p>
+        <p class="on9bd-text">
+          Daarnaast is het station in de lucht tijdens het
+          <a href="https://nj2bb.org/museum/" target="_blank" rel="noopener">Museum
+          Ships Weekend</a>. Tijdens dit weekend in juni activeren museumschepen wereldwijd
+          hun boordstation en kunnen radioamateurs proberen zo veel mogelijk
+          museumschepen te contacteren.
+        </p>
+        <p class="on9bd-text">
+          Wil je zelf eens uitzenden vanuit het clubstation? Radioamateurs zijn
+          van harte welkom aan boord, neem gerust contact op via
+          <a href="mailto:{{ site.email }}">{{ site.email }}</a>.
+        </p>
       </div>
     </div>
 

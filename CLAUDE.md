@@ -121,6 +121,42 @@ see `.newsletter-cover picture` in `assets/css/main.css`.
   the carousel loop has to assume all three variants exist for every gallery
   image — see the 404 caveat above before doing it.
 
+## Velddagen — carousel photos
+
+The "Enkele sfeerbeelden" carousel on `/velddagen/` is driven by
+`_data/velddagen_fotos.yml` — one entry per photo, in slide order (newest
+velddag on top, chronological within a velddag):
+
+- `file` — filename in `assets/img/velddagen/`, without the `.jpg`
+- `caption` — text in the grey pill at the bottom of the slide
+- `alt` — optional; falls back to `caption` when omitted
+
+House format for these photos, matching the ones already committed: **max
+1600 px on the long side, progressive JPEG, quality 85, no metadata**. Camera
+originals are 6000×4000 and carry EXIF/IPTC/XMP (including the photographer's
+name) plus an ICC profile, so always run them through:
+
+```sh
+magick original.jpg -auto-orient -resize '1600x1600>' -strip \
+  -interlace Plane -quality 85 assets/img/velddagen/velddag-ssb-2026-1.jpg
+```
+
+- `-auto-orient` **before** `-strip`, otherwise rotated shots come out sideways
+  once the EXIF orientation tag is gone.
+- `-resize '1600x1600>'` caps the long edge and only ever shrinks (quote it —
+  the `>` is a shell redirect otherwise).
+- `-strip` drops all metadata. Safe here because the profiles are plain sRGB;
+  check with `magick identify -format '%[profile:icc]' f.jpg` if unsure.
+
+Confirm nothing survived:
+
+```sh
+magick identify -verbose assets/img/velddagen/name.jpg | grep -c 'Profile-\|exif:'
+```
+
+Naming is `velddag-<mode>-<year>-<n>.jpg` (e.g. `velddag-cw-2026-1.jpg`). These
+stay plain JPEG — see the note above about the carousel and missing variants.
+
 ## OSA Nieuws — newsletter thumbnails
 
 The "OSA Nieuws" section shows each newsletter as a card rendered from the

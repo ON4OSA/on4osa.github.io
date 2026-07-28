@@ -264,6 +264,41 @@ h1[id], h2[id], h3[id], h4[id] { scroll-margin-top: 88px; }
   letter-spacing: .02em;
   text-align: center;
 }
+/* Per-slide caption: grey pill, centred just above the indicators. Sits inside
+   .carousel-item so each photo can name its own velddag. */
+.osa-carousel .carousel-caption-pill {
+  position: absolute;
+  left: 50%;
+  bottom: 2.1rem;
+  transform: translateX(-50%);
+  z-index: 2;
+  margin: 0;
+  max-width: min(calc(100% - 2rem), 34rem);
+  padding: .4rem 1rem;
+  border-radius: 999px;
+  background: rgba(55, 61, 77, .82);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font-size: .85rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  text-align: center;
+  /* captions wrap rather than truncate — they get long on narrow screens */
+  line-height: 1.35;
+  /* never swallow a click meant for the carousel controls */
+  pointer-events: none;
+  transition: opacity .25s ease;
+}
+/* Only fade the caption in on hover where hovering actually exists. On touch
+   there is no hover state, so it stays visible there. :focus-within covers
+   keyboard users tabbing through the carousel controls. */
+@media (hover: hover) and (pointer: fine) {
+  .osa-carousel .carousel-caption-pill { opacity: 0; }
+  .osa-carousel:hover .carousel-caption-pill,
+  .osa-carousel:focus-within .carousel-caption-pill { opacity: 1; }
+}
+
 .osa-carousel .carousel-indicators { margin-bottom: .6rem; z-index: 3; }
 .osa-carousel .carousel-indicators [data-bs-target] {
   width: 8px; height: 8px; border-radius: 50%;
@@ -556,4 +591,5 @@ h1[id], h2[id], h3[id], h4[id] { scroll-margin-top: 88px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
+  .osa-carousel .carousel-caption-pill { transition: none; }
 }

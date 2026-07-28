@@ -63,21 +63,25 @@ description: Overzicht van de deelnames van ON4OSA aan de UBA velddagen.
       <h2 class="section-title">Enkele sfeerbeelden</h2>
     </div>
 
-    {%- assign gallery = "velddag-ssb-2025-1,velddag-ssb-2025-2,velddag-ssb-2025-3,velddag-ssb-2025-4" | split: "," -%}
+    {%- comment -%}
+      One entry per photo in _data/velddagen_fotos.yml: `file`, `caption` and an
+      optional `alt` that falls back to the caption.
+    {%- endcomment -%}
     <div id="velddagCarousel" class="carousel slide carousel-fade osa-carousel"
          data-bs-ride="carousel" data-bs-interval="4000">
       <div class="carousel-indicators">
-        {%- for img in gallery -%}
+        {%- for foto in site.data.velddagen_fotos -%}
         <button type="button" data-bs-target="#velddagCarousel" data-bs-slide-to="{{ forloop.index0 }}"
                 {% if forloop.first %}class="active" aria-current="true"{% endif %}
-                aria-label="Foto {{ forloop.index }}"></button>
+                aria-label="{{ foto.caption }}"></button>
         {%- endfor -%}
       </div>
       <div class="carousel-inner">
-        {%- for img in gallery -%}
+        {%- for foto in site.data.velddagen_fotos -%}
         <div class="carousel-item{% if forloop.first %} active{% endif %}">
-          <img src="{{ '/assets/img/velddagen/' | append: img | append: '.jpg' | relative_url }}"
-               class="d-block" alt="ON4OSA op de UBA velddag SSB 2025" loading="lazy">
+          <img src="{{ '/assets/img/velddagen/' | append: foto.file | append: '.jpg' | relative_url }}"
+               class="d-block" alt="{{ foto.alt | default: foto.caption }}" loading="lazy">
+          <p class="carousel-caption-pill">{{ foto.caption }}</p>
         </div>
         {%- endfor -%}
       </div>
@@ -89,7 +93,6 @@ description: Overzicht van de deelnames van ON4OSA aan de UBA velddagen.
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Volgende</span>
       </button>
-      <div class="carousel-caption-fixed">Velddag SSB 2025 · Antwerpen</div>
     </div>
   </div>
 </section>

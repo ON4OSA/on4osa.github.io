@@ -1,0 +1,53 @@
+# Sfeerbeelden van de velddagen — gebruikt door de carousel op /velddagen/.
+# Per foto:
+#   file     bestandsnaam in /assets/img/velddagen/, zonder .jpg
+#   caption  tekst in de grijze pil onderaan de foto
+#   alt      optioneel; alternatieve tekst voor screenreaders. Zonder dit veld
+#            wordt `caption` gebruikt.
+# Nieuwste velddag bovenaan; binnen een velddag chronologisch.
+#
+# Foto's toevoegen: verklein tot max. 1600 px op de lange zijde en verwijder
+# alle metadata, zodat ze bij de bestaande beelden aansluiten:
+#   magick foto.jpg -auto-orient -resize '1600x1600>' -strip \
+#     -interlace Plane -quality 85 assets/img/velddagen/velddag-...-N.jpg
+- file: velddag-cw-2026-1
+  caption: UBA Velddag CW 2026 · assembleren van de hexbeam-antenne
+
+- file: velddag-cw-2026-2
+  caption: UBA Velddag CW 2026 · de antenne op de mast plaatsen
+
+- file: velddag-cw-2026-3
+  caption: UBA Velddag CW 2026 · de shack
+
+- file: velddag-cw-2026-4
+  caption: UBA Velddag CW 2026 · de shack 's nachts
+
+- file: velddag-ssb-2025-1
+  caption: UBA Velddag SSB 2025 · hexbeam op de mast
+
+- file: velddag-ssb-2025-2
+  caption: UBA Velddag SSB 2025 · hexbeam operationeel
+
+- file: velddag-ssb-2025-3
+  caption: UBA Velddag SSB 2025 · de caravan doet dienst als shack
+
+- file: velddag-ssb-2025-4
+  caption: UBA Velddag SSB 2025 · shack en mast
+
+- file: velddag-ssb-2025-5
+  caption: UBA Velddag SSB 2025 · ON6VJ als chef-kok aan de barbecue
+
+- file: velddag-ssb-2025-6
+  caption: UBA Velddag SSB 2025 · samen eten tijdens de barbecue
+
+- file: velddag-ssb-2025-7
+  caption: UBA Velddag SSB 2025 · zonsondergang boven het veldstation
+
+- file: velddag-ssb-2017-1
+  caption: UBA Velddag SSB 2017 · opbouw van beam
+
+- file: velddag-ssb-2017-2
+  caption: UBA Velddag SSB 2017 · mast en shack
+
+- file: velddag-ssb-2017-3
+  caption: UBA Velddag SSB 2017 · de beam operationeel

@@ -355,14 +355,18 @@ h1[id], h2[id], h3[id], h4[id] { scroll-margin-top: 88px; }
   border-radius: 999px;
   padding: .2rem .7rem;
   margin-right: .5rem;
+  /* Fixed footprint so what follows (QSO count, uitslag-link) lines up across
+     rows regardless of "1e plaats" vs "11e plaats". min-width rather than
+     width, so a longer value would grow the pill instead of overflowing it. */
+  min-width: 7rem;
+  text-align: center;
 }
 .badge-win {
   color: #7a5b00;
   background: #fff5d6;
   border-color: #f0dfa0;
 }
-.result-score { font-weight: 600; color: var(--osa-ink); }
-.result-qso { color: var(--osa-muted); font-size: .9rem; margin-left: .5rem; }
+.result-qso { color: var(--osa-muted); font-size: .9rem; }
 .result-src { display: inline-block; margin-left: .6rem; font-size: .85rem; font-weight: 600; white-space: nowrap; }
 .results-note { color: var(--osa-muted); font-size: .88rem; margin-top: 1.25rem; text-align: center; }
 

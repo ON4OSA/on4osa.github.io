@@ -1,15 +1,215 @@
 # ON4OSA deelnames aan UBA velddagen.
 # Bron: UBA velddag-uitslagen (zie `url`). Datums volgen de vaste UBA-kalender
-# (CW = eerste weekend van juni, SSB = eerste weekend van september).
+# (CW = eerste volledige weekend van juni, SSB = eerste volledige weekend van september).
 # `date` (ISO) wordt gebruikt om chronologisch te sorteren.
+
+- date: 2003-09-06
+  date_label: 6–7 sep 2003
+  event: UBA Velddag SSB
+  callsign: ON4OSA/P
+  category: Open All Band
+  placement: 1e plaats
+  qso: 516
+  points: 1884
+  multiplier: 84
+  score: 158256
+
+- date: 2004-09-04
+  date_label: 4–5 sep 2004
+  event: UBA Velddag SSB
+  callsign: ON4OSA/P
+  category: Open All Band
+  placement: 1e plaats
+  qso: 496
+  points: 1900
+  multiplier: 89
+  score: 169100
+
+- date: 2005-09-03
+  date_label: 3–4 sep 2005
+  event: UBA Velddag SSB
+  callsign: ON4OSA/P
+  category: Open All Band
+  placement: 5e plaats
+  qso: 357
+  points: 1380
+  multiplier: 66
+  score: 91080
+
+- date: 2006-09-02
+  date_label: 2–3 sep 2006
+  event: UBA Velddag SSB
+  callsign: ON4OSA/P
+  category: Open All Band
+  placement: 5e plaats
+  qso: 373
+  points: 1233
+  multiplier: 81
+  score: 99873
+
+- date: 2007-09-01
+  date_label: 1–2 sep 2007
+  event: UBA Velddag SSB
+  callsign: ON4OSA/P
+  category: Open All Band
+  placement: 7e plaats
+  qso: 309
+  points: 1219  # inferred value
+  multiplier: 74
+  score: 90206
+
+- date: 2008-09-06
+  date_label: 6–7 sep 2008
+  event: UBA Velddag SSB
+  callsign: ON4OSA/P
+  category: Open All Band
+  placement: 7e plaats
+  qso: 306
+  points: 1184  # inferred value
+  multiplier: 89
+  score: 105376
+
+- date: 2009-09-05
+  date_label: 5–6 sep 2009
+  event: UBA Velddag SSB
+  callsign: ON9BD/P
+  category: Open All Band
+  placement: 3e plaats
+  qso: 454
+  points: 1848  # inferred value
+  multiplier: 92
+  score: 170016
+
+- date: 2010-09-04
+  date_label: 4–5 sep 2010
+  event: UBA Velddag SSB
+  callsign: ON4OSA/P
+  category: Open All Band
+  placement: 4e plaats
+  qso: 572
+  points: 2297
+  multiplier: 109
+  score: 250373
+
+# The official field day SSB 2011 results seem to have the points and multiplier swapped, corrected here.
+- date: 2011-09-03
+  date_label: 3–4 sep 2011
+  event: UBA Velddag SSB
+  callsign: ON4OSA/P
+  category: Open All Band
+  placement: 5e plaats
+  qso: 518
+  points: 2158
+  multiplier: 93
+  score: 200694
+
+- date: 2012-09-01
+  date_label: 1–2 sep 2012
+  event: UBA Velddag SSB
+  callsign: ON4OSA/P
+  category: Open All Band
+  placement: 2e plaats
+  qso: 589
+  points: 2357
+  multiplier: 105
+  score: 247485
+
+- date: 2013-09-07
+  date_label: 7–8 sep 2013
+  event: UBA Velddag SSB
+  callsign: OO9BD/P
+  category: Open All Band
+  placement: 11e plaats
+  qso: 443
+  points: 1897
+  multiplier: 82
+  score: 155554
+
+- date: 2014-09-06
+  date_label: 6–7 sep 2014
+  event: UBA Velddag SSB
+  callsign: ON4OSA/P
+  category: Open All Band
+  subcat: 24
+  placement: 8e plaats
+  qso: 418
+  points: 1778
+  multiplier: 96
+  score: 170688
+
+- date: 2015-09-05
+  date_label: 5–6 sep 2015
+  event: UBA Velddag SSB
+  callsign: ON9BD/P
+  category: Open All Band
+  subcat: 24
+  placement: 9e plaats
+  qso: 373
+  points: 1638
+  multiplier: 78
+  score: 127764
+
+- date: 2016-09-03
+  date_label: 3–4 sep 2016
+  event: UBA Velddag SSB
+  callsign: ON4OSA/P
+  category: Open All Band
+  subcat: 24
+  placement: 6e plaats
+  qso: 354
+  points: 1503
+  multiplier: 92
+  score: 138276
+
+- date: 2017-09-02
+  date_label: 2–3 sep 2017
+  event: UBA Velddag SSB
+  callsign: ON4OSA/P
+  category: Open All Band
+  subcat: 24
+  placement: 8e plaats
+  qso: 307
+  points: 1355
+  multiplier: 68
+  score: 92140
+
+- date: 2018-09-01
+  date_label: 1–2 sep 2018
+  event: UBA Velddag SSB
+  callsign: ON4OSA/P
+  category: Open All Band
+  subcat: 24
+  placement: 5e plaats
+  qso: 470
+  points: 1986
+  multiplier: 83
+  score: 164838
+
+- date: 2019-09-07
+  date_label: 7–8 sep 2019
+  event: UBA Velddag SSB
+  callsign: ON4OSA/P
+  category: Open All Band
+  subcat: 24
+  placement: 9e plaats
+  qso: 421
+  points: 1670
+  multiplier: 77
+  score: 128590
+
+# 2020 = covid, no field day
+
 - date: 2021-09-04
   date_label: 4–5 sep 2021
   event: UBA Velddag SSB
   callsign: ON4OSA/P
   category: Open All Band
+  subcat: 24
   placement: 5e plaats
-  score: "119.146"
-  qso: 1453
+  qso: 382
+  points: 1453
+  multiplier: 82
+  score: 119146
   url: https://www.uba.be/nl/hf/velddagnieuws/velddag-ssb-2021-uitslag
 
 - date: 2022-09-03
@@ -17,9 +217,12 @@
   event: UBA Velddag SSB
   callsign: ON4OSA/P
   category: Open All Band
+  subcat: 24
   placement: 10e plaats
-  score: "53.631"
-  qso: 909
+  qso: 207
+  points: 909
+  multiplier: 59
+  score: 53631
   url: https://www.uba.be/nl/hf/velddagnieuws/velddag-ssb-2022-uitslag
 
 - date: 2023-09-02
@@ -28,8 +231,10 @@
   callsign: ON4OSA/P
   category: Open All Band Low Power
   placement: 6e plaats
-  score: "100.863"
   qso: 382
+  points: 1601
+  multiplier: 63
+  score: 100863
   url: https://www.uba.be/nl/hf/velddagnieuws/velddag-ssb-2023-uitslag
 
 - date: 2024-09-07
@@ -38,8 +243,10 @@
   callsign: ON4OSA/P
   category: Open All Band Low Power
   placement: 5e plaats
-  score: "87.912"
   qso: 330
+  points: 1332
+  multiplier: 66
+  score: 87912
   url: https://www.uba.be/nl/hf/velddagnieuws/velddag-ssb-2024-uitslag
 
 - date: 2025-09-06
@@ -48,8 +255,10 @@
   callsign: ON4OSA/P
   category: Open All Band Low Power
   placement: 11e plaats
-  score: "45.100"
   qso: 255
+  points: 1100
+  multiplier: 41
+  score: 45100
   url: https://www.uba.be/nl/hf/velddagnieuws/velddag-ssb-2025-uitslag
 
 - date: 2026-06-06
@@ -58,6 +267,8 @@
   callsign: ON4OSA/P
   category: Open All Band Low Power
   placement: 1e plaats
-  score: "199.020"
   qso: 656
+  points: 1860
+  multiplier: 107
+  score: 199020
   url: https://www.uba.be/nl/hf/velddagnieuws/velddag-cw-2026-uitslag

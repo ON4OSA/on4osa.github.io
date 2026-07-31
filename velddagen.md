@@ -12,7 +12,7 @@ description: Overzicht van de deelnames van ON4OSA aan de UBA velddagen.
       <h1 class="section-title">Deelnames aan UBA velddagen</h1>
       <p class="section-sub">
         Een overzicht van onze velddagdeelnames onder ON4OSA/P, met categorie
-        en uitslag. Klik op een rij voor de officiële UBA-uitslag.
+        en uitslag.
       </p>
     </div>
 
@@ -41,8 +41,11 @@ description: Overzicht van de deelnames van ON4OSA aan de UBA velddagen.
               {%- else -%}
                 <span class="badge-result">{{ e.placement }}</span>
               {%- endif -%}
-              <span class="result-score">{{ e.score }}&nbsp;ptn</span>&#8203;
-              {%- if e.qso -%}<span class="result-qso">{{ e.qso }}&nbsp;QSO</span>{%- endif -%}
+              {%- comment -%}
+                score/points/multiplier stay in _data/velddagen.yml for
+                completeness but are deliberately not shown here.
+              {%- endcomment -%}
+              {%- if e.qso -%}<span class="result-qso">{{ e.qso }}&nbsp;QSOs</span>{%- endif -%}
               {%- if e.url -%}
               <a class="result-src" href="{{ e.url }}" target="_blank" rel="noopener" aria-label="Officiële uitslag">uitslag →</a>
               {%- endif -%}

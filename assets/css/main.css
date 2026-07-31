@@ -416,6 +416,58 @@ h1[id], h2[id], h3[id], h4[id] { scroll-margin-top: 88px; }
     padding-bottom: .1rem;
   }
   .results-table tbody td:first-child::before { display: none; }
+
+  /* Voordrachten cards: put the time on the title line as "{datum} om {tijd}"
+     (from data-time on the date cell) and drop the separate Tijd row. Only the
+     date stays bold — the separator and the time are regular weight. */
+  .vd-table tbody td:first-child::after {
+    content: " om " attr(data-time);
+    font-weight: 400;
+  }
+  .vd-table tbody td[data-label="Tijd"] { display: none; }
+
+  /* Location sits right under the date line, prefixed with "@" instead of
+     carrying its own label. Overrides the block label styling above. */
+  .vd-table tbody td[data-label="Locatie"]::before,
+  .vd-table tbody td[data-label="Spreker"]::before {
+    display: inline;
+    margin: 0 .35em 0 0;
+    font-size: inherit;
+    font-weight: 400;
+    letter-spacing: normal;
+    text-transform: none;
+    color: inherit;
+  }
+  .vd-table tbody td[data-label="Locatie"]::before { content: "@"; }
+
+  /* Card order: datum om tijd / locatie / onderwerp / spreker. The table keeps
+     Spreker before Onderwerp for the desktop columns, so flex order swaps
+     them here rather than reordering the markup. */
+  .vd-table tbody tr { display: flex; flex-direction: column; }
+  .vd-table tbody td[data-label="Onderwerp"] { order: 1; }
+  .vd-table tbody td[data-label="Spreker"] { order: 2; }
+
+  /* The topic is the card's real title: largest line, and the only one that
+     needs its own line-height since it wraps over several lines. A hairline
+     above it separates it from the date/location block. */
+  .vd-table tbody td[data-label="Onderwerp"] {
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--osa-ink);
+  }
+  /* The divider is drawn by the (otherwise unused) label pseudo-element, so it
+     sits inside the cell padding and stops short of the card edge — like the
+     rule above .meeting-time — instead of spanning the full width. */
+  .vd-table tbody td[data-label="Onderwerp"]::before {
+    content: "";
+    display: block;
+    height: 1px;
+    background: var(--osa-line);
+    margin: .7rem 0 .8rem;
+  }
+  /* "door" regular, callsign bold via .callsign. */
+  .vd-table tbody td[data-label="Spreker"]::before { content: "door"; }
 }
 .lezingen-head { margin-top: 4.5rem; margin-bottom: 2rem; }
 .vd-subhead {

@@ -15,7 +15,7 @@ description: >-
       <h1 class="section-title">Radioamateur worden</h1>
       <p class="section-sub">
         Zelf uitzenden, wereldwijd verbindingen maken en je eigen zendapparatuur
-        bouwen — met een bedieningscertificaat en een vergunning mag het.
+        bouwen — met een bedieningscertificaat en een stationsvergunning mag het.
       </p>
     </div>
 
@@ -31,7 +31,7 @@ description: >-
           </p>
           <p>
             Wie slaagt, krijgt een <strong>bedieningscertificaat</strong>. Daarmee mag je
-            uitzenden en kan je een <strong>vergunning</strong> aanvragen om een eigen
+            uitzenden en kan je een <strong>stationsvergunning</strong> aanvragen om een eigen
             radiostation op te stellen en te gebruiken. Geen voorkennis van elektronica
             nodig: de opleidingen in de UBA-secties starten bij nul.
           </p>

@@ -486,6 +486,52 @@ h1[id], h2[id], h3[id], h4[id] { scroll-margin-top: 88px; }
   /* "door" regular, callsign bold via .callsign. */
   .vd-table tbody td[data-label="Spreker"]::before { content: "door"; }
 }
+/* ---------- Affiche thumbnail + lightbox ---------- */
+.poster-wrap { display: flex; justify-content: center; margin-bottom: 2.5rem; }
+.poster-thumb {
+  /* a button, so reset the UA chrome and let the image be the whole control */
+  padding: 0;
+  border: 1px solid var(--osa-line);
+  border-radius: var(--osa-radius);
+  background: none;
+  overflow: hidden;
+  line-height: 0;
+  cursor: zoom-in;
+  box-shadow: var(--osa-shadow);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.poster-thumb:hover { transform: translateY(-3px); box-shadow: var(--osa-shadow-lg); }
+.poster-thumb:focus-visible { outline: 3px solid var(--osa-accent); outline-offset: 3px; }
+.poster-thumb img { display: block; width: 300px; height: auto; }
+
+/* Lightbox: the poster itself is the dialog — no panel, no padding. */
+.poster-modal .modal-content {
+  position: relative;
+  background: none;
+  border: 0;
+}
+.poster-modal img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 88vh;
+  object-fit: contain;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+.poster-close {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  z-index: 2;
+  padding: .6rem;
+  border-radius: 50%;
+  background-color: rgba(11, 16, 32, .65);
+  /* keep the white glyph legible over whatever the poster shows underneath */
+  opacity: 1;
+}
+.poster-close:hover { background-color: rgba(11, 16, 32, .85); }
+
 .lezingen-head { margin-top: 4.5rem; margin-bottom: 2rem; }
 .vd-subhead {
   font-size: 1.1rem;

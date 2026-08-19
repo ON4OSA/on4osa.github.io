@@ -82,6 +82,41 @@ layout: default
       <p class="section-sub">Lezingen op onze clubavonden in Volkssterrenwacht Urania.</p>
     </div>
 
+    {%- comment -%}
+      Affiche for the next voordracht. The thumbnail opens the full-resolution
+      poster in a Bootstrap modal.
+    {%- endcomment -%}
+    <div class="poster-wrap">
+      <button type="button" class="poster-thumb" data-bs-toggle="modal" data-bs-target="#afficheModal"
+              aria-label="Bekijk de affiche op ware grootte">
+        <picture>
+          <source srcset="{{ '/assets/img/voordrachten/affiche-hf-propagatie-thumb.avif' | relative_url }}" type="image/avif">
+          <source srcset="{{ '/assets/img/voordrachten/affiche-hf-propagatie-thumb.webp' | relative_url }}" type="image/webp">
+          <img src="{{ '/assets/img/voordrachten/affiche-hf-propagatie-thumb.jpg' | relative_url }}"
+               alt="Affiche voordracht HF-propagatie door ON4ALY op 5 november 2026"
+               width="640" height="960" loading="lazy" decoding="async">
+        </picture>
+      </button>
+    </div>
+
+    <div class="modal fade poster-modal" id="afficheModal" tabindex="-1"
+         aria-labelledby="afficheModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <h4 class="visually-hidden" id="afficheModalLabel">Affiche voordracht HF-propagatie</h4>
+          <button type="button" class="btn-close btn-close-white poster-close"
+                  data-bs-dismiss="modal" aria-label="Sluiten"></button>
+          <picture>
+            <source srcset="{{ '/assets/img/voordrachten/affiche-hf-propagatie.avif' | relative_url }}" type="image/avif">
+            <source srcset="{{ '/assets/img/voordrachten/affiche-hf-propagatie.webp' | relative_url }}" type="image/webp">
+            <img src="{{ '/assets/img/voordrachten/affiche-hf-propagatie.jpg' | relative_url }}"
+                 alt="Affiche voordracht HF-propagatie door ON4ALY op 5 november 2026"
+                 width="1024" height="1536" loading="lazy" decoding="async">
+          </picture>
+        </div>
+      </div>
+    </div>
+
     {%- comment -%} Split automatically on the build date (site.time). {%- endcomment -%}
     {%- assign today = site.time | date: "%Y-%m-%d" -%}
     {%- assign vd_asc = site.data.voordrachten | sort: "start" -%}

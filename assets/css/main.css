@@ -502,7 +502,8 @@ h1[id], h2[id], h3[id], h4[id] { scroll-margin-top: 88px; }
 }
 .poster-thumb:hover { transform: translateY(-3px); box-shadow: var(--osa-shadow-lg); }
 .poster-thumb:focus-visible { outline: 3px solid var(--osa-accent); outline-offset: 3px; }
-.poster-thumb img { display: block; width: 300px; height: auto; }
+/* landscape affiche — capped by width, and never wider than the column */
+.poster-thumb img { display: block; width: 100%; max-width: 420px; height: auto; }
 
 /* Lightbox: the poster itself is the dialog — no panel, no padding. */
 .poster-modal .modal-content {

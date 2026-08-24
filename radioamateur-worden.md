@@ -330,7 +330,7 @@ description: >-
         <div class="prose">
           <p>
             Beide proeven gaan op dezelfde dag door, na elkaar, zodat je desgewenst voor
-            het hogere niveau kan gaan. Op de <a href="https://www.on4dst.be/cw_proef_2026.html" target="_blank" rel="noopener">website van ON4DST</a> vind je de actuele datum
+            het hogere niveau kan gaan. Op de <a href="https://www.on4dst.be/cw_proef%20info.html" target="_blank" rel="noopener">website van ON4DST</a> vind je de actuele datum
             en locatie, voorbeeldopnames van 5 en 12 WPM, en tips om morse te leren.
             Buitenlandse radioamateurs mogen deelnemen; het is dan aan hun eigen
             administratie om het bewijs van slagen te valideren.
@@ -388,7 +388,7 @@ description: >-
               <span class="lic-hint">(prefix per vergunningstype)</span>
             </li>
             <li>
-              ON4DST / UBA-sectie DST — <a href="https://www.on4dst.be/cw_proef_2026.html" target="_blank" rel="noopener">BIPT Morseproef</a>
+              ON4DST / UBA-sectie DST — <a href="https://www.on4dst.be/cw_proef%20info.html" target="_blank" rel="noopener">BIPT Morseproef</a>
               <span class="lic-hint">(seinsnelheden, datum en locatie)</span>
             </li>
             <li>

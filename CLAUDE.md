@@ -157,6 +157,32 @@ magick identify -verbose assets/img/velddagen/name.jpg | grep -c 'Profile-\|exif
 Naming is `velddag-<mode>-<year>-<n>.jpg` (e.g. `velddag-cw-2026-1.jpg`). These
 stay plain JPEG — see the note above about the carousel and missing variants.
 
+### Per-velddag photo galleries
+
+Each row of the results table on `/velddagen/` shows a photo icon when that
+velddag has pictures; clicking it opens a lightbox carousel. **There is nothing
+to configure** — the gallery is discovered from the filename:
+
+    velddag-<mode>-<year>-<n>.<ext>   in  assets/img/velddagen/
+
+The page derives the prefix from the table row itself (`event` gives the mode,
+`date` gives the year), so an entry `UBA Velddag SSB` + `2025-09-06` picks up
+every `velddag-ssb-2025-*` file. **To add photos to a velddag: process them as
+above, name them with that prefix, drop them in the folder.** No YAML edit, no
+new page markup. A velddag with no matching files simply shows no icon.
+
+Notes:
+
+- The files are used **as-is, in their original format** — the gallery reads
+  whatever is on disk via `site.static_files`, so `.jpg`, `.png` and `.webp`
+  all work and no AVIF/WebP variants are generated for them.
+- Slides are ordered by filename, so numbering past `-9` sorts
+  lexicographically (`-10` lands between `-1` and `-2`). Zero-pad
+  (`-01`, `-02`, …) from the start if a velddag will have ten or more photos.
+- The same files also feed the "Enkele sfeerbeelden" carousel at the bottom of
+  the page, which *is* explicit — add a captioned entry in
+  `_data/velddagen_fotos.yml` if a photo should appear there too.
+
 ## OSA Nieuws — newsletter thumbnails
 
 The "OSA Nieuws" section shows each newsletter as a card rendered from the

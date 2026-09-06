@@ -1,0 +1,108 @@
+# Silent Key — wordt getoond op /silent-key/, gesorteerd op `date`, nieuwste bovenaan.
+#
+# Per item:
+#   image     bestandsnaam in /assets/img/silent-key/, met extensie.
+#             Het bestand wordt gebruikt zoals het is — geen AVIF/WebP-varianten.
+#   callsign  roepnaam; wordt als titel boven de tekst gezet.
+#   date      datum van overlijden, tussen aanhalingstekens: "JJJJ-MM-DD", of
+#             alleen "JJJJ" als enkel het jaar bekend is. Bepaalt de volgorde
+#             (nieuwste bovenaan). Items zonder datum komen onderaan.
+#   name      optioneel; volledige naam, onder de roepnaam.
+#   year_of_birth   optioneel, tussen aanhalingstekens: "JJJJ". Wordt achter de
+#             naam getoond als (geboortejaar–sterfjaar). Ontbreekt dit veld,
+#             dan komt er een "?" op die plaats.
+#   year_of_death   optioneel, tussen aanhalingstekens: "JJJJ". Zonder dit veld
+#             worden de jaartallen helemaal niet getoond.
+#   text      optioneel; tekst onder de roepnaam. Lege regels maken alinea's.
+#   width     optioneel, samen met `height`: de echte pixelafmetingen van de
+#             foto. Voorkomt layout shift terwijl de foto laadt.
+#   height    optioneel; zie `width`.
+#
+# Voorbeeld:
+# - image: on4xyz.jpg
+#   callsign: ON4XYZ
+#   name: Jan Janssens
+#   date: "2023-04-17"
+#   year_of_birth: "1948"
+#   year_of_death: "2023"
+#   width: 800
+#   height: 1000
+#   text: |
+#     Jarenlang actief op HF en een vaste waarde op onze velddagen.
+#
+#     We denken met dankbaarheid terug aan zijn hulp bij het opbouwen
+#     van de antennes.
+#
+# Staat de foto er nog niet? Laat `image` staan (of leeg) — zolang het bestand
+# ontbreekt toont de pagina het item zonder foto in plaats van een gebroken
+# afbeelding.
+
+- image: on7ivo.jpeg
+  callsign: ON7IVO
+  name: Ivo Verheyen
+  date: "2026-08-21"
+  year_of_birth: "1957"
+  year_of_death: "2026"
+  width: 1000
+  height: 1000
+  text:
+
+- image: on2xxx.jpeg
+  callsign: ON2XXX
+  name: Rudi Schaefer
+  date: "2020-02-21"
+  year_of_birth: "1961"
+  year_of_death: "2020"
+  width: 1000
+  height: 1000
+  text:
+
+- image: on3pb.jpeg
+  callsign: ON3PB
+  name: Paul Bogaerts
+  date: "2025-08-23"
+  year_of_birth: "1952"
+  year_of_death: "2025"
+  width: 1000
+  height: 1000
+  text:
+
+- image: on3vcl.jpeg
+  callsign: ON3VCL
+  name: Léon van Cortenberghe
+  date: "2023-06-14"
+  year_of_birth: "1934"
+  year_of_death: "2023"
+  width: 1000
+  height: 1000
+  text:
+
+- image: on4gdb.jpeg
+  callsign: ON4GDB
+  name: Gaëtan De Bruyn
+  date: "2024-09-04"
+  year_of_birth: "1943"
+  year_of_death: "2024"
+  width: 1000
+  height: 1000
+  text:
+
+- image: on6mj.jpeg
+  callsign: ON6MJ
+  name: Jean Muls
+  date: "2024-11-28"
+  year_of_birth: "1942"
+  year_of_death: "2024"
+  width: 1000
+  height: 1000
+  text:
+
+- image: on6xg.jpeg
+  callsign: ON6XG
+  name: Frans Van Poecke
+  date: "2012-02-20"
+  year_of_birth: "1930"
+  year_of_death: "2012"
+  width: 390
+  height: 475
+  text:

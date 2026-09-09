@@ -752,6 +752,15 @@ h1[id], h2[id], h3[id], h4[id] { scroll-margin-top: 88px; }
   .sk-img { margin-inline: auto; }
 }
 
+/* ---------- 404 ---------- */
+.error-code {
+  font-size: clamp(4rem, 14vw, 8rem);
+  line-height: 1;
+  letter-spacing: -.04em;
+  color: var(--osa-accent);
+  margin-bottom: 1rem;
+}
+
 /* ---------- Footer ---------- */
 .site-footer {
   background: var(--osa-night);

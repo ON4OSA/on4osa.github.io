@@ -1,25 +1,24 @@
 ---
 permalink: /404.html
-layout: page
+layout: default
+title: Pagina niet gevonden
+description: Deze pagina bestaat niet (meer).
+sitemap: false
 ---
 
-<style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
+<section class="section">
+  <div class="container">
+    <div class="section-head text-center">
+      <span class="section-kicker">Fout 404</span>
+      <h1 class="section-title error-code">404</h1>
+      <p class="section-sub">
+        Deze pagina bestaat niet (meer). Mogelijk is de link verouderd of is
+        er een typfout geslopen in het adres.
+      </p>
+    </div>
 
-<div class="container">
-  <h1>404</h1>
-
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+    <div class="text-center">
+      <a class="btn btn-osa btn-lg" href="{{ '/' | relative_url }}">Terug naar de startpagina</a>
+    </div>
+  </div>
+</section>

@@ -11,6 +11,15 @@ we radioamateurs uit de regio Antwerpen samen: van gebrevetteerde zendamateurs
 en luisteramateurs tot iedereen die geboeid is door radiocommunicatie en
 techniek.
 
+## Onze geschiedenis
+
+Onze sectie ontstond in **1935** uit de CW-operatoren van het legendarische
+Antwerpse kuststation OSA, waaraan we ook onze sectienaam danken. Daarmee is
+OSA een van de oudste UBA-secties van het land. Die telegrafie-wortels werken
+tot vandaag door in wat we doen — van velddagen in CW tot het clubstation aan
+boord van het lichtschip [West-Hinder 3]({{ '/on9bd/' | relative_url }}).
+Intussen telt de sectie ruim 50 leden.
+
 ## Wat we doen
 
 - **Maandelijkse bijeenkomsten** met lezingen, techniek en ervaringsuitwisseling.

@@ -55,9 +55,9 @@
   speaker: ON6DC
   topic: Draadantennes
 
-- start: "2026-11-05T20:00"
-  end: "2026-11-05T22:00"
-  date_label: do 5 nov 2026
+- start: "2026-11-12T20:00"
+  end: "2026-11-12T22:00"
+  date_label: do 12 nov 2026
   location: Volkssterrenwacht Urania, Hove
   speaker: ON4ALY
   topic: HF-propagatie

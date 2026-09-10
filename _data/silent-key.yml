@@ -13,7 +13,11 @@
 #             dan komt er een "?" op die plaats.
 #   year_of_death   optioneel, tussen aanhalingstekens: "JJJJ". Zonder dit veld
 #             worden de jaartallen helemaal niet getoond.
-#   text      optioneel; tekst onder de roepnaam. Lege regels maken alinea's.
+#   text_nl   optioneel; tekst onder de roepnaam. Lege regels maken alinea's.
+#   text_en   optioneel; Engelse vertaling van `text_nl`. Ontbreekt die, dan
+#             toont de Engelse pagina de Nederlandse tekst.
+#
+# Velden met `_nl`/`_en` zijn taalgebonden; de rest geldt voor alle talen.
 #   width     optioneel, samen met `height`: de echte pixelafmetingen van de
 #             foto. Voorkomt layout shift terwijl de foto laadt.
 #   height    optioneel; zie `width`.
@@ -45,7 +49,7 @@
   year_of_death: "2026"
   width: 1000
   height: 1000
-  text:
+  text_nl:
 
 - image: on2xxx.jpeg
   callsign: ON2XXX
@@ -55,7 +59,7 @@
   year_of_death: "2020"
   width: 1000
   height: 1000
-  text:
+  text_nl:
 
 - image: on3pb.jpeg
   callsign: ON3PB
@@ -65,7 +69,7 @@
   year_of_death: "2025"
   width: 1000
   height: 1000
-  text:
+  text_nl:
 
 - image: on3vcl.jpeg
   callsign: ON3VCL
@@ -75,7 +79,7 @@
   year_of_death: "2023"
   width: 1000
   height: 1000
-  text:
+  text_nl:
 
 - image: on4gdb.jpeg
   callsign: ON4GDB
@@ -85,7 +89,7 @@
   year_of_death: "2024"
   width: 1000
   height: 1000
-  text:
+  text_nl:
 
 - image: on6mj.jpeg
   callsign: ON6MJ
@@ -95,7 +99,7 @@
   year_of_death: "2024"
   width: 1000
   height: 1000
-  text:
+  text_nl:
 
 - image: on6xg.jpeg
   callsign: ON6XG
@@ -105,4 +109,4 @@
   year_of_death: "2012"
   width: 390
   height: 475
-  text:
+  text_nl:

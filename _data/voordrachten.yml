@@ -1,4 +1,6 @@
 # Voordrachten / lezingen georganiseerd door ON4OSA.
+# Velden met `_nl`/`_en` zijn taalgebonden; velden zonder achtervoegsel
+# gelden voor alle talen. Zie CLAUDE.md ("Meertaligheid").
 # Vinden plaats op de maandelijkse clubavond (eerste donderdag) in
 # Volkssterrenwacht Urania, Hove.
 #
@@ -8,56 +10,72 @@
 # tussen komende en voorbije voordrachten.
 - start: "2026-01-08T20:00"
   end: "2026-01-08T22:00"
-  date_label: do 8 jan 2026
-  location: Volkssterrenwacht Urania, Hove
+  date_label_nl: do 8 jan 2026
+  location_nl: Volkssterrenwacht Urania, Hove
+  location_en: Urania Public Observatory, Hove
   speaker: ON4WIX
-  topic: Draadloze communicatie bij wielerwedstrijden en marathons (EMG Connectivity)
+  topic_nl: Draadloze communicatie bij wielerwedstrijden en marathons (EMG Connectivity)
+  topic_en: Wireless communication at cycling races and marathons (EMG Connectivity)
 
 - start: "2026-02-05T20:00"
   end: "2026-02-05T22:00"
-  date_label: do 5 feb 2026
-  location: Volkssterrenwacht Urania, Hove
+  date_label_nl: do 5 feb 2026
+  location_nl: Volkssterrenwacht Urania, Hove
+  location_en: Urania Public Observatory, Hove
   speaker: ON5UR
-  topic: Expeditie naar de Andaman-eilanden
+  topic_nl: Expeditie naar de Andaman-eilanden
+  topic_en: Expedition to the Andaman Islands
 
 - start: "2026-04-02T20:00"
   end: "2026-04-02T22:00"
-  date_label: do 2 apr 2026
-  location: Volkssterrenwacht Urania, Hove
+  date_label_nl: do 2 apr 2026
+  location_nl: Volkssterrenwacht Urania, Hove
+  location_en: Urania Public Observatory, Hove
   speaker: ON4CHE
-  topic: Van Si4732 mini-radio tot ARDF-kampioen
+  topic_nl: Van Si4732 mini-radio tot ARDF-kampioen
+  topic_en: From Si4732 mini radio to ARDF champion
 
 - start: "2026-05-07T20:00"
   end: "2026-05-07T22:00"
-  date_label: do 7 mei 2026
-  location: Volkssterrenwacht Urania, Hove
+  date_label_nl: do 7 mei 2026
+  location_nl: Volkssterrenwacht Urania, Hove
+  location_en: Urania Public Observatory, Hove
   speaker: ON5IA
-  topic: Ontwerp je eigen PCB's met KiCad
+  topic_nl: Ontwerp je eigen PCB's met KiCad
+  topic_en: Design your own PCBs with KiCad
 
 - start: "2026-06-04T20:00"
   end: "2026-06-04T22:00"
-  date_label: do 4 jun 2026
-  location: Volkssterrenwacht Urania, Hove
+  date_label_nl: do 4 jun 2026
+  location_nl: Volkssterrenwacht Urania, Hove
+  location_en: Urania Public Observatory, Hove
   speaker: ON4AWT
-  topic: Historie en restauratie van het lichtschip West-Hinder III
+  topic_nl: Historie en restauratie van het lichtschip West-Hinder III
+  topic_en: History and restoration of the lightship West-Hinder III
 
 - start: "2026-09-03T20:00"
   end: "2026-09-03T22:00"
-  date_label: do 3 sep 2026
-  location: Volkssterrenwacht Urania, Hove
+  date_label_nl: do 3 sep 2026
+  location_nl: Volkssterrenwacht Urania, Hove
+  location_en: Urania Public Observatory, Hove
   speaker: ON5SEL
-  topic: Expeditie naar Isle of Wight, geactiveerd door leden van onze en andere clubs
+  topic_nl: Expeditie naar Isle of Wight, geactiveerd door leden van onze en andere clubs
+  topic_en: Expedition to the Isle of Wight, activated by members of our club and others
 
 - start: "2026-10-01T20:00"
   end: "2026-10-01T22:00"
-  date_label: do 1 okt 2026
-  location: Volkssterrenwacht Urania, Hove
+  date_label_nl: do 1 okt 2026
+  location_nl: Volkssterrenwacht Urania, Hove
+  location_en: Urania Public Observatory, Hove
   speaker: ON6DC
-  topic: Draadantennes
+  topic_nl: Draadantennes
+  topic_en: Wire antennas
 
 - start: "2026-11-12T20:00"
   end: "2026-11-12T22:00"
-  date_label: do 12 nov 2026
-  location: Volkssterrenwacht Urania, Hove
+  date_label_nl: do 12 nov 2026
+  location_nl: Volkssterrenwacht Urania, Hove
+  location_en: Urania Public Observatory, Hove
   speaker: ON4ALY
-  topic: HF-propagatie
+  topic_nl: HF-propagatie
+  topic_en: HF propagation

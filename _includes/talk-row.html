@@ -1,0 +1,19 @@
+{%- comment -%}
+  A single voordracht row. `date_label` is Dutch copy in the data file; other
+  languages get the date formatted from the ISO `start` instead, so no second
+  label has to be maintained.
+{%- endcomment -%}
+{%- assign l = include.l -%}
+{%- assign t = include.t -%}
+{%- capture date_text -%}
+  {%- if include.lang == site.default_lang -%}{{ l.date_label_nl }}{%- else -%}{{ l.start | date: '%a, %b %-d, %Y' }}{%- endif -%}
+{%- endcapture -%}
+<tr>
+  {%- comment -%} data-time folds into the date line on mobile; see .vd-table in main.css {%- endcomment -%}
+  <td class="text-nowrap" data-label="{{ t.talks_table.date }}"
+      data-time="{{ l.start | date: '%H:%M' }}">{{ date_text }}</td>
+  <td class="text-nowrap" data-label="{{ t.talks_table.time }}">{{ l.start | date: "%H:%M" }}</td>
+  <td data-label="{{ t.talks_table.location }}">{% include field.html item=l key='location' %}</td>
+  <td class="text-nowrap" data-label="{{ t.talks_table.speaker }}"><span class="callsign">{{ l.speaker }}</span></td>
+  <td data-label="{{ t.talks_table.topic }}">{% include field.html item=l key='topic' %}</td>
+</tr>

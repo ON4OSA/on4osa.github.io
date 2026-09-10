@@ -1,6 +1,10 @@
+{%- assign lang = page.lang | default: site.default_lang -%}
+{%- assign t = site.data.i18n[lang] -%}
+{%- include url.html slug='home' lang=lang -%}
+{%- assign home_url = page_url -%}
 <nav class="navbar navbar-expand-lg navbar-osa sticky-top">
   <div class="container">
-    <a class="navbar-brand" href="{{ '/' | relative_url }}">
+    <a class="navbar-brand" href="{{ home_url | relative_url }}">
       <svg class="brand-mark" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
         <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/>
         <path d="M8.5 8.5a5 5 0 0 0 0 7M15.5 8.5a5 5 0 0 1 0 7"/>
@@ -9,16 +13,65 @@
       <span class="brand-text">{{ site.title }}</span>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
-            aria-controls="mainNav" aria-expanded="false" aria-label="Menu openen/sluiten">
+            aria-controls="mainNav" aria-expanded="false" aria-label="{{ t.nav.toggle }}">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="mainNav">
       <ul class="navbar-nav ms-auto">
-        {%- for link in site.nav_links -%}
+        {%- for link in t.nav.items -%}
+        {%- include url.html slug=link.slug lang=lang -%}
+        {%- if page_url -%}
+        {%- assign href = page_url -%}
+        {%- if link.anchor -%}{%- assign href = page_url | append: '#' | append: link.anchor -%}{%- endif -%}
         <li class="nav-item">
-          <a class="nav-link" href="{{ link.url | relative_url }}">{{ link.title }}</a>
+          <a class="nav-link" href="{{ href | relative_url }}">{{ link.title }}</a>
         </li>
+        {%- endif -%}
         {%- endfor -%}
+
+        {%- comment -%}
+          Language switcher. Each option links to the same page in the other
+          language (resolved by slug), and carries data-lang so main.js can
+          remember the choice in localStorage.
+        {%- endcomment -%}
+        <li class="nav-item dropdown lang-switch">
+          <button class="nav-link dropdown-toggle lang-switch-toggle" type="button"
+                  data-bs-toggle="dropdown" aria-expanded="false" aria-label="{{ t.nav.language }}">
+            {%- comment -%}
+              Globe: equator + two parallels at 45°, and three meridians — the
+              silhouette, the ellipse and the straight centre line.
+              Parallels are straight chords because that is what a latitude
+              circle actually projects to head-on. Chord ends are the sine/
+              cosine of 45° on r=9, so they land exactly on the circle. The
+              ellipse sits at rx=5.4 so the meridians bunch towards the limb,
+              the way they do on a sphere.
+            {%- endcomment -%}
+            <svg class="lang-globe" viewBox="0 0 24 24" width="18" height="18" fill="none"
+                 stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                 aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/>
+              <ellipse cx="12" cy="12" rx="5.4" ry="9"/>
+              <path d="M3 12h18M5.64 5.64h12.72M5.64 18.36h12.72M12 3v18"/>
+            </svg>
+            <span>{{ t.short }}</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            {%- for code in site.languages -%}
+            {%- assign other = site.data.i18n[code] -%}
+            {%- include url.html slug=page.slug lang=code -%}
+            {%- comment -%} Fall back to that language's home page when this page has no counterpart. {%- endcomment -%}
+            {%- unless page_url -%}
+              {%- include url.html slug='home' lang=code -%}
+            {%- endunless -%}
+            <li>
+              <a class="dropdown-item{% if code == lang %} active{% endif %}"
+                 href="{{ page_url | relative_url }}" data-lang="{{ code }}"
+                 hreflang="{{ code }}" lang="{{ code }}"
+                 {% if code == lang %}aria-current="true"{% endif %}>{{ other.short }} — {{ other.label }}</a>
+            </li>
+            {%- endfor -%}
+          </ul>
+        </li>
       </ul>
     </div>
   </div>

@@ -1,14 +1,21 @@
 # OSA Nieuws — clubnieuwsbrieven (PDF).
+# Velden met `_nl`/`_en` zijn taalgebonden; velden zonder achtervoegsel
+# gelden voor alle talen. Zie CLAUDE.md ("Meertaligheid").
 # `file` staat in /assets/nieuwsbrieven/, thumbnail (eerste pagina) in
 # /assets/img/nieuwsbrieven/ met dezelfde bestandsnaam (.jpg).
 # Nieuwste bovenaan.
-- title: OSA Nieuws 2026 · nr. 2
+- title_nl: OSA Nieuws 2026 · nr. 2
+  title_en: OSA News 2026 · no. 2
   file: OSA_nieuws_2026_2
-- title: OSA Nieuws 2026 · nr. 1
+- title_nl: OSA Nieuws 2026 · nr. 1
+  title_en: OSA News 2026 · no. 1
   file: OSA_nieuws_2026_1
-- title: OSA Nieuws 2025 · nr. 3
+- title_nl: OSA Nieuws 2025 · nr. 3
+  title_en: OSA News 2025 · no. 3
   file: OSA_nieuws_2025_3
-- title: OSA Nieuws 2025 · nr. 2
+- title_nl: OSA Nieuws 2025 · nr. 2
+  title_en: OSA News 2025 · no. 2
   file: OSA_nieuws_2025_2
-- title: OSA Nieuws 2025 · nr. 1
+- title_nl: OSA Nieuws 2025 · nr. 1
+  title_en: OSA News 2025 · no. 1
   file: OSA_nieuws_2025_1

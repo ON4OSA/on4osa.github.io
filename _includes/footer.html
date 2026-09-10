@@ -1,3 +1,5 @@
+{%- assign lang = page.lang | default: site.default_lang -%}
+{%- assign t = site.data.i18n[lang] -%}
 <footer class="site-footer">
   <div class="container">
     <div class="row gy-4">
@@ -9,18 +11,23 @@
             <path d="M5.7 5.7a9 9 0 0 0 0 12.6M18.3 5.7a9 9 0 0 1 0 12.6"/>
           </svg> {{ site.title }}
         </div>
-        <p class="footer-tagline">{{ site.tagline }}</p>
+        <p class="footer-tagline">{{ t.meta.tagline }}</p>
       </div>
       <div class="col-md-3">
-        <h2 class="footer-heading">Navigatie</h2>
+        <h2 class="footer-heading">{{ t.footer.nav_heading }}</h2>
         <ul class="footer-links">
-          {%- for link in site.nav_links -%}
-          <li><a href="{{ link.url | relative_url }}">{{ link.title }}</a></li>
+          {%- for link in t.nav.items -%}
+          {%- include url.html slug=link.slug lang=lang -%}
+          {%- if page_url -%}
+          {%- assign href = page_url -%}
+          {%- if link.anchor -%}{%- assign href = page_url | append: '#' | append: link.anchor -%}{%- endif -%}
+          <li><a href="{{ href | relative_url }}">{{ link.title }}</a></li>
+          {%- endif -%}
           {%- endfor -%}
         </ul>
       </div>
       <div class="col-md-4">
-        <h2 class="footer-heading">Contact</h2>
+        <h2 class="footer-heading">{{ t.footer.contact_heading }}</h2>
         <ul class="footer-links">
           {%- if site.email and site.email != "your-email@example.com" -%}
           <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
@@ -29,7 +36,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© {{ site.time | date: '%Y' }} {{ site.title }}. Alle rechten voorbehouden.</span>
+      <span>© {{ site.time | date: '%Y' }} {{ site.title }}. {{ t.footer.rights }}</span>
     </div>
   </div>
 </footer>

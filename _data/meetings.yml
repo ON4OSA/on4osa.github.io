@@ -1,15 +1,23 @@
-- when: Elke eerste donderdag van de maand
-  venue: Volkssterrenwacht Urania
+# Velden met `_nl`/`_en` zijn taalgebonden; velden zonder achtervoegsel
+# gelden voor alle talen. Zie CLAUDE.md ("Meertaligheid").
+- when_nl: Elke eerste donderdag van de maand
+  when_en: Every first Thursday of the month
+  venue_nl: Volkssterrenwacht Urania
+  venue_en: Urania Public Observatory
   address: |-
     Jozef Mattheessensstraat 60
     2540 Hove
-  time: Afspraak om 20:00 uur
+  time_nl: Afspraak om 20:00 uur
+  time_en: Doors at 20:00
   map: https://maps.google.com/?q=Volkssterrenwacht+Urania+Jozef+Mattheessensstraat+60+2540+Hove
 
-- when: Elke eerste zaterdag van de maand
-  venue: Aan boord van het lichtschip West-Hinder 3
+- when_nl: Elke eerste zaterdag van de maand
+  when_en: Every first Saturday of the month
+  venue_nl: Aan boord van het lichtschip West-Hinder 3
+  venue_en: On board the lightship West-Hinder 3
   address: |-
     Droogdokkenweg 4
     2030 Antwerpen
-  time: Doorlopend van 10:00 tot 16:00 uur
+  time_nl: Doorlopend van 10:00 tot 16:00 uur
+  time_en: Drop in between 10:00 and 16:00
   map: https://maps.google.com/?q=Lichtschip+West-Hinder+Droogdokkenweg+4+2030+Antwerpen

@@ -1,0 +1,13 @@
+{%- comment -%}
+  Read a translated field off a data item.
+
+    {%- include field.html item=l key='topic' -%}
+
+  Language-specific fields carry a language suffix (`topic_nl`, `topic_en`);
+  fields without one are language-neutral (`callsign`, `score`, `file` …).
+  Lookup order: this page's language → the default language → the bare key.
+  A missing translation therefore degrades to Dutch rather than rendering blank.
+{%- endcomment -%}
+{%- assign _k = include.key | append: '_' | append: page.lang -%}
+{%- assign _k_default = include.key | append: '_' | append: site.default_lang -%}
+{{- include.item[_k] | default: include.item[_k_default] | default: include.item[include.key] -}}

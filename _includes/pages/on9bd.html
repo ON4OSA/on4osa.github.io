@@ -1,0 +1,67 @@
+{%- assign lang = page.lang | default: site.default_lang -%}
+{%- assign t = site.data.i18n[lang] -%}
+<section class="section">
+  <div class="container">
+    <div class="section-head text-center">
+      <span class="section-kicker">{{ t.on9bd.kicker }}</span>
+      <h1 class="section-title">{{ t.on9bd.title }}</h1>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <p class="on9bd-text">{{ t.on9bd.p1 }}</p>
+        <p class="on9bd-text">
+          {{ t.on9bd.p2_before }}
+          <a href="https://illw.net/" target="_blank" rel="noopener">{{ t.on9bd.p2_link }}</a>{{ t.on9bd.p2_after }}
+        </p>
+        <p class="on9bd-text">
+          {{ t.on9bd.p3_before }}
+          <a href="https://nj2bb.org/museum/" target="_blank" rel="noopener">{{ t.on9bd.p3_link }}</a>{{ t.on9bd.p3_after }}
+        </p>
+        <p class="on9bd-text">
+          {{ t.on9bd.p4_before }}
+          <a href="mailto:{{ site.email }}">{{ site.email }}</a>.
+        </p>
+      </div>
+    </div>
+
+    <div class="section-head text-center gallery-head">
+      <span class="section-kicker">{{ t.velddagen.gallery_kicker }}</span>
+      <h2 class="section-title">{{ t.velddagen.gallery_title }}</h2>
+    </div>
+
+    {%- comment -%} Add more filenames (in /assets/img/) to grow the carousel. {%- endcomment -%}
+    {%- assign gallery = "westhinder.jpg" | split: "," -%}
+    <div id="on9bdCarousel" class="carousel slide carousel-fade osa-carousel"
+         data-bs-ride="carousel" data-bs-interval="4000">
+      {%- if gallery.size > 1 -%}
+      <div class="carousel-indicators">
+        {%- for img in gallery -%}
+        <button type="button" data-bs-target="#on9bdCarousel" data-bs-slide-to="{{ forloop.index0 }}"
+                {% if forloop.first %}class="active" aria-current="true"{% endif %}
+                aria-label="{{ t.carousel.photo }} {{ forloop.index }}"></button>
+        {%- endfor -%}
+      </div>
+      {%- endif -%}
+      <div class="carousel-inner">
+        {%- for img in gallery -%}
+        <div class="carousel-item{% if forloop.first %} active{% endif %}">
+          <img src="{{ '/assets/img/' | append: img | relative_url }}"
+               class="d-block" alt="West-Hinder 3 · ON9BD" loading="lazy">
+        </div>
+        {%- endfor -%}
+      </div>
+      {%- if gallery.size > 1 -%}
+      <button class="carousel-control-prev" type="button" data-bs-target="#on9bdCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">{{ t.carousel.prev }}</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#on9bdCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">{{ t.carousel.next }}</span>
+      </button>
+      {%- endif -%}
+      <div class="carousel-caption-fixed">West-Hinder 3 · ON9BD</div>
+    </div>
+  </div>
+</section>

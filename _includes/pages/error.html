@@ -1,0 +1,15 @@
+{%- assign lang = page.lang | default: site.default_lang -%}
+{%- assign t = site.data.i18n[lang] -%}
+<section class="section">
+  <div class="container">
+    <div class="section-head text-center">
+      <span class="section-kicker">{{ t.error.kicker }}</span>
+      <h1 class="section-title error-code">404</h1>
+      <p class="section-sub">{{ t.error.sub }}</p>
+    </div>
+    <div class="text-center">
+      {%- include url.html slug='home' lang=lang -%}
+      <a class="btn btn-osa btn-lg" href="{{ page_url | relative_url }}">{{ t.error.home }}</a>
+    </div>
+  </div>
+</section>

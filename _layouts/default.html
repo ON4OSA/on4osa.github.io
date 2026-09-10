@@ -1,5 +1,11 @@
 <!DOCTYPE html>
-<html lang="nl">
+{%- comment -%}
+  `page.lang` is set in the front matter of every page under /nl/ and /en/.
+  Redirect stubs and any stray page fall back to the site default.
+{%- endcomment -%}
+{%- assign lang = page.lang | default: site.default_lang -%}
+{%- assign t = site.data.i18n[lang] -%}
+<html lang="{{ lang }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,10 +15,28 @@
     default would prefix site.title and yield "ON4OSA | ON4OSA – …".
     Per-page overrides in front matter: title, description, image, canonical_url.
   {%- endcomment -%}
-  <title>{% if page.url == '/' or page.title == nil %}{{ site.tagline }}{% else %}{{ page.title }} | {{ site.title_suffix }}{% endif %}</title>
+  <title>{% if page.slug == 'home' or page.title == nil %}{{ t.meta.tagline }}{% else %}{{ page.title }} | {{ t.meta.title_suffix }}{% endif %}</title>
   {%- seo title=false -%}
+
+  {%- comment -%}
+    hreflang: point search engines at the same page in every language, and mark
+    the default language as x-default for visitors whose language we don't
+    serve. Only emitted on real pages (those carrying a slug).
+  {%- endcomment -%}
+  {%- if page.slug -%}
+  {%- for code in site.languages -%}
+  {%- include url.html slug=page.slug lang=code -%}
+  {%- if page_url -%}
+  <link rel="alternate" hreflang="{{ code }}" href="{{ page_url | absolute_url }}">
+  {%- if code == site.default_lang -%}
+  <link rel="alternate" hreflang="x-default" href="{{ page_url | absolute_url }}">
+  {%- endif -%}
+  {%- endif -%}
+  {%- endfor -%}
+  {%- endif -%}
+
   {%- comment -%} Organisation identity — homepage only, per Google's guidance. {%- endcomment -%}
-  {%- if page.url == '/' -%}{%- include schema-organization.html -%}{%- endif -%}
+  {%- if page.slug == 'home' -%}{%- include schema-organization.html -%}{%- endif -%}
 
   {%- comment -%}
     Favicons. Modern browsers pick favicon.svg (scalable, transparent);

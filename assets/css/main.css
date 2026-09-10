@@ -91,6 +91,39 @@ h1[id], h2[id], h3[id], h4[id] { scroll-margin-top: 88px; }
 }
 .navbar-osa .nav-link:hover { color: var(--osa-ink); background: var(--osa-bg-alt); }
 
+/* ---------- Language switcher ---------- */
+.lang-switch { margin-left: .35rem; }
+.lang-switch-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  background: none;
+  border: 1px solid var(--osa-line);
+  border-radius: 999px;
+  padding: .3rem .8rem;
+  color: var(--osa-body);
+  font-weight: 600;
+  font-size: .9rem;
+}
+.lang-switch-toggle:hover { color: var(--osa-ink); background: var(--osa-bg-alt); }
+.lang-switch-toggle::after { margin-left: .1rem; }
+.lang-globe { flex: none; color: var(--osa-accent); }
+.lang-switch .dropdown-menu {
+  border: 1px solid var(--osa-line);
+  border-radius: 12px;
+  box-shadow: var(--osa-shadow);
+  padding: .35rem;
+  min-width: 11rem;
+}
+.lang-switch .dropdown-item { border-radius: 8px; font-size: .92rem; padding: .45rem .7rem; }
+.lang-switch .dropdown-item.active,
+.lang-switch .dropdown-item:active { background: var(--osa-accent); color: #fff; }
+/* the collapsed navbar stacks the items, so the pill should not stretch */
+@media (max-width: 991.98px) {
+  .lang-switch { margin: .5rem 0 0; }
+  .lang-switch-toggle { width: auto; }
+}
+
 /* ---------- Hero ---------- */
 .hero {
   position: relative;
@@ -174,6 +207,15 @@ h1[id], h2[id], h3[id], h4[id] { scroll-margin-top: 88px; }
 }
 .section-title { font-size: clamp(1.7rem, 3.5vw, 2.4rem); margin-bottom: .75rem; }
 .section-sub { color: var(--osa-muted); font-size: 1.05rem; margin: 0; }
+/* Parenthetical note inside a section title, e.g. "OSA News (in Dutch)".
+   Same muted treatment as .lic-hint, minus the heading's weight. */
+.section-title-hint {
+  color: var(--osa-muted);
+  font-size: .5em;
+  font-weight: 500;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
 
 /* ---------- Meeting cards ---------- */
 .meeting-card {

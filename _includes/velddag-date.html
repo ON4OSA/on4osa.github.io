@@ -1,0 +1,16 @@
+{%- comment -%}
+  The date of one velddag, in the page's language.
+
+    {% include velddag-date.html e=e lang=lang %}
+
+  `date_label_nl` is Dutch copy in the data file; other languages format the
+  ISO `date` instead, so only one date has to be maintained. Velddagen always
+  run Saturday + Sunday, so the end day is start + 1 and never crosses a month
+  boundary.
+{%- endcomment -%}
+{%- if include.lang == site.default_lang -%}
+  {{- include.e.date_label_nl -}}
+{%- else -%}
+  {%- comment -%} US order: "Sep 6–7, 2025" rather than "6–7 Sep 2025". {%- endcomment -%}
+  {{- include.e.date | date: '%b' }} {{ include.e.date | date: '%-d' }}–{{ include.e.date | date: '%-d' | plus: 1 }}, {{ include.e.date | date: '%Y' -}}
+{%- endif -%}

@@ -25,6 +25,16 @@ defaults:
       path: ""
     values:
       image: /assets/img/westhinder.jpg
+  # og:locale per language (jekyll-seo-tag). The English content is written in
+  # US English, hence en_US.
+  - scope:
+      path: nl
+    values:
+      locale: nl_BE
+  - scope:
+      path: en
+    values:
+      locale: en_US
 
 # Optional jekyll-seo-tag fields — fill in if/when you have them:
 # logo: /assets/img/logo.png          # used as the organisation logo in JSON-LD
@@ -44,20 +54,16 @@ plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
 
-# Navigation shown in the navbar
-nav_links:
-  - title: Home
-    url: /
-  - title: OSA Nieuws
-    url: /#osa-nieuws
-  - title: Velddagen
-    url: /velddagen/
-  - title: Radioamateur worden
-    url: /radioamateur-worden/
-  - title: Silent Key
-    url: /silent-key/
-  - title: Over ons
-    url: /about/
+# ---------------------------------------------------------------------------
+# Languages. Every page exists once per language under /<code>/.
+# `default_lang` is what visitors get when localStorage has no `lang` value,
+# and it is the hreflang="x-default" target. All UI strings live in
+# _data/i18n.yml; see CLAUDE.md ("Meertaligheid").
+# ---------------------------------------------------------------------------
+languages:
+  - nl
+  - en
+default_lang: nl
 
 # Silence Sass deprecation warnings coming from dependencies (e.g. the
 # deprecated lighten()/darken() color functions used by older gems).

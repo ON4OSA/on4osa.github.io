@@ -30,3 +30,22 @@
     targets.forEach(function (el) { observer.observe(el); });
   });
 })();
+
+/* ---------------------------------------------------------------------------
+ * Language switcher — remember the choice so the gateway pages (/, /about/, …)
+ * can send this visitor straight to the right language next time.
+ * The link itself does the navigating; this only records the preference.
+ * localStorage throws in private mode and when site data is blocked, so every
+ * access is guarded.
+ * ------------------------------------------------------------------------- */
+(function () {
+  document.addEventListener('click', function (event) {
+    var link = event.target.closest('[data-lang]');
+    if (!link) return;
+    try {
+      window.localStorage.setItem('lang', link.getAttribute('data-lang'));
+    } catch (e) {
+      /* preference simply is not remembered */
+    }
+  });
+})();

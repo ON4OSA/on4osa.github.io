@@ -1,0 +1,312 @@
+# Alle vaste teksten van de site, per taal.
+# Zie CLAUDE.md ("Meertaligheid") voor hoe dit bestand gebruikt wordt.
+#
+# Gebruik in templates:  {%- assign t = site.data.i18n[page.lang] -%}
+#                        {{ t.nav.home }}
+#
+# Een nieuwe taal toevoegen = hier een blok bijzetten, `languages` in
+# _config.yml uitbreiden en de paginabestanden in /<taal>/ aanmaken.
+
+nl:
+  code: nl
+  locale: nl_BE
+  label: Nederlands
+  short: NL
+  dir_name: nl
+
+  meta:
+    tagline: ON4OSA – Radioamateurclub in Antwerpen | UBA-sectie OSA
+    title_suffix: ON4OSA – Radioamateurclub Antwerpen
+    description: >-
+      ON4OSA is een radioamateurclub in Antwerpen en sectie OSA van de UBA.
+      Ontdek onze bijeenkomsten, voordrachten, velddagen en activiteiten voor
+      zendamateurs.
+
+  nav:
+    toggle: Menu openen/sluiten
+    language: Taal kiezen
+    items:
+      - title: Home
+        slug: home
+      - title: OSA Nieuws
+        slug: home
+        anchor: osa-nieuws
+      - title: Velddagen
+        slug: velddagen
+      - title: Radioamateur worden
+        slug: license
+      - title: Silent Key
+        slug: silent-key
+      - title: Over ons
+        slug: about
+
+  footer:
+    nav_heading: Navigatie
+    contact_heading: Contact
+    rights: Alle rechten voorbehouden.
+
+  home:
+    hero_eyebrow: Radioamateurs in Antwerpen · ON4OSA
+    hero_title: Welkom bij OSA,<br>een Antwerpse UBA sectie
+    hero_lead: >-
+      OSA is een radioamateurclub in Antwerpen en lokale sectie van de UBA.<br>
+      Onze sectie ontstond in 1935 uit de CW-operatoren van het legendarische
+      Antwerpse kuststation OSA en is daarmee een van de oudste van het land.
+      Vandaag brengen we ruim 50 leden samen.
+    hero_btn_meetings: Wanneer vergaderen we?
+    hero_btn_about: Over OSA
+    meetings_kicker: Bijeenkomsten
+    meetings_title: Wij vergaderen
+    meetings_sub: Iedereen is welkom — radioamateurs, luisteramateurs en geïnteresseerden.
+    meetings_map: Bekijk op de kaart →
+    talks_kicker: Programma
+    talks_title: Voordrachten
+    talks_sub: Lezingen op onze clubavonden in Volkssterrenwacht Urania.
+    talks_upcoming: Komende voordrachten
+    talks_past: Voorbije voordrachten
+    talks_none: Momenteel geen geplande voordrachten — hou deze pagina in de gaten.
+    talks_poster_aria: Bekijk de affiche op ware grootte
+    talks_poster_alt: Affiche van de voordracht HF-propagatie door ON4ALY op 12 november 2026
+    on9bd_kicker: West-Hinder 3
+    on9bd_title: Station ON9BD
+    on9bd_text: >-
+      Aan boord van het lichtschip West-Hinder 3 bevindt zich het clubstation ON9BD.
+      Dit station wordt door de leden van OSA bij verschillende gelegenheden geactiveerd
+      en is uitgerust met antennes voor zowel de HF- als de VHF-banden.
+    on9bd_more: Meer info
+    news_kicker: Nieuwsbrief
+    news_title: OSA Nieuws
+    news_sub: Onze clubnieuwsbrieven — klik een editie om de PDF te openen.
+    news_latest: Nieuwste editie
+    news_cover: Cover
+
+  talks_table:
+    date: Datum
+    time: Tijd
+    location: Locatie
+    speaker: Spreker
+    topic: Onderwerp
+
+  velddagen:
+    kicker: Palmares
+    title: Deelnames aan UBA velddagen
+    sub: >-
+      Een overzicht van onze velddagdeelnames onder ON4OSA/P, met categorie
+      en uitslag.
+    note: >-
+      Datums volgen de vaste UBA-kalender (CW: eerste weekend van juni · SSB:
+      eerste weekend van september). Uitslagen zoals gepubliceerd door de UBA.
+    th_date: Datum
+    th_event: Evenement
+    th_callsign: Roepnaam
+    th_category: Categorie
+    th_result: Resultaat
+    th_photos: Foto's
+    qso: QSO's
+    source: uitslag →
+    source_aria: Officiële uitslag
+    gallery_kicker: Sfeerbeelden
+    gallery_title: Enkele sfeerbeelden
+    gallery_aria: Bekijk %count% foto's van %event%
+    gallery_photos: foto's
+    gallery_of: Foto's van
+
+  on9bd:
+    kicker: West-Hinder 3
+    title: Station ON9BD
+    p1: >-
+      Aan boord van het lichtschip West-Hinder 3 bevindt zich het clubstation ON9BD.
+      Dit station wordt door de leden van OSA bij verschillende gelegenheden geactiveerd
+      en is uitgerust met antennes voor zowel de HF- als de VHF-banden.
+    p2_before: ON9BD wordt jaarlijks geactiveerd tijdens het
+    p2_link: International Lighthouse Lightship Weekend (ILLW)
+    p2_after: >-
+      , waarbij radioamateurs wereldwijd vuurtorens en lichtschepen activeren.
+      Dit event vindt jaarlijks plaats tijdens het derde volle weekend van augustus.
+    p3_before: Daarnaast is het station in de lucht tijdens het
+    p3_link: Museum Ships Weekend
+    p3_after: >-
+      . Tijdens dit weekend in juni activeren museumschepen wereldwijd hun
+      boordstation en kunnen radioamateurs proberen zo veel mogelijk
+      museumschepen te contacteren.
+    p4_before: >-
+      Wil je zelf eens uitzenden vanuit het clubstation? Radioamateurs zijn
+      van harte welkom aan boord, neem gerust contact op via
+    img_alt: Lichtschip West-Hinder 3
+
+  silent_key:
+    kicker: In memoriam
+    title: Silent Key
+    sub: >-
+      "Silent Key" is de term waarmee radioamateurs een collega gedenken die
+      is overleden. Op deze pagina houden we de herinnering levend aan de
+      leden van sectie OSA die ons zijn ontvallen — hun roepnaam blijft
+      verbonden met onze club.
+    empty: Er zijn momenteel geen vermeldingen op deze pagina.
+
+  carousel:
+    prev: Vorige
+    next: Volgende
+    photo: Foto
+    close: Sluiten
+
+  error:
+    kicker: Fout 404
+    title: Pagina niet gevonden
+    sub: >-
+      Deze pagina bestaat niet (meer). Mogelijk is de link verouderd of is
+      er een typfout geslopen in het adres.
+    home: Terug naar de startpagina
+
+en:
+  code: en
+  locale: en_US
+  label: English
+  short: EN
+  dir_name: en
+
+  meta:
+    tagline: ON4OSA – Amateur Radio Club in Antwerp | UBA section OSA
+    title_suffix: ON4OSA – Amateur Radio Club Antwerp
+    description: >-
+      ON4OSA is an amateur radio club in Antwerp and section OSA of the UBA.
+      Discover our meetings, talks, field days and activities for radio
+      amateurs.
+
+  nav:
+    toggle: Open/close menu
+    language: Choose language
+    items:
+      - title: Home
+        slug: home
+      - title: OSA News
+        slug: home
+        anchor: osa-nieuws
+      - title: Field days
+        slug: velddagen
+      - title: Become a radio amateur
+        slug: license
+      - title: Silent Key
+        slug: silent-key
+      - title: About us
+        slug: about
+
+  footer:
+    nav_heading: Navigation
+    contact_heading: Contact
+    rights: All rights reserved.
+
+  home:
+    hero_eyebrow: Radio amateurs in Antwerp · ON4OSA
+    hero_title: Welcome to OSA,<br>an Antwerp UBA section
+    hero_lead: >-
+      OSA is an amateur radio club in Antwerp and a local section of the UBA.<br>
+      Our section grew out of the CW operators of the legendary Antwerp coastal
+      station OSA in 1935, making it one of the oldest in the country. Today we
+      bring together more than 50 members.
+    hero_btn_meetings: When do we meet?
+    hero_btn_about: About OSA
+    meetings_kicker: Meetings
+    meetings_title: When we meet
+    meetings_sub: Everyone is welcome — licensed amateurs, shortwave listeners and anyone curious.
+    meetings_map: View on the map →
+    talks_kicker: Program
+    talks_title: Talks
+    talks_sub: Presentations on our club nights at Urania Public Observatory.
+    talks_upcoming: Upcoming talks
+    talks_past: Past talks
+    talks_none: No talks are scheduled right now — check back soon.
+    talks_poster_aria: View the poster at full size
+    talks_poster_alt: Poster for the talk on HF propagation by ON4ALY on November 12, 2026
+    on9bd_kicker: West-Hinder 3
+    on9bd_title: Station ON9BD
+    on9bd_text: >-
+      Club station ON9BD is located on board the lightship West-Hinder 3.
+      OSA members activate it on various occasions and it is equipped with
+      antennas for both the HF and VHF bands.
+    on9bd_more: Read more
+    news_kicker: Newsletter
+    news_title: OSA News
+    # Only set in this block: the newsletters themselves are Dutch-only, which
+    # is worth flagging to English readers but is self-evident in Dutch.
+    news_title_hint: (in Dutch)
+    news_sub: Our club newsletters — click an edition to open the PDF.
+    news_latest: Latest edition
+    news_cover: Cover
+
+  talks_table:
+    date: Date
+    time: Time
+    location: Location
+    speaker: Speaker
+    topic: Topic
+
+  velddagen:
+    kicker: Track record
+    title: UBA field day results
+    sub: >-
+      An overview of our field day entries as ON4OSA/P, with category and
+      result.
+    note: >-
+      Dates follow the fixed UBA calendar (CW: first weekend of June · SSB:
+      first weekend of September). Results as published by the UBA.
+    th_date: Date
+    th_event: Event
+    th_callsign: Callsign
+    th_category: Category
+    th_result: Result
+    th_photos: Photos
+    qso: QSOs
+    source: results →
+    source_aria: Official results
+    gallery_kicker: Impressions
+    gallery_title: A few impressions
+    gallery_aria: View %count% photos of %event%
+    gallery_photos: photos
+    gallery_of: Photos of
+
+  on9bd:
+    kicker: West-Hinder 3
+    title: Station ON9BD
+    p1: >-
+      Club station ON9BD is located on board the lightship West-Hinder 3.
+      OSA members activate it on various occasions and it is equipped with
+      antennas for both the HF and VHF bands.
+    p2_before: ON9BD is activated every year during the
+    p2_link: International Lighthouse Lightship Weekend (ILLW)
+    p2_after: >-
+      , in which radio amateurs worldwide put lighthouses and lightships on the
+      air. The event takes place on the third full weekend of August.
+    p3_before: The station is also on the air during the
+    p3_link: Museum Ships Weekend
+    p3_after: >-
+      . During that weekend in June, museum ships around the world activate
+      their onboard station and radio amateurs try to contact as many of them
+      as possible.
+    p4_before: >-
+      Would you like to operate from the club station yourself? Radio amateurs
+      are very welcome on board — feel free to get in touch at
+    img_alt: Lightship West-Hinder 3
+
+  silent_key:
+    kicker: In memoriam
+    title: Silent Key
+    sub: >-
+      "Silent Key" is the term radio amateurs use to remember a fellow amateur
+      who has passed away. On this page we keep alive the memory of the members
+      of section OSA we have lost — their callsigns remain part of our club.
+    empty: There are currently no entries on this page.
+
+  carousel:
+    prev: Previous
+    next: Next
+    photo: Photo
+    close: Close
+
+  error:
+    kicker: Error 404
+    title: Page not found
+    sub: >-
+      This page no longer exists. The link may be outdated, or there may be a
+      typo in the address.
+    home: Back to the home page

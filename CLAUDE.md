@@ -3,6 +3,141 @@
 Jekyll site (no theme gem; custom layouts in `_layouts/`, Bootstrap 5 vendored
 under `assets/`). Content tables are driven by data files in `_data/`.
 
+## Meertaligheid (NL / EN)
+
+Elke pagina bestaat één keer per taal, onder `/nl/…` en `/en/…`. Er is **geen
+plugin** in het spel — alles is Liquid, zodat de site op GitHub Pages blijft
+bouwen.
+
+> **De Engelse content gebruikt US English** (spelling, woordkeuze én
+> datumnotatie: `Sep 6–7, 2025`, niet `6–7 Sep 2025`).
+
+### Waar wat staat
+
+| Bestand | Rol |
+| ------- | --- |
+| `_config.yml` → `languages`, `default_lang` | welke talen bestaan, en welke de standaard is |
+| `_data/i18n.yml` | **alle** vaste teksten, per taal (navigatie, knoppen, tabelkoppen …) |
+| `nl/*.md`, `en/*.md` | de paginabestanden; dun voor datagedreven pagina's |
+| `_includes/pages/*.html` | de gedeelde opmaak van datagedreven pagina's |
+| `_includes/url.html` | zoekt een URL op via `slug` + taal |
+| `_includes/field.html` | leest een vertaald veld uit een data-item |
+| `_layouts/redirect.html` | de taalpoort op de oude URL's (`/`, `/about/`, …) |
+
+### Front matter van een pagina
+
+Elke echte pagina heeft **`lang`** en **`slug`**. De `slug` is taalneutraal en
+koppelt de vertalingen aan elkaar — daaruit volgen de taalwisselaar, de
+`hreflang`-tags en alle interne links:
+
+```yaml
+---
+layout: default
+lang: en
+slug: velddagen          # zelfde slug als nl/velddagen.md
+title: Field days
+permalink: /en/field-days/   # mag per taal verschillen
+---
+```
+
+De permalink hoeft dus **niet** hetzelfde te zijn in beide talen
+(`/nl/radioamateur-worden/` ↔ `/en/become-a-radio-amateur/`).
+
+### Verwijzen naar een andere pagina
+
+Nooit een permalink hardcoden — zoek hem op via de slug:
+
+```liquid
+{%- include url.html slug='on9bd' lang=page.lang -%}
+<a href="{{ page_url | relative_url }}">…</a>
+```
+
+### Teksten
+
+Vaste teksten komen uit `_data/i18n.yml`:
+
+```liquid
+{%- assign t = site.data.i18n[page.lang] -%}
+{{ t.velddagen.title }}
+```
+
+Beide taalblokken moeten dezelfde sleutels hebben. Let op: gebruik **geen
+`{`/`}` in placeholders** (`%count%`, niet `%{count}`) — een accolade sluit de
+Liquid-expressie voortijdig af.
+
+### Teksten in datavelden
+
+**Taalgebonden velden dragen een achtervoegsel** (`_nl`, `_en`); velden zonder
+achtervoegsel gelden voor alle talen. Zo is aan het veld zelf te zien of het
+vertaald moet worden:
+
+```yaml
+- topic_nl: Draadantennes      # taalgebonden
+  topic_en: Wire antennas      # taalgebonden
+  speaker: ON6DC               # universeel — geen vertaling nodig
+```
+
+```liquid
+{% include field.html item=l key='topic' %}
+```
+
+`field.html` zoekt in deze volgorde: `<veld>_<taal>` → `<veld>_<default_lang>`
+→ `<veld>`. Ontbreekt een vertaling, dan valt de pagina dus terug op het
+Nederlands in plaats van leeg te renderen.
+
+Taalgebonden velden per bestand:
+
+| Bestand | `_nl` / `_en` |
+| ------- | ------------- |
+| `meetings.yml` | `when`, `venue`, `time` |
+| `voordrachten.yml` | `date_label` (alleen `_nl`), `location`, `topic` |
+| `velddagen.yml` | `date_label` (alleen `_nl`), `event`, `placement` |
+| `velddagen_fotos.yml` | `caption`, `alt` |
+| `nieuwsbrieven.yml` | `title` |
+| `silent-key.yml` | `text` |
+
+Alles daarbuiten is universeel: roepnamen, datums, scores, bestandsnamen,
+adressen, URL's, categorieën.
+
+**Datums hebben alleen een `_nl`-veld.** `date_label_nl` is Nederlandse copy;
+andere talen formatteren de ISO-datum zelf — voor voordrachten in
+`_includes/talk-row.html`, voor velddagen in `_includes/velddag-date.html`.
+Zo hoeft er maar één datum onderhouden te worden.
+
+### De taalpoort
+
+`/`, `/velddagen/`, `/about/`, … zijn geen echte pagina's meer maar
+`layout: redirect`-stubs. Ze lezen `localStorage.lang` en sturen door; zonder
+opgeslagen waarde (of bij een onbekende waarde) naar `default_lang`. De
+taalwisselaar schrijft die waarde weg — zie het blok onderaan
+`assets/js/main.js`.
+
+Stubs staan op `noindex` + `sitemap: false` en linken elke taal met `hreflang`,
+zodat crawlers en bezoekers zonder JavaScript er nog steeds door raken.
+
+### Een pagina toevoegen
+
+1. Maak `nl/<naam>.md` en `en/<naam>.md` met dezelfde `slug`, elk met eigen
+   `lang`, `title`, `permalink` en `description`.
+2. Zet de gedeelde opmaak in `_includes/pages/` als de pagina datagedreven is;
+   is het proza, schrijf het dan gewoon twee keer uit.
+3. Voeg de teksten toe aan **beide** blokken in `_data/i18n.yml`.
+4. Wil je hem in de navigatie? Zet een item met die `slug` in `nav.items`, in
+   beide talen.
+5. Oude URL blijven ondersteunen? Maak een stub met `layout: redirect` en een
+   `targets`-map.
+
+### Een taal toevoegen
+
+Blok bijzetten in `_data/i18n.yml`, code toevoegen aan `languages` in
+`_config.yml`, `<code>/`-paginabestanden aanmaken, en `targets` uitbreiden in
+elke redirect-stub.
+
+> **Let op bij `jekyll serve`:** de watcher herlaadt `_config.yml` **niet**.
+> Wijzig je `languages` of `default_lang`, herstart dan de server — anders
+> bouwt hij door met de oude config en verdwijnt de taalwisselaar uit de
+> gegenereerde pagina's.
+
 ## Content images — tiered format strategy (AVIF → WebP → JPEG)
 
 **Preferred way to add a content photo.** Ship three encodings of the same

@@ -1,0 +1,9 @@
+{%- comment -%}
+  Look up a page's URL by its language-neutral `slug` and a language code, so
+  templates never hard-code a permalink. Slugs are declared in the front matter
+  of every page in /nl/ and /en/.
+
+    {%- include url.html slug='velddagen' lang='en' -%}{{ page_url }}
+{%- endcomment -%}
+{%- assign _match = site.pages | where: 'slug', include.slug | where: 'lang', include.lang | first -%}
+{%- assign page_url = _match.url -%}

@@ -14,12 +14,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, follow">
   <title>{{ site.title }}</title>
-  {%- assign default_target = page.targets[site.default_lang] -%}
-  <link rel="canonical" href="{{ default_target | absolute_url }}">
+  {%- comment -%}
+    canonical points at the base language; x-default at the language an
+    unmatched visitor is actually redirected to (see the script below).
+  {%- endcomment -%}
+  {%- assign canonical_target = page.targets[site.default_lang] -%}
+  {%- assign x_default_lang = site.fallback_lang | default: site.default_lang -%}
+  {%- assign x_default_target = page.targets[x_default_lang] -%}
+  <link rel="canonical" href="{{ canonical_target | absolute_url }}">
   {%- for code in site.languages -%}
   <link rel="alternate" hreflang="{{ code }}" href="{{ page.targets[code] | absolute_url }}">
   {%- endfor -%}
-  <link rel="alternate" hreflang="x-default" href="{{ default_target | absolute_url }}">
+  <link rel="alternate" hreflang="x-default" href="{{ x_default_target | absolute_url }}">
   <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="32x32">
   <link rel="icon" href="{{ '/favicon.svg' | relative_url }}" type="image/svg+xml">
   <script>
@@ -29,11 +35,32 @@
         {{ code | jsonify }}: {{ page.targets[code] | relative_url | jsonify }}{% unless forloop.last %},{% endunless %}
         {%- endfor -%}
       };
-      var fallback = {{ site.default_lang | jsonify }};
+      var fallback = {{ site.fallback_lang | default: site.default_lang | jsonify }};
+      var has = function (code) {
+        return code != null && Object.prototype.hasOwnProperty.call(targets, code);
+      };
+
       var stored = null;
       // Private mode and blocked site data make localStorage throw, not return null.
       try { stored = window.localStorage.getItem('lang'); } catch (e) {}
-      var lang = Object.prototype.hasOwnProperty.call(targets, stored) ? stored : fallback;
+
+      // A stored choice always wins. Otherwise take the first browser language
+      // we publish: navigator.languages is ordered by the visitor's preference,
+      // and 'nl-BE' / 'en-GB' are matched on their primary subtag. A visitor who
+      // asks for neither gets `fallback`.
+      var lang = fallback;
+      if (has(stored)) {
+        lang = stored;
+      } else {
+        var prefs = (navigator.languages && navigator.languages.length)
+          ? navigator.languages
+          : [navigator.language || navigator.userLanguage || ''];
+        for (var i = 0; i < prefs.length; i++) {
+          var code = String(prefs[i]).toLowerCase().split('-')[0];
+          if (has(code)) { lang = code; break; }
+        }
+      }
+
       // replace() so the gateway does not end up in the back-button history.
       window.location.replace(targets[lang] + window.location.hash);
     })();

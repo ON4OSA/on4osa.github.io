@@ -19,16 +19,19 @@
   {%- seo title=false -%}
 
   {%- comment -%}
-    hreflang: point search engines at the same page in every language, and mark
-    the default language as x-default for visitors whose language we don't
-    serve. Only emitted on real pages (those carrying a slug).
+    hreflang: point search engines at the same page in every language.
+    x-default marks the page an unmatched visitor actually ends up on, so it
+    follows `fallback_lang` — the same language the gateway in
+    _layouts/redirect.html sends them to — not `default_lang`.
+    Only emitted on real pages (those carrying a slug).
   {%- endcomment -%}
+  {%- assign x_default_lang = site.fallback_lang | default: site.default_lang -%}
   {%- if page.slug -%}
   {%- for code in site.languages -%}
   {%- include url.html slug=page.slug lang=code -%}
   {%- if page_url -%}
   <link rel="alternate" hreflang="{{ code }}" href="{{ page_url | absolute_url }}">
-  {%- if code == site.default_lang -%}
+  {%- if code == x_default_lang -%}
   <link rel="alternate" hreflang="x-default" href="{{ page_url | absolute_url }}">
   {%- endif -%}
   {%- endif -%}

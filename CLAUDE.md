@@ -107,13 +107,26 @@ Zo hoeft er maar één datum onderhouden te worden.
 ### De taalpoort
 
 `/`, `/velddagen/`, `/about/`, … zijn geen echte pagina's meer maar
-`layout: redirect`-stubs. Ze lezen `localStorage.lang` en sturen door; zonder
-opgeslagen waarde (of bij een onbekende waarde) naar `default_lang`. De
-taalwisselaar schrijft die waarde weg — zie het blok onderaan
-`assets/js/main.js`.
+`layout: redirect`-stubs. Ze kiezen de taal in deze volgorde:
+
+1. **`localStorage.lang`** — een eerdere keuze via de taalwisselaar wint altijd.
+   De wisselaar schrijft die waarde weg; zie het blok onderaan
+   `assets/js/main.js`.
+2. **De browsertaal** — de eerste taal uit `navigator.languages` die we
+   publiceren. Er wordt op de primaire subtag vergeleken, dus `nl-BE` en
+   `nl-NL` gelden allebei als `nl`.
+3. **`fallback_lang`** (`en`) — voor wie noch Nederlands noch Engels vraagt.
+
+Let op het verschil met `default_lang` (`nl`): dat is de *basistaal* van de
+site (de `_nl`-velden en de canonical), niet wat een onbekende bezoeker te zien
+krijgt. `hreflang="x-default"` volgt daarom `fallback_lang`, niet
+`default_lang`: die tag hoort te wijzen naar de pagina waar een bezoeker zonder
+passende taal daadwerkelijk belandt, en dat is de Engelse.
 
 Stubs staan op `noindex` + `sitemap: false` en linken elke taal met `hreflang`,
-zodat crawlers en bezoekers zonder JavaScript er nog steeds door raken.
+zodat crawlers en bezoekers zonder JavaScript er nog steeds door raken. Hun
+canonical wijst naar de Nederlandse versie (de basistaal); hun `x-default` naar
+de Engelse, net als bij de echte pagina's.
 
 ### Een pagina toevoegen
 

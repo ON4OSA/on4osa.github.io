@@ -63,7 +63,13 @@ plugins:
 languages:
   - nl
   - en
+# The base language: the `_nl` fields in _data, the canonical URL and
+# hreflang="x-default".
 default_lang: nl
+# Where the language gateway sends a visitor whose browser asks for neither
+# Dutch nor English (a German speaker, say). Dutch readers still land on Dutch
+# because their browser says so — see _layouts/redirect.html.
+fallback_lang: en
 
 # Silence Sass deprecation warnings coming from dependencies (e.g. the
 # deprecated lighten()/darken() color functions used by older gems).

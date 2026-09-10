@@ -95,6 +95,9 @@
           <h3 class="visually-hidden" id="{{ vd_id }}-label">{{ t.velddagen.gallery_of }} {{ vd_event_name }} {{ vd_year }}</h3>
           <button type="button" class="btn-close btn-close-white galerij-close"
                   data-bs-dismiss="modal" aria-label="{{ t.carousel.close }}"></button>
+          {%- if vd_fotos.size > 1 -%}
+          <div class="galerij-counter" aria-live="polite">1&nbsp;/&nbsp;{{ vd_fotos.size }}</div>
+          {%- endif -%}
           <div id="{{ vd_id }}-carousel" class="carousel slide osa-carousel galerij-carousel">
             {%- if vd_fotos.size > 1 -%}
             <div class="carousel-indicators">

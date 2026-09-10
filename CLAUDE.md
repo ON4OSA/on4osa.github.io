@@ -318,6 +318,12 @@ Notes:
   the page, which *is* explicit — add a captioned entry in
   `_data/velddagen_fotos.yml` if a photo should appear there too.
 
+The lightbox itself: Bootstrap supplies Esc, backdrop-click, focus trapping,
+scroll locking and touch swipe. The block at the bottom of `assets/js/main.js`
+adds ←/→ and Home/End (Bootstrap only binds those while focus is *inside* the
+carousel, which never happens in a modal), the "3 / 7" counter, and eager
+loading of the neighbouring slides. Nothing to configure per gallery.
+
 ## OSA Nieuws — newsletter thumbnails
 
 The "OSA Nieuws" section shows each newsletter as a card rendered from the

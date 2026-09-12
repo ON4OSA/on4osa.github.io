@@ -292,9 +292,45 @@ layout: default
   </div>
 </section>
 
+<!-- Activaties -->
+<section id="activaties" class="section">
+  <div class="container">
+    <div class="section-head text-center">
+      <span class="section-kicker">{{ t.home.activations_kicker }}</span>
+      <h2 class="section-title">{{ t.home.activations_title }}</h2>
+      <p class="section-sub">{{ t.home.activations_sub }}</p>
+    </div>
+
+    {%- comment -%}
+      Four equal cards from t.home.activations, each with its own `button`
+      label. The link resolves in order: `slug` → internal page via url.html,
+      `url` → external site (new tab), neither → a visibly inert placeholder
+      rather than a dead href="#".
+    {%- endcomment -%}
+    <div class="row g-4">
+      {%- for a in t.home.activations -%}
+      <div class="col-12 col-sm-6 col-lg-3 d-flex">
+        <div class="activity-card">
+          <h3 class="activity-title">{{ a.title }}</h3>
+          <p class="activity-text">{{ a.text }}</p>
+          {%- if a.slug -%}
+            {%- include url.html slug=a.slug lang=lang -%}
+            <a class="btn btn-osa activity-btn" href="{{ page_url | relative_url }}">{{ a.button }}</a>
+          {%- elsif a.url -%}
+            <a class="btn btn-osa activity-btn" href="{{ a.url }}" target="_blank" rel="noopener">{{ a.button }}</a>
+          {%- else -%}
+            <span class="btn btn-osa activity-btn disabled" aria-disabled="true">{{ a.button }}</span>
+          {%- endif -%}
+        </div>
+      </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
 <!-- OSA Nieuws (newsletters) -->
 {%- if site.data.nieuwsbrieven and site.data.nieuwsbrieven.size > 0 -%}
-<section id="osa-nieuws" class="section">
+<section id="osa-nieuws" class="section section-alt">
   <div class="container">
     <div class="section-head text-center">
       <span class="section-kicker">{{ t.home.news_kicker }}</span>

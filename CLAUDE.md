@@ -34,7 +34,7 @@ koppelt de vertalingen aan elkaar — daaruit volgen de taalwisselaar, de
 ---
 layout: default
 lang: en
-slug: velddagen          # zelfde slug als nl/velddagen.md
+slug: field-days         # zelfde slug als nl/velddagen.md
 title: Field days
 permalink: /en/field-days/   # mag per taal verschillen
 ---
@@ -127,6 +127,16 @@ Stubs staan op `noindex` + `sitemap: false` en linken elke taal met `hreflang`,
 zodat crawlers en bezoekers zonder JavaScript er nog steeds door raken. Hun
 canonical wijst naar de Nederlandse versie (de basistaal); hun `x-default` naar
 de Engelse, net als bij de echte pagina's.
+
+### Activaties-kaarten op de homepage
+
+De vier kaarten komen uit `home.activations` in `_data/i18n.yml`, per taal.
+Elk item heeft `title`, `text` en `button` (het knoplabel — per item, dus
+"Onze resultaten" naast "Naar illw.net"), plus één van:
+
+- `slug` — interne pagina, opgezocht via `url.html`;
+- `url` — externe site, opent in een nieuw tabblad;
+- geen van beide — de knop wordt een zichtbaar uitgeschakelde placeholder.
 
 ### Een pagina toevoegen
 

@@ -31,8 +31,9 @@ nl:
       - title: OSA Nieuws
         slug: home
         anchor: osa-nieuws
-      - title: Velddagen
-        slug: velddagen
+      - title: Activaties
+        slug: home
+        anchor: activaties
       - title: Radioamateur worden
         slug: license
       - title: Silent Key
@@ -74,6 +75,27 @@ nl:
       Dit station wordt door de leden van OSA bij verschillende gelegenheden geactiveerd
       en is uitgerust met antennes voor zowel de HF- als de VHF-banden.
     on9bd_more: Meer info
+    activations_kicker: Op de band
+    activations_title: Activaties
+    activations_sub: Op de band, in het veld en aan boord — het jaar rond.
+    # `button` is button label per item. `slug` -> internal pagina, `url` ->
+    # externe site, neither -> button without link (placeholder).
+    activations:
+      - title: Velddagen
+        text: Tweemaal per jaar bouwen we een volledig veld station op voor de UBA-velddagen CW en SSB.
+        button: Bekijk resultaten
+        slug: field-days
+      - title: International Lighthouse Lightship Weekend
+        text: In augustus activeren we ON9BD aan boord van de West-Hinder 3, samen met andere vuurtorens en lichtschepen wereldwijd.
+        button: Naar de website
+        url: https://illw.net/
+      - title: Museum Ships Weekend
+        text: In juni is de West-Hinder 3 als museumschip in de lucht, samen met historische schepen over de hele wereld.
+        button: Naar de website
+        url: https://nj2bb.org/museum/
+      - title: Special events
+        text: Occasioneel activeren we met een special callsign bij herdenkingen, jubilea en regionale evenementen.
+        button: Binnenkort meer
     news_kicker: Nieuwsbrief
     news_title: OSA Nieuws
     news_sub: Onze clubnieuwsbrieven — klik een editie om de PDF te openen.
@@ -182,8 +204,9 @@ en:
       - title: OSA News
         slug: home
         anchor: osa-nieuws
-      - title: Field days
-        slug: velddagen
+      - title: Activations
+        slug: home
+        anchor: activaties
       - title: Become a radio amateur
         slug: license
       - title: Silent Key
@@ -225,6 +248,25 @@ en:
       OSA members activate it on various occasions and it is equipped with
       antennas for both the HF and VHF bands.
     on9bd_more: Read more
+    activations_kicker: On the air
+    activations_title: Activations
+    activations_sub: On the air, in the field and on board — all year round.
+    activations:
+      - title: Field days
+        text: Twice a year we build a complete field station for the UBA CW and SSB field days.
+        button: Our results
+        slug: field-days
+      - title: International Lighthouse Lightship Weekend
+        text: Each August we put ON9BD on the air from the West-Hinder 3, alongside lighthouses and lightships worldwide.
+        button: Visit the website
+        url: https://illw.net/
+      - title: Museum Ships Weekend
+        text: Each June the West-Hinder 3 joins museum ships around the world on the air.
+        button: Visit the website
+        url: https://nj2bb.org/museum/
+      - title: Special events
+        text: Occasionally we activate with a special callsigns for commemorations, anniversaries and regional events.
+        button: Coming soon
     news_kicker: Newsletter
     news_title: OSA News
     # Only set in this block: the newsletters themselves are Dutch-only, which

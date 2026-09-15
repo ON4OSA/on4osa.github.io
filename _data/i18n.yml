@@ -17,10 +17,6 @@ nl:
   meta:
     tagline: ON4OSA – Radioamateurclub in Antwerpen | UBA-sectie OSA
     title_suffix: ON4OSA – Radioamateurclub Antwerpen
-    description: >-
-      ON4OSA is een radioamateurclub in Antwerpen en sectie OSA van de UBA.
-      Ontdek onze bijeenkomsten, voordrachten, velddagen en activiteiten voor
-      zendamateurs.
 
   nav:
     toggle: Menu openen/sluiten
@@ -190,10 +186,6 @@ en:
   meta:
     tagline: ON4OSA – Amateur Radio Club in Antwerp | UBA section OSA
     title_suffix: ON4OSA – Amateur Radio Club Antwerp
-    description: >-
-      ON4OSA is an amateur radio club in Antwerp and section OSA of the UBA.
-      Discover our meetings, talks, field days and activities for radio
-      amateurs.
 
   nav:
     toggle: Open/close menu

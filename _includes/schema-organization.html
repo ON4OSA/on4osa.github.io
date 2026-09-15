@@ -22,7 +22,7 @@
   "sameAs": {{ site.social.links | jsonify }},
   {%- endif %}
   "url": {{ '/' | absolute_url | jsonify }},
-  "description": {{ site.description | strip_newlines | strip | jsonify }},
+  "description": {{ page.description | default: site.description | strip_newlines | strip | jsonify }},
   "email": {{ site.email | jsonify }},
   "image": {{ '/assets/img/westhinder.jpg' | absolute_url | jsonify }},
   "areaServed": {

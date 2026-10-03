@@ -4,6 +4,9 @@
 # `file` staat in /assets/nieuwsbrieven/, thumbnail (eerste pagina) in
 # /assets/img/nieuwsbrieven/ met dezelfde bestandsnaam (.jpg).
 # Nieuwste bovenaan.
+- title_nl: OSA Nieuws 2026 · nr. 3
+  title_en: OSA News 2026 · no. 3
+  file: OSA_nieuws_2026_3
 - title_nl: OSA Nieuws 2026 · nr. 2
   title_en: OSA News 2026 · no. 2
   file: OSA_nieuws_2026_2

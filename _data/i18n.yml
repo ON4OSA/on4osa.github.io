@@ -170,6 +170,11 @@ nl:
     photo: Foto
     close: Sluiten
 
+  # Deelbare link per sectiekop — zie _includes/heading-anchor.html.
+  anchor:
+    copy: Kopieer de link naar deze sectie
+    copied: Link gekopieerd
+
   error:
     kicker: Fout 404
     title: Pagina niet gevonden
@@ -340,6 +345,11 @@ en:
     next: Next
     photo: Photo
     close: Close
+
+  # Shareable per-section link — see _includes/heading-anchor.html.
+  anchor:
+    copy: Copy the link to this section
+    copied: Link copied
 
   error:
     kicker: Error 404

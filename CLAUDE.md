@@ -3,163 +3,163 @@
 Jekyll site (no theme gem; custom layouts in `_layouts/`, Bootstrap 5 vendored
 under `assets/`). Content tables are driven by data files in `_data/`.
 
-## Meertaligheid (NL / EN)
+## Multilingual (NL / EN)
 
-Elke pagina bestaat één keer per taal, onder `/nl/…` en `/en/…`. Er is **geen
-plugin** in het spel — alles is Liquid, zodat de site op GitHub Pages blijft
-bouwen.
+Every page exists once per language, under `/nl/…` and `/en/…`. There is **no
+plugin** involved — it is all Liquid, so the site keeps building on GitHub
+Pages.
 
-> **De Engelse content gebruikt US English** (spelling, woordkeuze én
-> datumnotatie: `Sep 6–7, 2025`, niet `6–7 Sep 2025`).
+> **The English content uses US English** (spelling, word choice and date
+> format: `Sep 6–7, 2025`, not `6–7 Sep 2025`).
 
-### Waar wat staat
+### Where things live
 
-| Bestand | Rol |
-| ------- | --- |
-| `_config.yml` → `languages`, `default_lang` | welke talen bestaan, en welke de standaard is |
-| `_data/i18n.yml` | **alle** vaste teksten, per taal (navigatie, knoppen, tabelkoppen …) |
-| `nl/*.md`, `en/*.md` | de paginabestanden; dun voor datagedreven pagina's |
-| `_includes/pages/*.html` | de gedeelde opmaak van datagedreven pagina's |
-| `_includes/url.html` | zoekt een URL op via `slug` + taal |
-| `_includes/field.html` | leest een vertaald veld uit een data-item |
-| `_layouts/redirect.html` | de taalpoort op de oude URL's (`/`, `/about/`, …) |
+| File | Role |
+| ---- | ---- |
+| `_config.yml` → `languages`, `default_lang`, `fallback_lang` | which languages exist, the base language, and the gateway fallback |
+| `_data/i18n.yml` | **all** fixed UI strings, per language (navigation, buttons, table headers …) |
+| `nl/*.md`, `en/*.md` | the page files; thin for data-driven pages |
+| `_includes/pages/*.html` | shared markup for data-driven pages |
+| `_includes/url.html` | looks up a URL by `slug` + language |
+| `_includes/field.html` | reads a translated field from a data item |
+| `_layouts/redirect.html` | the language gateway on the old URLs (`/`, `/about/`, …) |
 
-### Front matter van een pagina
+### Page front matter
 
-Elke echte pagina heeft **`lang`** en **`slug`**. De `slug` is taalneutraal en
-koppelt de vertalingen aan elkaar — daaruit volgen de taalwisselaar, de
-`hreflang`-tags en alle interne links:
+Every real page has **`lang`** and **`slug`**. The `slug` is language-neutral
+and ties the translations together — the language switcher, the `hreflang`
+tags and all internal links are derived from it:
 
 ```yaml
 ---
 layout: default
 lang: en
-slug: field-days         # zelfde slug als nl/velddagen.md
+slug: field-days         # same slug as nl/velddagen.md
 title: Field days
-permalink: /en/field-days/   # mag per taal verschillen
+permalink: /en/field-days/   # may differ per language
 ---
 ```
 
-De permalink hoeft dus **niet** hetzelfde te zijn in beide talen
+So the permalink does **not** have to match across languages
 (`/nl/radioamateur-worden/` ↔ `/en/become-a-radio-amateur/`).
 
-### Verwijzen naar een andere pagina
+### Linking to another page
 
-Nooit een permalink hardcoden — zoek hem op via de slug:
+Never hardcode a permalink — look it up by slug:
 
 ```liquid
 {%- include url.html slug='on9bd' lang=page.lang -%}
 <a href="{{ page_url | relative_url }}">…</a>
 ```
 
-### Teksten
+### UI strings
 
-Vaste teksten komen uit `_data/i18n.yml`:
+Fixed strings come from `_data/i18n.yml`:
 
 ```liquid
 {%- assign t = site.data.i18n[page.lang] -%}
 {{ t.velddagen.title }}
 ```
 
-Beide taalblokken moeten dezelfde sleutels hebben. Let op: gebruik **geen
-`{`/`}` in placeholders** (`%count%`, niet `%{count}`) — een accolade sluit de
-Liquid-expressie voortijdig af.
+Both language blocks must have the same keys. Note: **don't use `{`/`}` in
+placeholders** (`%count%`, not `%{count}`) — a brace closes the Liquid
+expression early.
 
-### Teksten in datavelden
+### Strings in data fields
 
-**Taalgebonden velden dragen een achtervoegsel** (`_nl`, `_en`); velden zonder
-achtervoegsel gelden voor alle talen. Zo is aan het veld zelf te zien of het
-vertaald moet worden:
+**Language-specific fields carry a suffix** (`_nl`, `_en`); fields without a
+suffix apply to every language. That way the field name itself tells you
+whether it needs translating:
 
 ```yaml
-- topic_nl: Draadantennes      # taalgebonden
-  topic_en: Wire antennas      # taalgebonden
-  speaker: ON6DC               # universeel — geen vertaling nodig
+- topic_nl: Draadantennes      # language-specific
+  topic_en: Wire antennas      # language-specific
+  speaker: ON6DC               # universal — no translation needed
 ```
 
 ```liquid
 {% include field.html item=l key='topic' %}
 ```
 
-`field.html` zoekt in deze volgorde: `<veld>_<taal>` → `<veld>_<default_lang>`
-→ `<veld>`. Ontbreekt een vertaling, dan valt de pagina dus terug op het
-Nederlands in plaats van leeg te renderen.
+`field.html` looks up in this order: `<field>_<lang>` → `<field>_<default_lang>`
+→ `<field>`. So a missing translation falls back to the Dutch instead of
+rendering empty.
 
-Taalgebonden velden per bestand:
+Language-specific fields per file:
 
-| Bestand | `_nl` / `_en` |
-| ------- | ------------- |
+| File | `_nl` / `_en` |
+| ---- | ------------- |
 | `meetings.yml` | `when`, `venue`, `time` |
-| `voordrachten.yml` | `date_label` (alleen `_nl`), `location`, `topic` |
-| `velddagen.yml` | `date_label` (alleen `_nl`), `event`, `placement` |
+| `voordrachten.yml` | `date_label` (`_nl` only), `location`, `topic` |
+| `velddagen.yml` | `date_label` (`_nl` only), `event`, `placement` |
 | `velddagen_fotos.yml` | `caption`, `alt` |
 | `nieuwsbrieven.yml` | `title` |
 | `silent-key.yml` | `text` |
 
-Alles daarbuiten is universeel: roepnamen, datums, scores, bestandsnamen,
-adressen, URL's, categorieën.
+Everything else is universal: callsigns, dates, scores, filenames, addresses,
+URLs, categories.
 
-**Datums hebben alleen een `_nl`-veld.** `date_label_nl` is Nederlandse copy;
-andere talen formatteren de ISO-datum zelf — voor voordrachten in
-`_includes/talk-row.html`, voor velddagen in `_includes/velddag-date.html`.
-Zo hoeft er maar één datum onderhouden te worden.
+**Dates only have an `_nl` field.** `date_label_nl` is Dutch copy; other
+languages format the ISO date themselves — talks in `_includes/talk-row.html`,
+field days in `_includes/velddag-date.html`. That way there is only one date to
+maintain.
 
-### De taalpoort
+### The language gateway
 
-`/`, `/velddagen/`, `/about/`, … zijn geen echte pagina's meer maar
-`layout: redirect`-stubs. Ze kiezen de taal in deze volgorde:
+`/`, `/velddagen/`, `/about/`, … are no longer real pages but `layout: redirect`
+stubs. They pick the language in this order:
 
-1. **`localStorage.lang`** — een eerdere keuze via de taalwisselaar wint altijd.
-   De wisselaar schrijft die waarde weg; zie het blok onderaan
+1. **`localStorage.lang`** — an earlier choice made with the language switcher
+   always wins. The switcher stores that value; see the block near the top of
    `assets/js/main.js`.
-2. **De browsertaal** — de eerste taal uit `navigator.languages` die we
-   publiceren. Er wordt op de primaire subtag vergeleken, dus `nl-BE` en
-   `nl-NL` gelden allebei als `nl`.
-3. **`fallback_lang`** (`en`) — voor wie noch Nederlands noch Engels vraagt.
+2. **The browser language** — the first language in `navigator.languages` that
+   we publish. Matching is on the primary subtag, so `nl-BE` and `nl-NL` both
+   count as `nl`.
+3. **`fallback_lang`** (`en`) — for visitors asking for neither Dutch nor
+   English.
 
-Let op het verschil met `default_lang` (`nl`): dat is de *basistaal* van de
-site (de `_nl`-velden en de canonical), niet wat een onbekende bezoeker te zien
-krijgt. `hreflang="x-default"` volgt daarom `fallback_lang`, niet
-`default_lang`: die tag hoort te wijzen naar de pagina waar een bezoeker zonder
-passende taal daadwerkelijk belandt, en dat is de Engelse.
+Mind the difference with `default_lang` (`nl`): that is the site's *base
+language* (the `_nl` fields and the canonical), not what an unknown visitor
+gets to see. `hreflang="x-default"` therefore follows `fallback_lang`, not
+`default_lang`: that tag should point at the page a visitor without a matching
+language actually lands on, which is the English one.
 
-Stubs staan op `noindex` + `sitemap: false` en linken elke taal met `hreflang`,
-zodat crawlers en bezoekers zonder JavaScript er nog steeds door raken. Hun
-canonical wijst naar de Nederlandse versie (de basistaal); hun `x-default` naar
-de Engelse, net als bij de echte pagina's.
+Stubs are `noindex` + `sitemap: false` and link every language with
+`hreflang`, so crawlers and visitors without JavaScript still get through.
+Their canonical points to the Dutch version (the base language); their
+`x-default` to the English one, same as on the real pages.
 
-### Activaties-kaarten op de homepage
+### Activations cards on the homepage
 
-De vier kaarten komen uit `home.activations` in `_data/i18n.yml`, per taal.
-Elk item heeft `title`, `text` en `button` (het knoplabel — per item, dus
-"Onze resultaten" naast "Naar illw.net"), plus één van:
+The four cards come from `home.activations` in `_data/i18n.yml`, per language.
+Each item has `title`, `text` and `button` (the button label — per item, so
+"Our results" next to "Visit the website"), plus one of:
 
-- `slug` — interne pagina, opgezocht via `url.html`;
-- `url` — externe site, opent in een nieuw tabblad;
-- geen van beide — de knop wordt een zichtbaar uitgeschakelde placeholder.
+- `slug` — an internal page, looked up via `url.html`;
+- `url` — an external site, opens in a new tab;
+- neither — the button becomes a visibly disabled placeholder.
 
-### Een pagina toevoegen
+### Adding a page
 
-1. Maak `nl/<naam>.md` en `en/<naam>.md` met dezelfde `slug`, elk met eigen
-   `lang`, `title`, `permalink` en `description`.
-2. Zet de gedeelde opmaak in `_includes/pages/` als de pagina datagedreven is;
-   is het proza, schrijf het dan gewoon twee keer uit.
-3. Voeg de teksten toe aan **beide** blokken in `_data/i18n.yml`.
-4. Wil je hem in de navigatie? Zet een item met die `slug` in `nav.items`, in
-   beide talen.
-5. Oude URL blijven ondersteunen? Maak een stub met `layout: redirect` en een
-   `targets`-map.
+1. Create `nl/<name>.md` and `en/<name>.md` with the same `slug`, each with its
+   own `lang`, `title`, `permalink` and `description`.
+2. Put the shared markup in `_includes/pages/` if the page is data-driven; if
+   it is prose, simply write it twice.
+3. Add the strings to **both** blocks in `_data/i18n.yml`.
+4. Want it in the navigation? Add an item with that `slug` to `nav.items`, in
+   both languages.
+5. Need the old URL to keep working? Create a stub with `layout: redirect` and
+   a `targets` map.
 
-### Een taal toevoegen
+### Adding a language
 
-Blok bijzetten in `_data/i18n.yml`, code toevoegen aan `languages` in
-`_config.yml`, `<code>/`-paginabestanden aanmaken, en `targets` uitbreiden in
-elke redirect-stub.
+Add a block to `_data/i18n.yml`, add the code to `languages` in `_config.yml`,
+create the `<code>/` page files, and extend `targets` in every redirect stub.
 
-> **Let op bij `jekyll serve`:** de watcher herlaadt `_config.yml` **niet**.
-> Wijzig je `languages` of `default_lang`, herstart dan de server — anders
-> bouwt hij door met de oude config en verdwijnt de taalwisselaar uit de
-> gegenereerde pagina's.
+> **Beware with `jekyll serve`:** the watcher does **not** reload
+> `_config.yml`. If you change `languages` or `default_lang`, restart the
+> server — otherwise it keeps building with the old config and the language
+> switcher disappears from the generated pages.
 
 ## Content images — tiered format strategy (AVIF → WebP → JPEG)
 
@@ -388,6 +388,39 @@ done
 1. Drop `OSA_nieuws_YYYY_N.pdf` into `assets/nieuwsbrieven/` (`chmod 644`).
 2. Run the single-file command above for it.
 3. Add a two-line entry at the top of `_data/nieuwsbrieven.yml`.
+
+## Shareable section links (copy icon next to a heading)
+
+Every `<h2 class="vd-subhead">` on `/radioamateur-worden/` (and
+`/become-a-radio-amateur/`) carries a chain icon. Clicking it copies that
+section's full URL to the clipboard, so you can send someone straight to one
+part of the page.
+
+Adding it to a heading — the `id` must match the heading's own. Use a short
+keyword from the heading, in that page's language (`voorbereiden` on the
+Dutch page, `preparing` on the English one), lowercase and hyphenated:
+
+```liquid
+<h2 class="vd-subhead" id="examen">Het examen per klasse{% include heading-anchor.html id='examen' %}</h2>
+```
+
+- The strings (`anchor.copy`, `anchor.copied`) live in `_data/i18n.yml`, per
+  language; the include fetches them itself via `page.lang`.
+- The icon is a **real `<a href="#id">`**. Without JavaScript — or when the
+  clipboard is refused — it still works as a plain jump link.
+- After a successful copy the JS sets the hash with `history.replaceState`
+  instead of letting the link navigate: the default jump would needlessly
+  scroll the heading under the navbar while you're already looking at it.
+- Visibility: hidden until you hover the heading, but **always visible where
+  hover doesn't exist** (touch) — the same `@media (hover: hover) and (pointer:
+  fine)` trick as the carousel captions. `:focus-visible` reveals it too,
+  because keyboard users never get a hover.
+- The confirmation bubble sits **below** the icon, right-aligned: above it
+  would disappear under the sticky navbar, and centered it would run off-screen
+  on a long heading on mobile.
+- **Keep the full `0 0 24 24` viewBox** and size the icon in CSS. Trimming the
+  viewBox to the artwork leaves the strokes touching its edge, and Firefox
+  snaps the SVG viewport to whole device pixels and clips them.
 
 ## Favicons and app icons
 

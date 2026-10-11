@@ -1,0 +1,17 @@
+{%- comment -%}
+  Deep-link icon for a section heading. Renders a link to `id` on the current
+  page; assets/js/main.js turns a click into "copy the absolute URL", so a
+  visitor can share a link straight to one section.
+
+      <h2 class="vd-subhead" id="examen">Het examen per klasse{% include heading-anchor.html id='examen' %}</h2>
+
+  The `id` must match the heading's own id — without JavaScript the icon stays
+  an ordinary jump link, which is why it carries a real href and a label.
+{%- endcomment -%}
+{%- assign t = site.data.i18n[page.lang] | default: site.data.i18n[site.default_lang] -%}
+<a class="heading-anchor" href="#{{ include.id }}"
+   aria-label="{{ t.anchor.copy }}" data-copied="{{ t.anchor.copied }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="M9.6 14.4a3.8 3.8 0 0 0 5.66 0l5.2-5.2a3.8 3.8 0 1 0-5.66-5.66l-2.2 2.2"></path>
+  <path d="M14.4 9.6a3.8 3.8 0 0 0-5.66 0l-5.2 5.2a3.8 3.8 0 1 0 5.66 5.66l2.2-2.2"></path>
+</svg></a>

@@ -41,7 +41,7 @@ description: >-
       </div>
     </div>
 
-    <h2 class="vd-subhead" id="klassen">The three classes</h2>
+    <h2 class="vd-subhead" id="classes">The three classes{% include heading-anchor.html id='classes' %}</h2>
     <div class="row justify-content-center">
       <div class="col-lg-9">
         <div class="prose">
@@ -129,7 +129,7 @@ description: >-
       </table>
     </div>
 
-    <h2 class="vd-subhead" id="examen">The exam per class</h2>
+    <h2 class="vd-subhead" id="exam">The exam per class{% include heading-anchor.html id='exam' %}</h2>
     <div class="table-responsive results-table">
       <table class="table align-middle">
         <thead>
@@ -193,7 +193,7 @@ description: >-
       </div>
     </div>
 
-    <h2 class="vd-subhead" id="bipt">Taking the exam at the BIPT in Brussels</h2>
+    <h2 class="vd-subhead" id="bipt">Taking the exam at the BIPT in Brussels{% include heading-anchor.html id='bipt' %}</h2>
     <div class="row justify-content-center">
       <div class="col-lg-9">
         <div class="prose">
@@ -249,7 +249,7 @@ description: >-
       </div>
     </div>
 
-    <h2 class="vd-subhead" id="praktische-proef">The practical test (class C)</h2>
+    <h2 class="vd-subhead" id="practical-test">The practical test (class C){% include heading-anchor.html id='practical-test' %}</h2>
     <div class="row justify-content-center">
       <div class="col-lg-9">
         <div class="prose">
@@ -271,7 +271,7 @@ description: >-
       </div>
     </div>
 
-    <h2 class="vd-subhead" id="morseproef">The Morse test</h2>
+    <h2 class="vd-subhead" id="morse-test">The Morse test{% include heading-anchor.html id='morse-test' %}</h2>
     <div class="row justify-content-center">
       <div class="col-lg-9">
         <div class="prose">
@@ -338,7 +338,7 @@ description: >-
       </div>
     </div>
 
-    <h2 class="vd-subhead" id="voorbereiden">Preparing</h2>
+    <h2 class="vd-subhead" id="preparing">Preparing{% include heading-anchor.html id='preparing' %}</h2>
     <div class="row justify-content-center">
       <div class="col-lg-9">
         <div class="prose">
@@ -382,7 +382,7 @@ description: >-
       </div>
     </div>
 
-    <h2 class="vd-subhead" id="bronnen">Sources</h2>
+    <h2 class="vd-subhead" id="sources">Sources{% include heading-anchor.html id='sources' %}</h2>
     <div class="row justify-content-center">
       <div class="col-lg-9">
         <div class="prose">

@@ -683,6 +683,59 @@ h1[id], h2[id], h3[id], h4[id] { scroll-margin-top: 88px; }
   border-bottom: 2px solid var(--osa-line);
 }
 .vd-subhead:first-of-type { margin-top: 0; }
+
+/* Deep-link icon in a section heading. Hidden until the heading is hovered, so
+   it never competes with the title, but always present for touch (no hover) and
+   for keyboard focus. Clicking copies the section URL — see main.js. */
+.heading-anchor {
+  position: relative;
+  margin-left: .45rem;
+  /* Deliberately faint (~2:1 on white, below the 3:1 non-text guideline) so it
+     never competes with the heading. Acceptable because it is a hover-only
+     extra: the same section links work without it. */
+  color: #adb5c4;
+  line-height: 1;
+  transition: opacity .15s ease, color .15s ease;
+}
+.heading-anchor svg {
+  /* The full 24-unit viewBox leaves ~1.45 units of air around the artwork.
+     Don't trim it to the ink: Firefox snaps the SVG viewport to whole device
+     pixels and cuts off strokes that touch its edge. Size comes from here
+     instead — .85em puts the ink at ~13px, and the SVG's stroke-width of 2.4
+     keeps the line at ~1.5px. overflow: visible is a second guard against
+     that rounding. */
+  width: .85em;
+  height: .85em;
+  overflow: visible;
+  vertical-align: middle;
+}
+@media (hover: hover) and (pointer: fine) {
+  .heading-anchor { opacity: 0; }
+  .vd-subhead:hover .heading-anchor { opacity: 1; }
+  .heading-anchor:hover { color: var(--osa-accent); }
+}
+/* Keyboard users never trigger :hover, so focus has to reveal it too. */
+.heading-anchor:focus-visible { opacity: 1; }
+/* Confirmation bubble; the text comes from data-copied (per language). */
+.heading-anchor.is-copied { opacity: 1; }
+.heading-anchor.is-copied::after {
+  content: attr(data-copied);
+  position: absolute;
+  /* Below the icon, right-aligned to it: above would slide under the sticky
+     navbar on a heading you just jumped to, and centring would push the bubble
+     past the viewport when a long heading puts the icon near the right edge. */
+  top: calc(100% + .35rem);
+  right: 0;
+  padding: .22rem .5rem;
+  border-radius: 6px;
+  background: var(--osa-ink);
+  color: #fff;
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  white-space: nowrap;
+  pointer-events: none;
+}
 .lezing-topic { font-weight: 600; }
 
 /* ---------- Radioamateur worden (licence page) ---------- */

@@ -118,3 +118,72 @@
     carouselEl.addEventListener('slid.bs.carousel', sync);
   });
 })();
+
+/* ---------------------------------------------------------------------------
+ * Section deep links — clicking the icon beside a heading copies that
+ * section's URL, so a visitor can share a link straight to it.
+ *
+ * The icon is a real <a href="#id">, so it still works as a jump link with
+ * JavaScript off, or when the clipboard is refused. On success we update the
+ * address bar with replaceState rather than letting the link navigate: the
+ * default jump would scroll the heading under the fixed navbar for no reason,
+ * since the reader is already looking at it.
+ * ------------------------------------------------------------------------- */
+(function () {
+  'use strict';
+
+  var RESET_MS = 1800;
+  var status = null;
+
+  // One shared live region; a CSS ::after bubble is invisible to screen readers.
+  function announce(message) {
+    if (!status) {
+      status = document.createElement('span');
+      status.className = 'visually-hidden';
+      status.setAttribute('role', 'status');
+      status.setAttribute('aria-live', 'polite');
+      document.body.appendChild(status);
+    }
+    status.textContent = message;
+  }
+
+  function copy(text) {
+    // The async API needs a secure context: https, or localhost while testing.
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text);
+    }
+    return new Promise(function (resolve, reject) {
+      var field = document.createElement('textarea');
+      field.value = text;
+      field.setAttribute('readonly', '');
+      field.style.cssText = 'position:fixed;top:0;left:-9999px';
+      document.body.appendChild(field);
+      field.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) { /* ok stays false */ }
+      document.body.removeChild(field);
+      ok ? resolve() : reject();
+    });
+  }
+
+  document.addEventListener('click', function (event) {
+    var link = event.target.closest ? event.target.closest('.heading-anchor') : null;
+    if (!link) return;
+    event.preventDefault();
+
+    var url = link.href; // absolute, hash included
+
+    copy(url).then(function () {
+      if (window.history && history.replaceState) history.replaceState(null, '', url);
+      link.classList.add('is-copied');
+      announce(link.getAttribute('data-copied') || '');
+      clearTimeout(link.copiedTimer);
+      link.copiedTimer = setTimeout(function () {
+        link.classList.remove('is-copied');
+      }, RESET_MS);
+    }, function () {
+      // Clipboard unavailable or blocked — behave like the plain link it is.
+      window.location.hash = link.getAttribute('href');
+    });
+  });
+})();

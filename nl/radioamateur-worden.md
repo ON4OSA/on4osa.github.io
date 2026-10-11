@@ -41,7 +41,7 @@ description: >-
       </div>
     </div>
 
-    <h2 class="vd-subhead" id="klassen">De drie klassen</h2>
+    <h2 class="vd-subhead" id="klassen">De drie klassen{% include heading-anchor.html id='klassen' %}</h2>
     <div class="row justify-content-center">
       <div class="col-lg-9">
         <div class="prose">
@@ -129,7 +129,7 @@ description: >-
       </table>
     </div>
 
-    <h2 class="vd-subhead" id="examen">Het examen per klasse</h2>
+    <h2 class="vd-subhead" id="examen">Het examen per klasse{% include heading-anchor.html id='examen' %}</h2>
     <div class="table-responsive results-table">
       <table class="table align-middle">
         <thead>
@@ -192,7 +192,7 @@ description: >-
       </div>
     </div>
 
-    <h2 class="vd-subhead" id="bipt">Examen afleggen bij het BIPT in Brussel</h2>
+    <h2 class="vd-subhead" id="bipt">Examen afleggen bij het BIPT in Brussel{% include heading-anchor.html id='bipt' %}</h2>
     <div class="row justify-content-center">
       <div class="col-lg-9">
         <div class="prose">
@@ -251,7 +251,7 @@ description: >-
       </div>
     </div>
 
-    <h2 class="vd-subhead" id="praktische-proef">De praktische proef (klasse C)</h2>
+    <h2 class="vd-subhead" id="praktische-proef">De praktische proef (klasse C){% include heading-anchor.html id='praktische-proef' %}</h2>
     <div class="row justify-content-center">
       <div class="col-lg-9">
         <div class="prose">
@@ -273,7 +273,7 @@ description: >-
       </div>
     </div>
 
-    <h2 class="vd-subhead" id="morseproef">De morseproef</h2>
+    <h2 class="vd-subhead" id="morseproef">De morseproef{% include heading-anchor.html id='morseproef' %}</h2>
     <div class="row justify-content-center">
       <div class="col-lg-9">
         <div class="prose">
@@ -341,7 +341,7 @@ description: >-
       </div>
     </div>
 
-    <h2 class="vd-subhead" id="voorbereiden">Je voorbereiden</h2>
+    <h2 class="vd-subhead" id="voorbereiden">Je voorbereiden{% include heading-anchor.html id='voorbereiden' %}</h2>
     <div class="row justify-content-center">
       <div class="col-lg-9">
         <div class="prose">
@@ -384,7 +384,7 @@ description: >-
       </div>
     </div>
 
-    <h2 class="vd-subhead" id="bronnen">Bronnen</h2>
+    <h2 class="vd-subhead" id="bronnen">Bronnen{% include heading-anchor.html id='bronnen' %}</h2>
     <div class="row justify-content-center">
       <div class="col-lg-9">
         <div class="prose">

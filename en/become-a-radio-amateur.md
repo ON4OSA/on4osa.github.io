@@ -357,10 +357,18 @@ description: >-
               cases no prior knowledge is required.
             </li>
             <li>
-              <strong>The UBA online learning environment.</strong> With practice
+              <strong>The UBA online learning environment</strong>
+              <span class="lic-hint">(requires UBA membership)</span>. With practice
               questions per class — roughly 800 questions for class A (plus a mock exam),
               400 for class B and 250 for class C — and forums for your questions about
               the syllabus.
+            </li>
+            <li>
+              <strong><a href="https://radioamateurexamen.be/" target="_blank" rel="noopener">radioamateurexamen.be</a></strong>
+              <span class="lic-hint">(freely accessible)</span>. Free practice questions for
+              the Belgian radio amateur exam, along with a summary of the legislation.
+              The legislation questions are the same for classes A, B and C, so they are
+              useful whichever class you sit. The site is in Dutch and French.
             </li>
           </ul>
           <p>

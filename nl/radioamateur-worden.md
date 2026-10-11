@@ -360,9 +360,17 @@ description: >-
               geen voorkennis vereist.
             </li>
             <li>
-              <strong>Online leeromgeving van de UBA.</strong> Met oefenvragen per
+              <strong>Online leeromgeving van de UBA</strong>
+              <span class="lic-hint">(UBA-lidmaatschap vereist)</span>. Met oefenvragen per
               klasse — ongeveer 800 vragen voor klasse A (plus een proefexamen), 400 voor
               klasse B en 250 voor klasse C — en forums voor je vragen over de leerstof.
+            </li>
+            <li>
+              <strong><a href="https://radioamateurexamen.be/" target="_blank" rel="noopener">radioamateurexamen.be</a></strong>
+              <span class="lic-hint">(vrij toegankelijk)</span>. Gratis oefenvragen voor het
+              Belgische radioamateurexamen, met een samenvatting van de wetgeving. De
+              wetgevingsvragen zijn dezelfde voor klasse A, B en C, dus bruikbaar
+              ongeacht welke klasse je aflegt.
             </li>
           </ul>
           <p>

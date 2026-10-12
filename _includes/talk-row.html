@@ -9,11 +9,16 @@
   {%- if include.lang == site.default_lang -%}{{ l.date_label_nl }}{%- else -%}{{ l.start | date: '%a, %b %-d, %Y' }}{%- endif -%}
 {%- endcapture -%}
 <tr>
-  {%- comment -%} data-time folds into the date line on mobile; see .vd-table in main.css {%- endcomment -%}
-  <td class="text-nowrap" data-label="{{ t.talks_table.date }}"
-      data-time="{{ l.start | date: '%H:%M' }}">{{ date_text }}</td>
-  <td class="text-nowrap" data-label="{{ t.talks_table.time }}">{{ l.start | date: "%H:%M" }}</td>
-  <td data-label="{{ t.talks_table.location }}">{% include field.html item=l key='location' %}</td>
-  <td class="text-nowrap" data-label="{{ t.talks_table.speaker }}"><span class="callsign">{{ l.speaker }}</span></td>
-  <td data-label="{{ t.talks_table.topic }}">{% include field.html item=l key='topic' %}</td>
+  {%- comment -%}
+    On mobile the row becomes a card: data-time ("om 20:00") folds into the
+    date line and data-by ("door") prefixes the speaker. The CSS targets the
+    vd-col-* classes, never data-label, which is translated.
+  {%- endcomment -%}
+  <td class="text-nowrap vd-col-date" data-label="{{ t.talks_table.date }}"
+      data-time="{{ t.talks_table.at }} {{ l.start | date: '%H:%M' }}">{{ date_text }}</td>
+  <td class="text-nowrap vd-col-time" data-label="{{ t.talks_table.time }}">{{ l.start | date: "%H:%M" }}</td>
+  <td class="vd-col-location" data-label="{{ t.talks_table.location }}">{% include field.html item=l key='location' %}</td>
+  <td class="text-nowrap vd-col-speaker{% if l.speaker == nil or l.speaker == "" %} is-empty{% endif %}" data-label="{{ t.talks_table.speaker }}"
+      data-by="{{ t.talks_table.by }}"><span class="callsign">{{ l.speaker }}</span></td>
+  <td class="vd-col-topic" data-label="{{ t.talks_table.topic }}">{% include field.html item=l key='topic' %}</td>
 </tr>

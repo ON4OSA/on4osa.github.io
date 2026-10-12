@@ -574,57 +574,110 @@ h1[id], h2[id], h3[id], h4[id] { scroll-margin-top: 88px; }
   }
   .results-table tbody td:first-child::before { display: none; }
 
-  /* Voordrachten cards: put the time on the title line as "{datum} om {tijd}"
-     (from data-time on the date cell) and drop the separate Tijd row. Only the
-     date stays bold — the separator and the time are regular weight. */
-  .vd-table tbody td:first-child::after {
-    content: " om " attr(data-time);
-    font-weight: 400;
+  /* ----- Voordrachten cards -----
+     Layout:   topic (title)
+               by <speaker>
+               ──────────────
+               [cal]  Thu, Nov 12, 2026 at 20:00
+               [pin]  Urania Public Observatory, Hove
+     Columns are targeted by class (vd-col-*), never by data-label: that holds
+     the translated header, so it differs per language. The markup keeps the
+     desktop column order; flex order rearranges the cells here. */
+  .vd-table tbody tr {
+    display: flex;
+    flex-direction: column;
+    padding: 1.15rem 0 1.05rem;
   }
-  .vd-table tbody td[data-label="Tijd"] { display: none; }
+  .vd-table tbody td { padding: 0 1.25rem; }
+  .vd-table tbody td.vd-col-topic    { order: 1; }
+  .vd-table tbody td.vd-col-speaker  { order: 2; }
+  .vd-table tbody td.vd-col-date     { order: 3; }
+  .vd-table tbody td.vd-col-location { order: 4; }
+  .vd-table tbody td.vd-col-time     { display: none; }
 
-  /* Location sits right under the date line, prefixed with "@" instead of
-     carrying its own label. Overrides the block label styling above. */
-  .vd-table tbody td[data-label="Locatie"]::before,
-  .vd-table tbody td[data-label="Spreker"]::before {
-    display: inline;
-    margin: 0 .35em 0 0;
-    font-size: inherit;
-    font-weight: 400;
-    letter-spacing: normal;
-    text-transform: none;
-    color: inherit;
-  }
-  .vd-table tbody td[data-label="Locatie"]::before { content: "@"; }
+  /* None of these carry the uppercase column label. */
+  .vd-table tbody td::before { display: none; }
 
-  /* Card order: datum om tijd / locatie / onderwerp / spreker. The table keeps
-     Spreker before Onderwerp for the desktop columns, so flex order swaps
-     them here rather than reordering the markup. */
-  .vd-table tbody tr { display: flex; flex-direction: column; }
-  .vd-table tbody td[data-label="Onderwerp"] { order: 1; }
-  .vd-table tbody td[data-label="Spreker"] { order: 2; }
-
-  /* The topic is the card's real title: largest line, and the only one that
-     needs its own line-height since it wraps over several lines. A hairline
-     above it separates it from the date/location block. */
-  .vd-table tbody td[data-label="Onderwerp"] {
-    font-size: 1.2rem;
+  /* The topic is the card's title. */
+  .vd-table tbody td.vd-col-topic {
+    font-size: 1.15rem;
     font-weight: 700;
     line-height: 1.35;
     color: var(--osa-ink);
   }
-  /* The divider is drawn by the (otherwise unused) label pseudo-element, so it
-     sits inside the cell padding and stops short of the card edge — like the
-     rule above .meeting-time — instead of spanning the full width. */
-  .vd-table tbody td[data-label="Onderwerp"]::before {
+
+  /* "by ON4OSA": the word muted, the callsign in ink (bold via .callsign). */
+  .vd-table tbody td.vd-col-speaker {
+    margin-top: .3rem;
+    font-size: .92rem;
+    color: var(--osa-muted);
+  }
+  .vd-table tbody td.vd-col-speaker::before {
+    content: attr(data-by);
+    display: inline;
+    margin: 0 .3em 0 0;
+    font: inherit;
+    letter-spacing: normal;
+    text-transform: none;
+    color: inherit;
+  }
+  .vd-table tbody td.vd-col-speaker .callsign { color: var(--osa-ink); }
+  /* No speaker (e.g. the Nieuwjaarsdrink): drop the line rather than show a bare "by". */
+  .vd-table tbody td.vd-col-speaker.is-empty { display: none; }
+
+  /* Date + location: smaller detail lines, each behind an accent icon (as in
+     .meeting-time). The icon hangs in the left padding, so a wrapped location
+     lines up under its text, not under the icon. */
+  .vd-table tbody td.vd-col-date,
+  .vd-table tbody td.vd-col-location {
+    position: relative;
+    padding-left: calc(1.25rem + 1.5em);
+    font-size: .9rem;
+    line-height: 1.45;
+    color: var(--osa-body);
+  }
+  .vd-table tbody td.vd-col-date::before,
+  .vd-table tbody td.vd-col-location::before {
     content: "";
     display: block;
-    height: 1px;
-    background: var(--osa-line);
-    margin: .7rem 0 .8rem;
+    position: absolute;
+    left: 1.25rem;
+    /* the base label rule shrinks the font; the em sizes below need the text's */
+    font-size: inherit;
+    width: 1em;
+    height: 1em;
+    margin: 0;
+    background-color: var(--osa-accent);
+    -webkit-mask: var(--icon) center / contain no-repeat;
+            mask: var(--icon) center / contain no-repeat;
   }
-  /* "door" regular, callsign bold via .callsign. */
-  .vd-table tbody td[data-label="Spreker"]::before { content: "door"; }
+  /* The hairline separating the detail block. Drawn as a background so it is
+     inset by the cell padding on both sides and stops short of the card edge,
+     like the rule above .meeting-time. */
+  .vd-table tbody td.vd-col-date {
+    margin-top: .95rem;
+    padding-top: .95rem;
+    padding-bottom: 0;
+    font-weight: 600;
+    color: var(--osa-ink);
+    background: linear-gradient(var(--osa-line), var(--osa-line)) 1.25rem 0 / calc(100% - 2.5rem) 1px no-repeat;
+  }
+  /* " at 20:00" from data-time (translated in talk-row.html), regular weight. */
+  .vd-table tbody td.vd-col-date::after {
+    content: " " attr(data-time);
+    font-weight: 400;
+    color: var(--osa-body);
+  }
+  .vd-table tbody td.vd-col-date::before {
+    /* centred on the first line: (line-height − icon) / 2, below the padding */
+    top: calc(.95rem + .225em);
+    --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z'/%3E%3Cpath d='M11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z'/%3E%3C/svg%3E");
+  }
+  .vd-table tbody td.vd-col-location { margin-top: .35rem; }
+  .vd-table tbody td.vd-col-location::before {
+    top: .225em;
+    --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10'/%3E%3Cpath d='M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6'/%3E%3C/svg%3E");
+  }
 }
 /* ---------- Poster thumbnails + lightbox ---------- */
 /* Thumbnails sit side by side at one shared height: each grows in proportion to

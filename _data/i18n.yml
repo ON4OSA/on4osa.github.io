@@ -59,11 +59,11 @@ nl:
     meetings_sub: Iedereen is welkom — radioamateurs, luisteramateurs en geïnteresseerden.
     meetings_map: Bekijk op de kaart →
     talks_kicker: Programma
-    talks_title: Voordrachten
-    talks_sub: Lezingen op onze clubavonden in Volkssterrenwacht Urania.
-    talks_upcoming: Komende voordrachten
-    talks_past: Voorbije voordrachten
-    talks_none: Momenteel geen geplande voordrachten — hou deze pagina in de gaten.
+    talks_title: Agenda
+    talks_sub: Voordrachten op onze clubavonden in Volkssterrenwacht Urania, en andere clubactiviteiten.
+    talks_upcoming: Komende activiteiten
+    talks_past: Voorbije activiteiten
+    talks_none: Momenteel geen geplande activiteiten — hou deze pagina in de gaten.
     on9bd_kicker: West-Hinder 3
     on9bd_title: Station ON9BD
     on9bd_text: >-
@@ -104,6 +104,8 @@ nl:
     location: Locatie
     speaker: Spreker
     topic: Onderwerp
+    at: om        # mobile card: "do 12 nov 2026 om 20:00"
+    by: door      # mobile card: "door ON4OSA"
 
   velddagen:
     kicker: Palmares
@@ -233,11 +235,11 @@ en:
     meetings_sub: Everyone is welcome — licensed amateurs, shortwave listeners and anyone curious.
     meetings_map: View on the map →
     talks_kicker: Program
-    talks_title: Talks
-    talks_sub: Presentations on our club nights at Urania Public Observatory.
-    talks_upcoming: Upcoming talks
-    talks_past: Past talks
-    talks_none: No talks are scheduled right now — check back soon.
+    talks_title: Calendar
+    talks_sub: Talks on our club nights at Urania Public Observatory, and other club events.
+    talks_upcoming: Upcoming events
+    talks_past: Past events
+    talks_none: No events are scheduled right now — check back soon.
     on9bd_kicker: West-Hinder 3
     on9bd_title: Station ON9BD
     on9bd_text: >-
@@ -279,6 +281,8 @@ en:
     location: Location
     speaker: Speaker
     topic: Topic
+    at: at        # mobile card: "Thu, Nov 12, 2026 at 20:00"
+    by: by        # mobile card: "by ON4OSA"
 
   velddagen:
     kicker: Track record

@@ -24,12 +24,12 @@ nl:
     items:
       - title: Home
         slug: home
+      - title: Agenda
+        slug: home
+        anchor: agenda
       - title: OSA Nieuws
         slug: home
         anchor: osa-nieuws
-      - title: Activaties
-        slug: home
-        anchor: activaties
       - title: Radioamateur worden
         slug: license
       - title: Silent Key
@@ -200,12 +200,12 @@ en:
     items:
       - title: Home
         slug: home
+      - title: Calendar
+        slug: home
+        anchor: agenda
       - title: OSA News
         slug: home
         anchor: osa-nieuws
-      - title: Activations
-        slug: home
-        anchor: activaties
       - title: Become a radio amateur
         slug: license
       - title: Silent Key

@@ -1,13 +1,13 @@
-# Voordrachten / lezingen georganiseerd door ON4OSA.
-# Velden met `_nl`/`_en` zijn taalgebonden; velden zonder achtervoegsel
-# gelden voor alle talen. Zie CLAUDE.md ("Meertaligheid").
-# Vinden plaats op de maandelijkse clubavond (eerste donderdag) in
-# Volkssterrenwacht Urania, Hove.
+# Agenda: talks and other club events (e.g. the New Year's reception), shown in
+# the Agenda section on the homepage.
+# Fields with `_nl`/`_en` are language-specific; fields without a suffix apply
+# to every language. See CLAUDE.md ("Multilingual (NL / EN)").
+# Talks take place at the monthly club night (first Thursday) at
+# Volkssterrenwacht Urania, Hove. Leave `speaker` empty for an event without one.
 #
-# `start` en `end` zijn volledige ISO 8601 datum-tijden (lokale tijd, tussen
-# aanhalingstekens zodat het strings blijven). Ze mogen op verschillende dagen
-# vallen. `start` bepaalt ook de chronologische sortering en de opsplitsing
-# tussen komende en voorbije voordrachten.
+# `start` and `end` are full ISO 8601 date-times (local time, quoted so they stay
+# strings). They may fall on different days. `start` also sets the chronological
+# order and the split between upcoming and past events.
 - start: "2026-01-08T20:00"
   end: "2026-01-08T22:00"
   date_label_nl: do 8 jan 2026

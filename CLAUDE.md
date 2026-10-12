@@ -90,7 +90,7 @@ Language-specific fields per file:
 | File | `_nl` / `_en` |
 | ---- | ------------- |
 | `meetings.yml` | `when`, `venue`, `time` |
-| `voordrachten.yml` | `date_label` (`_nl` only), `location`, `topic` |
+| `agenda.yml` | `date_label` (`_nl` only), `location`, `topic` |
 | `velddagen.yml` | `date_label` (`_nl` only), `event`, `placement` |
 | `velddagen_fotos.yml` | `caption`, `alt` |
 | `nieuwsbrieven.yml` | `title` |

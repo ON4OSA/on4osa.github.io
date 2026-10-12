@@ -79,10 +79,10 @@ layout: default
       {%- endfor -%}
     </div>
 
-    {%- if site.data.voordrachten and site.data.voordrachten.size > 0 -%}
+    {%- if site.data.agenda and site.data.agenda.size > 0 -%}
     <div class="section-head text-center lezingen-head">
       <span class="section-kicker">{{ t.home.talks_kicker }}</span>
-      <h3 class="section-title" id="voordrachten">{{ t.home.talks_title }}</h3>
+      <h3 class="section-title" id="agenda">{{ t.home.talks_title }}</h3>
       <p class="section-sub">{{ t.home.talks_sub }}</p>
     </div>
 
@@ -142,13 +142,13 @@ layout: default
 
     {%- comment -%} Split automatically on the build date (site.time). {%- endcomment -%}
     {%- assign today = site.time | date: "%Y-%m-%d" -%}
-    {%- assign vd_asc = site.data.voordrachten | sort: "start" -%}
+    {%- assign vd_asc = site.data.agenda | sort: "start" -%}
     {%- assign upcoming_count = 0 -%}
     {%- for l in vd_asc -%}
       {%- assign d = l.start | date: "%Y-%m-%d" -%}
       {%- if d >= today -%}{%- assign upcoming_count = upcoming_count | plus: 1 -%}{%- endif -%}
     {%- endfor -%}
-    {%- assign past_count = site.data.voordrachten.size | minus: upcoming_count -%}
+    {%- assign past_count = site.data.agenda.size | minus: upcoming_count -%}
 
     <h4 class="vd-subhead">{{ t.home.talks_upcoming }}</h4>
     {%- if upcoming_count > 0 -%}
@@ -191,7 +191,7 @@ layout: default
           </tr>
         </thead>
         <tbody>
-          {%- assign vd_desc = site.data.voordrachten | sort: "start" | reverse -%}
+          {%- assign vd_desc = site.data.agenda | sort: "start" | reverse -%}
           {%- for l in vd_desc -%}
           {%- assign d = l.start | date: "%Y-%m-%d" -%}
           {%- if d < today -%}
@@ -205,7 +205,7 @@ layout: default
 
     {%- comment -%}
       schema.org Event data for every voordracht, generated from the same
-      _data/voordrachten.yml entries shown in the tables above. Emitted in the
+      _data/agenda.yml entries shown in the tables above. Emitted in the
       page's own language so each localised page describes its own events.
       NB: the postal address assumes the venue is Volkssterrenwacht Urania —
       adjust here if a voordracht is ever held elsewhere.
@@ -222,14 +222,14 @@ layout: default
         offers.validFrom = when the (free) admission becomes valid. These talks
         are open to all with no registration, so it defaults to six months
         (182 days) before the start. Set `valid_from` in
-        _data/voordrachten.yml to override it per talk.
+        _data/agenda.yml to override it per talk.
         Only the date comes from the subtraction; the time is copied from the
         talk itself. Otherwise the hour shifts with daylight saving time.
       {%- endcomment -%}
       {%- assign vd_valid_date = l.start | date: '%s' | minus: 15724800 | date: '%Y-%m-%d' -%}
       {%- capture vd_default_valid -%}{{ vd_valid_date }}T{{ l.start | date: '%H:%M' }}{%- endcapture -%}
       {%- assign vd_valid = l.valid_from | default: vd_default_valid -%}
-      {%- capture talks_url -%}{{ home_url }}#voordrachten{%- endcapture -%}
+      {%- capture talks_url -%}{{ home_url }}#agenda{%- endcapture -%}
       {
         "@context": "https://schema.org",
         "@type": "Event",

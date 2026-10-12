@@ -626,9 +626,20 @@ h1[id], h2[id], h3[id], h4[id] { scroll-margin-top: 88px; }
   /* "door" regular, callsign bold via .callsign. */
   .vd-table tbody td[data-label="Spreker"]::before { content: "door"; }
 }
-/* ---------- Affiche thumbnail + lightbox ---------- */
-.poster-wrap { display: flex; justify-content: center; margin-bottom: 2.5rem; }
+/* ---------- Poster thumbnails + lightbox ---------- */
+/* Thumbnails sit side by side at one shared height: each grows in proportion to
+   its aspect ratio (--ar, set inline). home.html sets max-width inline too —
+   315px × the sum of the ratios + the gaps — which caps that height at 315px. */
+.poster-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.25rem;
+  margin: 0 auto 2.5rem;
+}
 .poster-thumb {
+  flex: var(--ar, 1) 1 0;
+  min-width: 0;
   /* a button, so reset the UA chrome and let the image be the whole control */
   padding: 0;
   border: 1px solid var(--osa-line);
@@ -642,8 +653,7 @@ h1[id], h2[id], h3[id], h4[id] { scroll-margin-top: 88px; }
 }
 .poster-thumb:hover { transform: translateY(-3px); box-shadow: var(--osa-shadow-lg); }
 .poster-thumb:focus-visible { outline: 3px solid var(--osa-accent); outline-offset: 3px; }
-/* landscape affiche — capped by width, and never wider than the column */
-.poster-thumb img { display: block; width: 100%; max-width: 420px; height: auto; }
+.poster-thumb img { display: block; width: 100%; height: auto; }
 
 /* Lightbox: the poster itself is the dialog — no panel, no padding. */
 .poster-modal .modal-content {

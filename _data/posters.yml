@@ -1,0 +1,26 @@
+# Posters on the homepage (Talks section), shown side by side in this order.
+# Fields with `_nl`/`_en` are language-specific; fields without a suffix
+# apply to every language. See CLAUDE.md ("Posters on the homepage").
+#
+# `file`   base name in /assets/img/posters/. Six files per poster:
+#          <file>.{avif,webp,jpg} (full size) and <file>-thumb.{avif,webp,jpg}.
+# `width`/`height`  pixel size of <file>.jpg — the thumbnail must have the
+#          same aspect ratio.
+# `alt`    description of the poster (alt text and lightbox title).
+# `aria`   label of the button that opens the poster at full size.
+
+- file: poster-hf-propagatie
+  width: 1448
+  height: 1086
+  alt_nl: Affiche van de voordracht HF-propagatie door ON4ALY op 12 november 2026
+  alt_en: Poster for the talk on HF propagation by ON4ALY on November 12, 2026
+  aria_nl: Bekijk de affiche van de voordracht HF-propagatie op ware grootte
+  aria_en: View the HF propagation talk poster at full size
+
+- file: poster-nieuwjaarsdrink-2027
+  width: 1086
+  height: 1537
+  alt_nl: Affiche van de nieuwjaarsdrink 2027 op de West-Hinder 3, zaterdag 16 januari 2027 van 13:00 tot 16:00
+  alt_en: "Poster for the 2027 New Year's reception on the West-Hinder 3, Saturday, January 16, 2027, 1:00–4:00 PM"
+  aria_nl: Bekijk de affiche van de nieuwjaarsdrink op ware grootte
+  aria_en: View the New Year's reception poster at full size

@@ -79,3 +79,30 @@
   speaker: ON4ALY
   topic_nl: HF-propagatie
   topic_en: HF propagation
+
+- start: "2026-12-03T20:00"
+  end: "2026-12-03T22:00"
+  date_label_nl: do 3 dec 2026
+  location_nl: Volkssterrenwacht Urania, Hove
+  location_en: Urania Public Observatory, Hove
+  speaker: ON9TT
+  topic_nl: Horizon meeting UBA
+  topic_en: Horizon meeting UBA
+
+- start: "2027-01-16T13:00"
+  end: "2027-01-16T16:00"
+  date_label_nl: za 16 jan 2027
+  location_nl: West-Hinder 3, Antwerpen
+  location_en: West-Hinder 3, Antwerp
+  speaker:
+  topic_nl: Nieuwjaarsdrink
+  topic_en: New Year's drinks
+
+- start: "2027-02-04T20:00"
+  end: "2027-02-04T22:00"
+  date_label_nl: do 4 feb 2027
+  location_nl: Volkssterrenwacht Urania, Hove
+  location_en: Urania Public Observatory, Hove
+  speaker: ON4AML
+  topic_nl: Draagbare EME-opstelling (moonbounce)
+  topic_en: Portable EME setup (moonbounce)

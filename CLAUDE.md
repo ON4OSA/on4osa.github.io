@@ -95,6 +95,7 @@ Language-specific fields per file:
 | `velddagen_fotos.yml` | `caption`, `alt` |
 | `nieuwsbrieven.yml` | `title` |
 | `silent-key.yml` | `text` |
+| `posters.yml` | `alt`, `aria` |
 
 Everything else is universal: callsigns, dates, scores, filenames, addresses,
 URLs, categories.
@@ -278,6 +279,52 @@ see `.newsletter-cover picture` in `assets/css/main.css`.
   `westhinder.jpg` as used by the carousel on `/on9bd/`). Converting those means
   the carousel loop has to assume all three variants exist for every gallery
   image — see the 404 caveat above before doing it.
+
+## Posters on the homepage
+
+The posters above the talks table on the homepage come from
+`_data/posters.yml`, shown side by side in file order. Adding or removing a
+poster never touches `_data/i18n.yml` or the layout — everything per poster
+lives in that file:
+
+```yaml
+- file: poster-nieuwjaarsdrink-2027   # base name in assets/img/posters/
+  width: 1086                         # pixel size of <file>.jpg
+  height: 1537
+  alt_nl: Affiche van de nieuwjaarsdrink 2027 …   # alt text + lightbox title
+  alt_en: Poster for the 2027 New Year's reception …
+  aria_nl: Bekijk de affiche van de nieuwjaarsdrink op ware grootte   # button label
+  aria_en: View the New Year's reception poster at full size
+```
+
+Each poster needs **six files** in `assets/img/posters/`: `<file>.{avif,webp,jpg}`
+(full size, opened in the lightbox) and `<file>-thumb.{avif,webp,jpg}`.
+Name them `poster-<event>`. From a PDF:
+
+```sh
+cd assets/img/posters
+magick -density 300 "poster.pdf[0]" -background white -flatten \
+  -resize 1086x -strip -quality 85 poster-<event>.jpg
+magick poster-<event>.jpg -resize 446x -strip -quality 85 poster-<event>-thumb.jpg
+for f in poster-<event>.jpg poster-<event>-thumb.jpg; do
+  magick "$f" -strip -quality 50 "${f%.jpg}.avif"
+  magick "$f" -strip -quality 80 -define webp:method=6 "${f%.jpg}.webp"
+done
+```
+
+(Width 1086/446 suits a portrait A4; for a landscape poster use 1448/840.)
+
+- `width`/`height` are the full-size image's; the thumbnail reuses them, so it
+  **must have the same aspect ratio**. Only the ratio matters there — the
+  browser uses it to reserve space and to lay the thumbnails out.
+- The thumbnails always share one height, whatever mix of portrait and
+  landscape: each one grows in proportion to its aspect ratio, and the row's
+  `max-width` (computed in `home.html` from the sum of the ratios) caps that
+  height at 315px. No CSS change is needed for a new poster.
+- Landscape posters open in a wide (`modal-xl`) lightbox, portrait ones in a
+  narrower (`modal-lg`) one.
+- Remove a poster's entry once the event is over. An empty file hides the
+  row altogether.
 
 ## Velddagen — carousel photos
 

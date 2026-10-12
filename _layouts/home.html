@@ -87,39 +87,58 @@ layout: default
     </div>
 
     {%- comment -%}
-      Affiche for the next voordracht. The thumbnail opens the full-resolution
-      poster in a Bootstrap modal.
+      Posters for upcoming events, from _data/posters.yml. Each thumbnail opens
+      the full-resolution poster in a Bootstrap modal. --ar is the image's
+      width/height: the thumbnails grow in proportion to it, so they always
+      share one height. The wrap's max-width caps that height at 315px.
     {%- endcomment -%}
-    <div class="poster-wrap">
-      <button type="button" class="poster-thumb" data-bs-toggle="modal" data-bs-target="#afficheModal"
-              aria-label="{{ t.home.talks_poster_aria }}">
+    {%- if site.data.posters and site.data.posters.size > 0 -%}
+    {%- assign ar_sum = 0 -%}
+    {%- for p in site.data.posters -%}
+      {%- assign ar = p.width | times: 1.0 | divided_by: p.height -%}
+      {%- assign ar_sum = ar_sum | plus: ar -%}
+    {%- endfor %}
+    <div class="poster-wrap" style="max-width: calc(315px * {{ ar_sum | round: 3 }} + {{ site.data.posters.size | minus: 1 }} * 1.25rem)">
+      {%- for p in site.data.posters -%}
+      {%- assign ar = p.width | times: 1.0 | divided_by: p.height | round: 3 -%}
+      {%- capture alt %}{% include field.html item=p key='alt' %}{% endcapture -%}
+      {%- capture aria %}{% include field.html item=p key='aria' %}{% endcapture -%}
+      {%- assign base = '/assets/img/posters/' | append: p.file %}
+      <button type="button" class="poster-thumb" style="--ar: {{ ar }}" data-bs-toggle="modal" data-bs-target="#{{ p.file }}-modal"
+              aria-label="{{ aria | escape }}">
         <picture>
-          <source srcset="{{ '/assets/img/voordrachten/affiche-hf-propagatie-thumb.avif' | relative_url }}" type="image/avif">
-          <source srcset="{{ '/assets/img/voordrachten/affiche-hf-propagatie-thumb.webp' | relative_url }}" type="image/webp">
-          <img src="{{ '/assets/img/voordrachten/affiche-hf-propagatie-thumb.jpg' | relative_url }}"
-               alt="{{ t.home.talks_poster_alt }}"
-               width="840" height="630" loading="lazy" decoding="async">
+          <source srcset="{{ base | append: '-thumb.avif' | relative_url }}" type="image/avif">
+          <source srcset="{{ base | append: '-thumb.webp' | relative_url }}" type="image/webp">
+          <img src="{{ base | append: '-thumb.jpg' | relative_url }}"
+               alt="{{ alt | escape }}"
+               width="{{ p.width }}" height="{{ p.height }}" loading="lazy" decoding="async">
         </picture>
       </button>
+      {%- endfor %}
     </div>
 
-    <div class="modal fade poster-modal" id="afficheModal" tabindex="-1"
-         aria-labelledby="afficheModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-xl">
+    {%- for p in site.data.posters -%}
+    {%- capture alt %}{% include field.html item=p key='alt' %}{% endcapture -%}
+    {%- assign base = '/assets/img/posters/' | append: p.file %}
+    <div class="modal fade poster-modal" id="{{ p.file }}-modal" tabindex="-1"
+         aria-labelledby="{{ p.file }}-modal-label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered {% if p.width > p.height %}modal-xl{% else %}modal-lg{% endif %}">
         <div class="modal-content">
-          <h4 class="visually-hidden" id="afficheModalLabel">{{ t.home.talks_poster_alt }}</h4>
+          <h4 class="visually-hidden" id="{{ p.file }}-modal-label">{{ alt | escape }}</h4>
           <button type="button" class="btn-close btn-close-white poster-close"
                   data-bs-dismiss="modal" aria-label="{{ t.carousel.close }}"></button>
           <picture>
-            <source srcset="{{ '/assets/img/voordrachten/affiche-hf-propagatie.avif' | relative_url }}" type="image/avif">
-            <source srcset="{{ '/assets/img/voordrachten/affiche-hf-propagatie.webp' | relative_url }}" type="image/webp">
-            <img src="{{ '/assets/img/voordrachten/affiche-hf-propagatie.jpg' | relative_url }}"
-                 alt="{{ t.home.talks_poster_alt }}"
-                 width="1448" height="1086" loading="lazy" decoding="async">
+            <source srcset="{{ base | append: '.avif' | relative_url }}" type="image/avif">
+            <source srcset="{{ base | append: '.webp' | relative_url }}" type="image/webp">
+            <img src="{{ base | append: '.jpg' | relative_url }}"
+                 alt="{{ alt | escape }}"
+                 width="{{ p.width }}" height="{{ p.height }}" loading="lazy" decoding="async">
           </picture>
         </div>
       </div>
     </div>
+    {%- endfor -%}
+    {%- endif %}
 
     {%- comment -%} Split automatically on the build date (site.time). {%- endcomment -%}
     {%- assign today = site.time | date: "%Y-%m-%d" -%}

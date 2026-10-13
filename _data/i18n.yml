@@ -153,6 +153,9 @@ nl:
       Wil je zelf eens uitzenden vanuit het clubstation? Radioamateurs zijn
       van harte welkom aan boord, neem gerust contact op via
     img_alt: Lichtschip West-Hinder 3
+    ids_caption: Identificatoren van het lichtschip
+    ids_register: Register
+    ids_identifier: Identificator
 
   silent_key:
     kicker: In memoriam
@@ -330,6 +333,9 @@ en:
       Would you like to operate from the club station yourself? Radio amateurs
       are very welcome on board — feel free to get in touch at
     img_alt: Lightship West-Hinder 3
+    ids_caption: Lightship identifiers
+    ids_register: Register
+    ids_identifier: Identifier
 
   silent_key:
     kicker: In memoriam

@@ -1,0 +1,27 @@
+# Identifiers of the lightship West-Hinder III (station ON9BD), shown as a table
+# on /on9bd/ and published there as RDFa (schema.org `identifier`).
+# All fields are universal — no translation needed.
+#
+# `scheme`    short name of the register, shown as the row label.
+# `name`      full name of the register.
+# `home`      the register's website.
+# `value`     the identifier itself.
+# `url`       optional; the record for this identifier in the register. Leave
+#             it out when the register has no page per entry (ILLW).
+# `same_as`   optional; true when `url` is a page *about the ship itself*, so
+#             it is also published as schema.org `sameAs`.
+
+name: West-Hinder III
+
+identifiers:
+  - scheme: ILLW
+    name: International Lighthouse Lightship Weekend
+    home: https://illw.net/
+    value: BE0006
+
+  - scheme: ARLHS
+    name: Amateur Radio Lighthouse Society
+    home: https://arlhs.com/
+    value: BEL-027
+    url: https://wlol.arlhs.com/lighthouse/BEL27.html
+    same_as: true

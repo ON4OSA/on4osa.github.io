@@ -1,5 +1,5 @@
 # Velden met `_nl`/`_en` zijn taalgebonden; velden zonder achtervoegsel
-# gelden voor alle talen. Zie CLAUDE.md ("Meertaligheid").
+# gelden voor alle talen. Zie CLAUDE.md ("Multilingual (NL / EN)").
 - when_nl: Elke eerste donderdag van de maand
   when_en: Every first Thursday of the month
   venue_nl: Volkssterrenwacht Urania

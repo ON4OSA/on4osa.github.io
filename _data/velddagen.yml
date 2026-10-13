@@ -1,6 +1,6 @@
 # ON4OSA deelnames aan UBA velddagen.
 # Velden met `_nl`/`_en` zijn taalgebonden; velden zonder achtervoegsel
-# gelden voor alle talen. Zie CLAUDE.md ("Meertaligheid").
+# gelden voor alle talen. Zie CLAUDE.md ("Multilingual (NL / EN)").
 # Bron: UBA velddag-uitslagen (zie `url`). Datums volgen de vaste UBA-kalender
 # (CW = eerste volledige weekend van juni, SSB = eerste volledige weekend van september).
 # `date` (ISO) wordt gebruikt om chronologisch te sorteren.

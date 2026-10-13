@@ -1,5 +1,5 @@
 # Alle vaste teksten van de site, per taal.
-# Zie CLAUDE.md ("Meertaligheid") voor hoe dit bestand gebruikt wordt.
+# Zie CLAUDE.md ("Multilingual (NL / EN)") voor hoe dit bestand gebruikt wordt.
 #
 # Gebruik in templates:  {%- assign t = site.data.i18n[page.lang] -%}
 #                        {{ t.nav.home }}
@@ -44,7 +44,7 @@ nl:
 
   home:
     hero_eyebrow: Radioamateurs in Antwerpen · ON4OSA
-    hero_title: Welkom bij OSA,<br>een Antwerpse UBA sectie
+    hero_title: Welkom bij OSA,<br>een Antwerpse UBA-sectie
     hero_lead: >-
       OSA is een radioamateurclub in Antwerpen en lokale sectie van de UBA.<br>
       Onze sectie ontstond in 1935 uit de CW-operatoren van het legendarische
@@ -78,7 +78,7 @@ nl:
     # externe site, neither -> button without link (placeholder).
     activations:
       - title: Velddagen
-        text: Tweemaal per jaar bouwen we een volledig veld station op voor de UBA-velddagen CW en SSB.
+        text: Tweemaal per jaar bouwen we een volledig veldstation op voor de UBA-velddagen CW en SSB.
         button: Bekijk resultaten
         slug: field-days
       - title: International Lighthouse Lightship Weekend
@@ -227,7 +227,7 @@ en:
       station OSA in 1935, making it one of the oldest in the country. Today we
       bring together more than 50 members.
     hero_logo_osa_alt: Emblem of amateur radio club OSA
-    hero_logo_uba_alt: Emblem of the UBA — Royal Union of Belgian Radio Amateurs
+    hero_logo_uba_alt: Emblem of the UBA — Royal Belgian Amateur Radio Union
     hero_btn_meetings: When do we meet?
     hero_btn_about: About OSA
     meetings_kicker: Meetings
@@ -264,7 +264,7 @@ en:
         button: Visit the website
         url: https://nj2bb.org/museum/
       - title: Special events
-        text: Occasionally we activate with a special callsigns for commemorations, anniversaries and regional events.
+        text: Occasionally we go on the air with special callsigns for commemorations, anniversaries and regional events.
         button: Coming soon
     news_kicker: Newsletter
     news_title: OSA News

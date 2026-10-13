@@ -17,7 +17,7 @@ description: >-
       <h1 class="section-title">Become a radio amateur</h1>
       <p class="section-sub">
         Transmitting yourself, making contacts worldwide and building your own
-        equipment — an operator certificate and a station license allows it.
+        equipment — an operator certificate and a station license allow it.
       </p>
     </div>
 

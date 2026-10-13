@@ -1,6 +1,6 @@
 # OSA Nieuws — clubnieuwsbrieven (PDF).
 # Velden met `_nl`/`_en` zijn taalgebonden; velden zonder achtervoegsel
-# gelden voor alle talen. Zie CLAUDE.md ("Meertaligheid").
+# gelden voor alle talen. Zie CLAUDE.md ("Multilingual (NL / EN)").
 # `file` staat in /assets/nieuwsbrieven/, thumbnail (eerste pagina) in
 # /assets/img/nieuwsbrieven/ met dezelfde bestandsnaam (.jpg).
 # Nieuwste bovenaan.

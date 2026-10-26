@@ -207,8 +207,11 @@ layout: default
       schema.org Event data for every voordracht, generated from the same
       _data/agenda.yml entries shown in the tables above. Emitted in the
       page's own language so each localised page describes its own events.
-      NB: the postal address assumes the venue is Volkssterrenwacht Urania —
-      adjust here if a voordracht is ever held elsewhere.
+      The postal address defaults to Volkssterrenwacht Urania; an entry held
+      elsewhere sets its own `address` in _data/agenda.yml. Without a
+      `speaker` the entry is an event rather than a talk: no performer (a
+      reception has none, and ON4OSA is already the organizer) and the topic
+      alone as description.
     {%- endcomment -%}
     {%- include url.html slug='home' lang=lang -%}
     {%- assign home_url = page_url -%}
@@ -217,7 +220,12 @@ layout: default
       {%- for l in vd_asc -%}
       {%- capture topic -%}{% include field.html item=l key='topic' %}{%- endcapture -%}
       {%- capture location -%}{% include field.html item=l key='location' %}{%- endcapture -%}
-      {%- capture vd_desc -%}{% if lang == 'en' %}Talk by {{ l.speaker }}: {{ topic }}{% else %}Voordracht door {{ l.speaker }}: {{ topic }}{% endif %}{%- endcapture -%}
+      {%- capture vd_desc -%}
+        {%- if l.speaker == nil or l.speaker == "" -%}{{ topic }}
+        {%- elsif lang == 'en' -%}Talk by {{ l.speaker }}: {{ topic }}
+        {%- else -%}Voordracht door {{ l.speaker }}: {{ topic }}{%- endif -%}
+      {%- endcapture -%}
+      {%- assign addr = l.address -%}
       {%- comment -%}
         offers.validFrom = when the (free) admission becomes valid. These talks
         are open to all with no registration, so it defaults to six months
@@ -246,16 +254,18 @@ layout: default
           "name": {{ location | jsonify }},
           "address": {
             "@type": "PostalAddress",
-            "streetAddress": "Jozef Mattheessensstraat 60",
-            "postalCode": "2540",
-            "addressLocality": "Hove",
+            "streetAddress": {{ addr.street | default: "Jozef Mattheessensstraat 60" | jsonify }},
+            "postalCode": {{ addr.postal_code | default: "2540" | jsonify }},
+            "addressLocality": {{ addr.locality | default: "Hove" | jsonify }},
             "addressCountry": "BE"
           }
         },
+        {%- unless l.speaker == nil or l.speaker == "" %}
         "performer": {
           "@type": "Person",
           "name": {{ l.speaker | jsonify }}
         },
+        {%- endunless %}
         "organizer": {
           "@type": "Organization",
           "name": {{ site.title | jsonify }},

@@ -4,6 +4,9 @@
 # to every language. See CLAUDE.md ("Multilingual (NL / EN)").
 # Talks take place at the monthly club night (first Thursday) at
 # Volkssterrenwacht Urania, Hove. Leave `speaker` empty for an event without one.
+# `address` (optional: `street`, `postal_code`, `locality`) is the venue's postal
+# address in the event data for search engines; it defaults to Urania in Hove,
+# so set it for anything held elsewhere.
 #
 # `start` and `end` are full ISO 8601 date-times (local time, quoted so they stay
 # strings). They may fall on different days. `start` also sets the chronological
@@ -94,6 +97,10 @@
   date_label_nl: za 16 jan 2027
   location_nl: West-Hinder 3, Antwerpen
   location_en: West-Hinder 3, Antwerp
+  address:
+    street: Droogdokkenweg 4
+    postal_code: "2030"
+    locality: Antwerpen
   speaker:
   topic_nl: Nieuwjaarsdrink
   topic_en: New Year's reception

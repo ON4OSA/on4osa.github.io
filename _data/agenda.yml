@@ -92,6 +92,15 @@
   topic_nl: Horizon meeting UBA
   topic_en: Horizon meeting UBA
 
+- start: "2027-01-07T20:00"
+  end: "2027-01-07T22:00"
+  date_label_nl: do 7 jan 2027
+  location_nl: Volkssterrenwacht Urania, Hove
+  location_en: Urania Public Observatory, Hove
+  speaker:
+  topic_nl: Vergadering
+  topic_en: Club meeting
+
 - start: "2027-01-16T13:00"
   end: "2027-01-16T16:00"
   date_label_nl: za 16 jan 2027

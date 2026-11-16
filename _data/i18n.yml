@@ -106,6 +106,8 @@ nl:
     topic: Onderwerp
     at: om        # mobile card: "do 12 nov 2026 om 20:00"
     by: door      # mobile card: "door ON4OSA"
+    slides: Presentatie
+    slides_aria: "Bekijk de presentatie van %topic% (PDF)"
 
   velddagen:
     kicker: Palmares
@@ -286,6 +288,8 @@ en:
     topic: Topic
     at: at        # mobile card: "Thu, Nov 12, 2026 at 20:00"
     by: by        # mobile card: "by ON4OSA"
+    slides: Slides
+    slides_aria: "View the slides for %topic% (PDF)"
 
   velddagen:
     kicker: Track record

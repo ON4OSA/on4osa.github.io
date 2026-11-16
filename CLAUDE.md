@@ -326,6 +326,20 @@ done
 - Remove a poster's entry once the event is over. An empty file hides the
   row altogether.
 
+## Slides of a talk
+
+A talk's presentation is linked from the Agenda tables on the homepage: a
+presentation icon in the last column (on the mobile cards: a "Slides (PDF)"
+button). Add the optional `slides` field to the entry in `_data/agenda.yml`:
+
+```yaml
+  slides: 2026-11-12-hf-propagatie.pdf     # a file in assets/slides/
+  slides: https://example.org/deck.pdf     # or a full URL hosted elsewhere
+```
+
+Name local files `<start date>-<topic>.pdf` and drop them in `assets/slides/`
+(`chmod 644`). Rows without `slides` get an empty cell, and no button on mobile.
+
 ## Velddagen — carousel photos
 
 The "Enkele sfeerbeelden" carousel on `/velddagen/` is driven by

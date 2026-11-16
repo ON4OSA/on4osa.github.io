@@ -7,6 +7,9 @@
 # `address` (optional: `street`, `postal_code`, `locality`) is the venue's postal
 # address in the event data for search engines; it defaults to Urania in Hove,
 # so set it for anything held elsewhere.
+# `slides` (optional) is the presentation: a filename in /assets/slides/ (name
+# it <start date>-<topic>.pdf) or a full https:// URL to slides hosted
+# elsewhere. It shows as a presentation icon in the last column.
 #
 # `start` and `end` are full ISO 8601 date-times (local time, quoted so they stay
 # strings). They may fall on different days. `start` also sets the chronological
@@ -82,6 +85,7 @@
   speaker: ON4ALY
   topic_nl: HF-propagatie
   topic_en: HF propagation
+  slides: 2026-11-12-hf-propagatie.pdf
 
 - start: "2026-12-03T20:00"
   end: "2026-12-03T22:00"

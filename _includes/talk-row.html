@@ -21,4 +21,23 @@
   <td class="text-nowrap vd-col-speaker{% if l.speaker == nil or l.speaker == "" %} is-empty{% endif %}" data-label="{{ t.talks_table.speaker }}"
       data-by="{{ t.talks_table.by }}"><span class="callsign">{{ l.speaker }}</span></td>
   <td class="vd-col-topic" data-label="{{ t.talks_table.topic }}">{% include field.html item=l key='topic' %}</td>
+  {%- comment -%}
+    Slides: `slides` in _data/agenda.yml is a file in /assets/slides/ or a
+    full URL. Icon only on desktop; the card on mobile also shows the label.
+  {%- endcomment -%}
+  <td class="vd-icons vd-col-slides{% unless l.slides %} is-empty{% endunless %}" data-label="{{ t.talks_table.slides }}">
+    {%- if l.slides -%}
+    {%- if l.slides contains '://' -%}{%- assign slides_href = l.slides -%}
+    {%- else -%}{%- assign slides_href = '/assets/slides/' | append: l.slides | relative_url -%}{%- endif -%}
+    {%- capture slides_topic -%}{% include field.html item=l key='topic' %}{%- endcapture -%}
+    <a class="vd-icon-btn" href="{{ slides_href }}" target="_blank" rel="noopener"
+       aria-label="{{ t.talks_table.slides_aria | replace: '%topic%', slides_topic | escape }}"
+       title="{{ t.talks_table.slides }} (PDF)">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+        <path d="M8 0a.5.5 0 0 1 .473.337L9.046 2H14a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1.85l1.323 3.837a.5.5 0 1 1-.946.326L11.092 11H8.5v3a.5.5 0 0 1-1 0v-3H4.908l-1.435 4.163a.5.5 0 1 1-.946-.326L3.85 11H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h4.954L7.527.337A.5.5 0 0 1 8 0M2 3v7h12V3z"/>
+      </svg>
+      <span class="vd-icon-btn-label" aria-hidden="true">{{ t.talks_table.slides }} (PDF)</span>
+    </a>
+    {%- endif -%}
+  </td>
 </tr>

@@ -473,7 +473,10 @@ h1[id], h2[id], h3[id], h4[id] { scroll-margin-top: 88px; }
 /* ---------- Velddag photo galleries ---------- */
 .vd-icons-col { width: 1%; }
 .vd-icons { text-align: center; white-space: nowrap; }
-.vd-galerij-btn {
+/* Icon buttons in a table's last column: the photo gallery on /velddagen/,
+   the slides link in the agenda. */
+.vd-galerij-btn,
+.vd-icon-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -485,8 +488,13 @@ h1[id], h2[id], h3[id], h4[id] { scroll-margin-top: 88px; }
   cursor: pointer;
   transition: background .15s ease, border-color .15s ease, color .15s ease;
 }
-.vd-galerij-btn:hover { background: var(--osa-bg); border-color: var(--osa-accent); color: var(--osa-accent-dark); }
-.vd-galerij-btn:focus-visible { outline: 3px solid var(--osa-accent); outline-offset: 2px; }
+.vd-galerij-btn:hover,
+.vd-icon-btn:hover { background: var(--osa-bg); border-color: var(--osa-accent); color: var(--osa-accent-dark); }
+.vd-galerij-btn:focus-visible,
+.vd-icon-btn:focus-visible { outline: 3px solid var(--osa-accent); outline-offset: 2px; }
+/* The text label only appears on the mobile cards, where an icon alone is
+   too cryptic; on desktop the column is icon-only with an aria-label. */
+.vd-icon-btn-label { display: none; }
 
 /* Lightbox: the carousel is the dialog — no panel around it. */
 .galerij-modal .modal-content { background: none; border: 0; position: relative; }
@@ -624,6 +632,23 @@ h1[id], h2[id], h3[id], h4[id] { scroll-margin-top: 88px; }
   .vd-table tbody td.vd-col-speaker .callsign { color: var(--osa-ink); }
   /* No speaker (e.g. the Nieuwjaarsdrink): drop the line rather than show a bare "by". */
   .vd-table tbody td.vd-col-speaker.is-empty { display: none; }
+
+  /* Slides: the last line of the card, icon plus label. */
+  .vd-table tbody td.vd-col-slides {
+    order: 5;
+    margin-top: .85rem;
+    text-align: left;
+  }
+  .vd-table tbody td.vd-col-slides.is-empty { display: none; }
+  .vd-table .vd-icon-btn {
+    gap: .45rem;
+    padding: .35rem .7rem;
+    font-size: .88rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .vd-table .vd-icon-btn svg { width: 16px; height: 16px; }
+  .vd-table .vd-icon-btn-label { display: inline; }
 
   /* Date + location: smaller detail lines, each behind an accent icon (as in
      .meeting-time). The icon hangs in the left padding, so a wrapped location

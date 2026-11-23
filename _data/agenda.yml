@@ -92,9 +92,9 @@
   date_label_nl: do 3 dec 2026
   location_nl: Volkssterrenwacht Urania, Hove
   location_en: Urania Public Observatory, Hove
-  speaker: ON9TT
-  topic_nl: Horizon meeting UBA
-  topic_en: Horizon meeting UBA
+  speaker: ON5SEL
+  topic_nl: "ADS-B: vliegtuigen volgen met een RTL-SDR dongle"
+  topic_en: "ADS-B: tracking aircraft with an RTL-SDR dongle"
 
 - start: "2027-01-07T20:00"
   end: "2027-01-07T22:00"
